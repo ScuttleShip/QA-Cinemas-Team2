@@ -22,6 +22,10 @@ public class Booking {
 		this.customerEmail = customerEmail;
 	}
 
+	public Booking() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getBookingID() {
 		return bookingID;
 	}
