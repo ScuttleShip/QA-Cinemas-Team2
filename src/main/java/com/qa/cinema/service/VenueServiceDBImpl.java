@@ -39,21 +39,21 @@ public class VenueServiceDBImpl implements VenueService {
 	}
 
 	@Override
-	public String updateVenue(Long venueID, String updatedVenue) {
+	public String updateVenue(Long venue_ID, String updatedVenue) {
 		Venue updateVenue = util.getObjectForJSON(updatedVenue, Venue.class);
-		Venue venue = findVenue(new Long(venueID));
-		Long tempId = venue.getVenueID();
+		Venue venue = findVenue(new Long(venue_ID));
+		Long temp_ID = venue.getVenue_ID();
 		if (venue != null){
 			venue = updateVenue;
-			venue.setVenueID(tempId);
+			venue.setVenue_ID(temp_ID);
 			em.merge(venue);
 		}
 		return "{\"message\": \"venue has been successfully updated\"}";
 	}
 
 	@Override
-	public String deleteVenue(Long venueID) {
-		Venue venue = findVenue(new Long(venueID));
+	public String deleteVenue(Long venue_ID) {
+		Venue venue = findVenue(new Long(venue_ID));
 		if(venue != null){
 			em.remove(venue);
 		}

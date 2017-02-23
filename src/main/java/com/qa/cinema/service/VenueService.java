@@ -4,6 +4,6 @@ public interface VenueService{
 	
 	String getAllVenues();
 	String addNewVenue(String venueJson);
-	String updateVenue(Long venueID, String updatedVenue);
-	String deleteVenue(Long venueID);
+	String updateVenue(Long venue_ID, String updatedVenue);
+	String deleteVenue(Long venue_ID);
 }

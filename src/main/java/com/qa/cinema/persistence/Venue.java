@@ -20,10 +20,10 @@ public class Venue {
 	//Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long venueID;
+	private Long venue_ID;
 	
 	@NotNull
-	private Long addressID;
+	private Long address_ID;
 	
 	@NotNull
 	private String name;
@@ -32,9 +32,9 @@ public class Venue {
 		
 	}
 	
-	public Venue(Long venueID, String name) {
+	public Venue(Long venue_ID, String name) {
 		super();
-		this.venueID = venueID;
+		this.venue_ID = venue_ID;
 		this.name = name;
 	}
 	
@@ -44,20 +44,20 @@ public class Venue {
 	}
 
 	//Getters and Setters
-	public Long getVenueID() {
-		return venueID;
+	public Long getVenue_ID() {
+		return venue_ID;
 	}
 
-	public void setVenueID(Long venueID) {
-		this.venueID = venueID;
+	public void setVenue_ID(Long venue_ID) {
+		this.venue_ID = venue_ID;
 	}
 
-	public Long getAddressID() {
-		return addressID;
+	public Long getAddress_ID() {
+		return address_ID;
 	}
 
-	public void setAddressID(Long addressID) {
-		this.addressID = addressID;
+	public void setAddress_ID(Long address_ID) {
+		this.address_ID = address_ID;
 	}
 
 	public String getName() {
