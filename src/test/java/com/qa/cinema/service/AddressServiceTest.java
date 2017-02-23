@@ -8,10 +8,10 @@ import org.mockito.Mockito;
 public class AddressServiceTest
 {		
 	@Test
-	public void readaddressTestMap(){
+	public void readAddressTestMap(){
 		AddressService service = new MapAddressService(true);
 		String actualJson = service.listAllAddresses();
-		String expectedJson = "{\"1\":{\"address_ID\":0,\"firstLine\":\"11 Example Street\",\"secondLine\":\"Cool House\",\"townOrCity\":\"Townsville\",\"county\":\"Countyford\",\"postcode\":\"TO11CF\"}}";
+		String expectedJson = "{\"1\":{\"firstLine\":\"11 Example Street\",\"secondLine\":\"Cool House\",\"townOrCity\":\"Townsville\",\"county\":\"Countyford\",\"postcode\":\"TO11CF\"}}";
 		assertEquals(actualJson, expectedJson);
 	}
 	
@@ -21,7 +21,7 @@ public class AddressServiceTest
 		String expectedJson;
 		MapAddressService service = new MapAddressService(true);
 		actualJson = service.listAllAddresses();
-		expectedJson = "{\"1\":{\"address_ID\":0,\"firstLine\":\"11 Example Street\",\"secondLine\":\"Cool House\",\"townOrCity\":\"Townsville\",\"county\":\"Countyford\",\"postcode\":\"TO11CF\"}}";
+		expectedJson = "{\"1\":{\"firstLine\":\"11 Example Street\",\"secondLine\":\"Cool House\",\"townOrCity\":\"Townsville\",\"county\":\"Countyford\",\"postcode\":\"TO11CF\"}}";
 		assertEquals(actualJson,expectedJson);
 		String newAddress = "{\"address_ID\":1,\"firstLine\":\"22 Test Lane\",\"secondLine\":\" \",\"townOrCity\":\"Test\",\"county\":\"Test\",\"postcode\":\"Test\"}";
 		service.createAddress(newAddress);
@@ -35,7 +35,7 @@ public class AddressServiceTest
 		String expectedJson;
 		MapAddressService service = new MapAddressService(true);
 		actualJson = service.listAllAddresses();
-		expectedJson = "{\"1\":{\"address_ID\":0,\"firstLine\":\"11 Example Street\",\"secondLine\":\"Cool House\",\"townOrCity\":\"Townsville\",\"county\":\"Countyford\",\"postcode\":\"TO11CF\"}}";
+		expectedJson = "{\"1\":{\"firstLine\":\"11 Example Street\",\"secondLine\":\"Cool House\",\"townOrCity\":\"Townsville\",\"county\":\"Countyford\",\"postcode\":\"TO11CF\"}}";
 		assertEquals(actualJson,expectedJson);
 		String newAddress = "{\"address_ID\":1,\"firstLine\":\"22 Test Lane\",\"secondLine\":\" \",\"townOrCity\":\"Test\",\"county\":\"Test\",\"postcode\":\"Test\"}";
 		service.updateAddress(1l, newAddress);

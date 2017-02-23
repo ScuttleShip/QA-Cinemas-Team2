@@ -35,8 +35,9 @@ public class DataBaseAddressService implements AddressService
 		Address addressInDB = findAddress(new Long (address_ID));
 		if (addressInDB != null)
 		{
+			update.setAddress_ID(addressInDB.getAddress_ID());
 			addressInDB = update;
-			em.merge(addressDetails);
+			em.merge(addressInDB);
 		}
 		return "{\"message\": \"Address sucessfully updated\"}";
 	}

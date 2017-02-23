@@ -10,7 +10,8 @@ public class Address {
 	//attributes
 	@Id
 	@GeneratedValue
-	private int address_ID;
+	private Long address_ID;
+	
 	@NotNull
 	private String firstLine;
 	private String secondLine;
@@ -37,11 +38,11 @@ public class Address {
 	}
 	
 	//Getters & Setters
-	public int getAddress_ID() {
+	public Long getAddress_ID() {
 		return address_ID;
 	}
 
-	public void setAddress_ID(int address_ID) {
+	public void setAddress_ID(Long address_ID) {
 		this.address_ID = address_ID;
 	}
 	
