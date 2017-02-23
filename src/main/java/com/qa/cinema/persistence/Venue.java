@@ -21,10 +21,7 @@ public class Venue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long venue_ID;
-	
-	@NotNull
-	private Long address_ID;
-	
+		
 	@NotNull
 	private String name;
 
@@ -50,14 +47,6 @@ public class Venue {
 
 	public void setVenue_ID(Long venue_ID) {
 		this.venue_ID = venue_ID;
-	}
-
-	public Long getAddress_ID() {
-		return address_ID;
-	}
-
-	public void setAddress_ID(Long address_ID) {
-		this.address_ID = address_ID;
 	}
 
 	public String getName() {

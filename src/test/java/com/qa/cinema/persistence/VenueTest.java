@@ -7,7 +7,7 @@ import org.junit.Test;
 public class VenueTest {
 	
 	@Test
-	public void testGetAndSetVenueID(){
+	public void testGetAndSetVenue(){
 		
 		Venue venue = new Venue("Apollo Square");
 		venue.setName("Point Prometheus");

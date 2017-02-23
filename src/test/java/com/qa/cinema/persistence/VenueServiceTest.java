@@ -90,7 +90,6 @@ public class VenueServiceTest {
 		String testObject = "test";
 		Venue fakeVenue = new Venue(1L, "Point Prometheus");
 		Venue fakeVenue2 = new Venue(2L, "Smugglers Hideout");
-		fakeVenue2.setAddress_ID(new Long(1));
 	/*	List<Venue> venueList = new ArrayList<Venue>();
 		Venue newVenue = new Venue(testVenueService.addNewVenue("Point Prometheus"));
 		venueList.add(newVenue);
