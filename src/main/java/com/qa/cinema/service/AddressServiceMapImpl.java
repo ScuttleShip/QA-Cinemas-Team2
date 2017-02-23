@@ -13,7 +13,7 @@ import com.qa.cinema.util.JSONUtil;
 
 @ApplicationScoped
 @Alternative
-public class MapAddressService implements AddressService {
+public class AddressServiceMapImpl implements AddressService {
 	@Inject
 	private JSONUtil converter;
 	
@@ -21,7 +21,7 @@ public class MapAddressService implements AddressService {
 	private long id = 1;
 	private final boolean verbose;
 	
-	public MapAddressService(boolean verbose) {	
+	public AddressServiceMapImpl(boolean verbose) {	
 		this.verbose = verbose;
 		converter = new JSONUtil();
 		generateDummyData();
