@@ -35,14 +35,14 @@ public class BookingEndPoint {
 	@PUT
 	@Path("/json/{id}")
 	@Produces({ "application/json" })
-	public String replaceBooking(@PathParam("id") Integer id, String bookingJson){
-		return bookingService.replaceBooking(id, bookingJson);
+	public String replaceBooking(@PathParam("id") Integer ID, String bookingJson){
+		return bookingService.replaceBooking(ID, bookingJson);
 	}
 	
 	@DELETE
 	@Path("/json/{id}")
 	@Produces({ "application/json" })
-	public String deleteBooking(@PathParam("id") Integer id){
-		return bookingService.deleteBooking(id);
+	public String deleteBooking(@PathParam("id") Integer ID){
+		return bookingService.deleteBooking(ID);
 	}
 }

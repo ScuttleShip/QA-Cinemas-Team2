@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 public class Booking {
 	@Id
 	@GeneratedValue
-	private Long bookingID;
+	private Long booking_ID;
 	@NotNull
 	private int numberOfSeats;
 	@NotNull
@@ -26,12 +26,12 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getBookingID() {
-		return bookingID;
+	public Long getBooking_ID() {
+		return booking_ID;
 	}
 
-	public void setBookingID(Long bookingID) {
-		this.bookingID = bookingID;
+	public void setBooking_ID(Long bookingID) {
+		this.booking_ID = bookingID;
 	}
 
 	public int getNumberOfSeats() {

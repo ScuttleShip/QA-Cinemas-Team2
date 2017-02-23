@@ -9,8 +9,8 @@ public class BookingTest {
 	@Test
 	public void testBookingIDSetter() {
 		Booking testBook = new Booking(3, "test@test.com");
-		testBook.setBookingID((long) 2);
-		assertEquals(2, testBook.getBookingID().longValue());
+		testBook.setBooking_ID((long) 2);
+		assertEquals(2, testBook.getBooking_ID().longValue());
 	}
 	
 	@Test
