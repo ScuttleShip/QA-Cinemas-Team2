@@ -1,5 +1,5 @@
 package com.qa.cinema.rest;
 
-public class AddressEndpointTest {
+public class MovieEndpointTest {
 
 }
