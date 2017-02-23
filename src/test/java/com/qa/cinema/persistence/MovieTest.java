@@ -5,60 +5,40 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class MovieTest {
-	Movie testMovie = new Movie();
+	
 	@Test
 	public void titleSetterTest() {
+		Movie testMovie = new Movie();
 		testMovie.setTitle("Amit goes wild");
 		assertEquals("Amit goes wild", testMovie.getTitle());
 	}
 	
 	@Test
-	public void titleGetterTest() {
-		assertEquals("Amit goes wild", testMovie.getTitle());
-	}
-	
-	@Test
 	public void descriptionSetterTest() {
+		Movie testMovie = new Movie();
 		testMovie.setDescription("r gonewild");
 		assertEquals("r gonewild", testMovie.getDescription());
 	}
 	
 	@Test
-	public void descriptionGetterTest() {
-		assertEquals("r gonewild", testMovie.getDescription());
-	}
-	
-	@Test
 	public void genreSetterTest() {
+		Movie testMovie = new Movie();
 		testMovie.setGenre("horror");
 		assertEquals("horror", testMovie.getGenre());
 	}
 	
 	@Test
-	public void genreGetterTest() {
-		assertEquals("horror", testMovie.getGenre());
-	}
-	
-	@Test
 	public void durationSetterTest() {
+		Movie testMovie = new Movie();
 		testMovie.setDuration("2:50:50");
-		assertTrue("r gonewild".equals(testMovie.getDuration()));
-	}
-	
-	@Test
-	public void durationGetterTest() {
-		assertTrue("r gonewild".equals(testMovie.getDuration()));
+		assertTrue("2:50:50".equals(testMovie.getDuration()));
 	}
 	
 	@Test
 	public void certificationSetterTest() {
-		testMovie.setCertification("r gonewild");
-		assertEquals("r gonewild", testMovie.getDescription());
-	}
-	
-	@Test
-	public void certificationGetterTest() {
-		assertEquals("r gonewild", testMovie.getDescription());
+		Movie testMovie = new Movie();
+		testMovie.setCertification("pg-13");
+		assertEquals("pg-13", testMovie.getCertification());
 	}
 	
 

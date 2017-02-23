@@ -7,8 +7,8 @@ public interface MovieService {
 
 	String addNewMovie(String movieJson);
 
-	String replaceMovie(Integer movieId, String updatedMovie);
+	String replaceMovie(Long movie_ID, String updatedMovie);
 
-	String deleteMovie(Integer movieId);
+	String deleteMovie(Long movie_ID);
 	
 }
