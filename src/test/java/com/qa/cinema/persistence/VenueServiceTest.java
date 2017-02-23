@@ -84,23 +84,4 @@ public class VenueServiceTest {
 		Mockito.verify(em).createQuery(Mockito.anyString());
 	}
 	
-	@Test
-	public void venueServiceTestUpdatedVenue(){
-				
-		String testObject = "test";
-		Venue fakeVenue = new Venue(1L, "Point Prometheus");
-		Venue fakeVenue2 = new Venue(2L, "Smugglers Hideout");
-	/*	List<Venue> venueList = new ArrayList<Venue>();
-		Venue newVenue = new Venue(testVenueService.addNewVenue("Point Prometheus"));
-		venueList.add(newVenue);
-		Venue newVenue2 = new Venue(testVenueService.addNewVenue("Smugglers Hideout"));
-		*/
-		
-		Mockito.when(util.getObjectForJSON(testObject, Venue.class)).thenReturn(fakeVenue);
-		Mockito.when(testVenueService.findVenue(2L)).thenReturn(fakeVenue2);
-		Mockito.doNothing().when(em).persist(fakeVenue2);
-		String jsonForm = "{\"message\": \"booking sucessfully updated\"}";
-		String assertionString = testVenueService.updateVenue(2L, "Neptunes Bounty");
-		Assert.assertEquals(jsonForm, assertionString);
-	}
 }
