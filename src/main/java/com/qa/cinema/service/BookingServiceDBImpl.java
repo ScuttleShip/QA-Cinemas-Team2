@@ -33,17 +33,20 @@ public class BookingServiceDBImpl {
 		em.persist(newBooking);
 		return bookingJson;	
 	}
-	public String replaceBooking(Integer bookingID, String updatedBooking) {
+	public String replaceBooking(Integer booking_ID, String updatedBooking) {
 		Booking updateBooking = util.getObjectForJSON(updatedBooking, Booking.class);
-		Booking booking = findBooking(new Long(bookingID));
+		Booking booking = findBooking(new Long(booking_ID));
 		if(booking != null) {
+			updateBooking.setBooking_ID(booking.getBooking_ID());
 			booking = updateBooking;
+			
 			em.merge(booking);
+			
 		}
 		return "{\"message\": \"booking sucessfully updated\"}";
 	}
-	public String deleteBooking(Integer bookingId) {
-		Booking booking = findBooking(new Long(bookingId));
+	public String deleteBooking(Integer booking_ID) {
+		Booking booking = findBooking(new Long(booking_ID));
 		if (booking != null) {
 			em.remove(booking);
 		}
