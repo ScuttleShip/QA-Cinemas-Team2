@@ -1,10 +1,15 @@
 package com.qa.cinema.persistence;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -20,7 +25,17 @@ public class Showing {
 	@Id
 	@GeneratedValue
 	private Long showing_ID;
+	
+	@Column(name="booking_ID", nullable = false)
+	@OneToMany
+	private Set<Booking> bookings = new HashSet<Booking>();
 
+	@ManyToOne
+	private Movie movie;
+	
+	@ManyToOne
+	private Screen screen;
+	
 	@Temporal(TemporalType.TIME)
 	@NotNull
 	private Date startTime;
