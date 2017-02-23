@@ -10,7 +10,7 @@ public class Address {
 	//attributes
 	@Id
 	@GeneratedValue
-	private int addressId;
+	private int addressID;
 	@NotNull
 	private String firstLine;
 	private String secondLine;

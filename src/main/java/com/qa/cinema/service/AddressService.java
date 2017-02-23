@@ -14,31 +14,32 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.Produces;
 
 import com.google.gson.Gson;
+import com.qa.cinema.persistence.Address;
+import com.qa.cinema.util.JSONUtil;
 
 
-@Path("/venue")
-@RequestScoped
 public class AddressService {
+	
 	@Inject
 	private EntityManager em;
-	@GET
-	@Path("/{venueId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String returnVenueDetails(@PathParam("customer_id") String venue_ID){
-		Gson gson = new Gson();
-		final List<Venue> listOfVenues= em.createQuery("Select a from Venue v where a.venue_id = " + venue_ID).getResultList();
-		String ConvertVenueToJson = gson.toJson(listOfVenues);
-		return ConvertVenueToJson;
+
+	@Inject
+	private JSONUtil jsonUtil;
+	
+	public String readAddress(){
+		return " ";
 	}
 	
-
-	@POST
-	@Path("/{makeVenue}")
-	public void makeVenue(@PathParam("makeCustomer") String JsonInput){
-		Gson gson = new Gson();
-		Venue javaCustomer = gson.fromJson(JsonInput, Venue.class);
-		em.persist(javaCustomer);
+	@Inject
+	public String updateAddress(){
+		return " ";
 	}
+	
+	@Inject 
+	public String addAddress(){
+		return " ";
+	}
+
 	
 
 }
