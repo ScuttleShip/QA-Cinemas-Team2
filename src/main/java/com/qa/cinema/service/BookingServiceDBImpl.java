@@ -9,13 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
-
-
-import com.qa.bookstore.model.Book;
 import com.qa.cinema.persistence.Booking;
 import com.qa.cinema.util.JSONUtil;
-import com.qa.cinema.persistence.Booking;
+
 
 @Stateless
 @Default
@@ -33,8 +29,6 @@ public class BookingServiceDBImpl {
 		return util.getJSONForObject(bookings);
 	}
 	public String addNewBooking(String bookingJson) {
-		System.out.println("helloooooooooo");
-		System.out.println(util.getObjectForJSON(bookingJson, Booking.class));
 		Booking newBooking = util.getObjectForJSON(bookingJson, Booking.class);
 		em.persist(newBooking);
 		return bookingJson;	
@@ -48,14 +42,14 @@ public class BookingServiceDBImpl {
 		}
 		return "{\"message\": \"booking sucessfully updated\"}";
 	}
-	public String deleteBook(Integer bookingId) {
+	public String deleteBooking(Integer bookingId) {
 		Booking booking = findBooking(new Long(bookingId));
 		if (booking != null) {
 			em.remove(booking);
 		}
 		return "{\"message\": \"booking sucessfully removed\"}";
 	}
-	private Booking findBooking(Long id) {
+	Booking findBooking(Long id) {
 		return em.find(Booking.class, id);
 	}
 }
