@@ -58,9 +58,8 @@ public class VenueServiceDBImpl implements VenueService {
 		return null;
 	}
 	
-	private Venue findVenue(Long id){
+	public Venue findVenue(Long id){
 		return em.find(Venue.class, id);
 	}
-
 }
 

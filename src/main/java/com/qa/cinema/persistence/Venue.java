@@ -32,6 +32,12 @@ public class Venue {
 		
 	}
 	
+	public Venue(Long venueID, String name) {
+		super();
+		this.venueID = venueID;
+		this.name = name;
+	}
+	
 	public Venue(String name) {
 		super();
 		this.name = name;
@@ -61,7 +67,4 @@ public class Venue {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
 }
