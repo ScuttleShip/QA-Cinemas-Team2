@@ -10,7 +10,7 @@ public class Address {
 	//attributes
 	@Id
 	@GeneratedValue
-	private int addressID;
+	private int address_ID;
 	@NotNull
 	private String firstLine;
 	private String secondLine;
@@ -20,53 +20,68 @@ public class Address {
 	private String postcode;
 	
 	//Constructors
-	public Address(){
-		
-	}
-	public Address(String firstLine, String secondLine, String townCity, String county, String postcode) {
-		firstLine = firstLine;
-		secondLine = secondLine;
-		townCity = townCity;
-		county = county;
-		postcode = postcode;
-	}
-	public Address(String firstLine, String postcode) {
-		firstLine = firstLine;
-		postcode = postcode;
+	public Address(){}
+	
+	public Address(String firstLine, String secondLine, String townCity, String county, String postcode)
+	{
+		this.firstLine = firstLine;
+		this.secondLine = secondLine;
+		this.townOrCity = townCity;
+		this.county = county;
+		this.postcode = postcode;
 	}
 	
-	//methods
+	public Address(String firstLine, String postcode) {
+		this.firstLine = firstLine;
+		this.postcode = postcode;
+	}
+	
+	//Getters & Setters
+	public int getAddress_ID() {
+		return address_ID;
+	}
+
+	public void setAddress_ID(int address_ID) {
+		this.address_ID = address_ID;
+	}
+	
 	public String getFirstLine() {
 		return firstLine;
 	}
+
 	public void setFirstLine(String firstLine) {
-		firstLine = firstLine;
+		this.firstLine = firstLine;
 	}
+	
 	public String getSecondLine() {
 		return secondLine;
 	}
+	
 	public void setSecondLine(String secondLine) {
-		secondLine = secondLine;
+		this.secondLine = secondLine;
 	}
+	
 	public String getTownOrCity() {
 		return townOrCity;
 	}
+	
 	public void setTownOrCity(String townCity) {
-		townCity = townCity;
+		this.townOrCity = townCity;
 	}
+	
 	public String getCounty() {
 		return county;
 	}
+
 	public void setCounty(String county) {
-		county = county;
+		this.county = county;
 	}
+
 	public String getPostcode() {
 		return postcode;
 	}
+	
 	public void setPostcode(String postcode) {
-		postcode = postcode;
+		this.postcode = postcode;
 	}
-	
-	
-
 }

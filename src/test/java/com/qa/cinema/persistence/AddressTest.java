@@ -4,10 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class AddressTest {
-	
+public class AddressTest {	
 	Address address;
-
 	
 	@Test
 	public void getSetFirstLine() {
@@ -21,7 +19,7 @@ public class AddressTest {
 	public void getSetSecondLine() {
 		address = new Address();
 		address.setSecondLine("Dummy");
-		String result = address.getFirstLine();
+		String result = address.getSecondLine();
 		assertEquals("Dummy", result);
 	}
 	
@@ -48,5 +46,4 @@ public class AddressTest {
 		String result = address.getPostcode();
 		assertEquals("Dummy", result);
 	}
-
 }
