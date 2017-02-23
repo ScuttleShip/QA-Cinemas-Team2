@@ -67,6 +67,7 @@ public class VenueServiceTest {
 		List<Venue> venueList = new ArrayList<Venue>();
 		
 		Venue newVenue = new Venue(testVenueService.addNewVenue("Apollo Square"));
+		
 		venueList.add(newVenue);
 		
 		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
@@ -81,7 +82,7 @@ public class VenueServiceTest {
 		Assert.assertEquals(assertionString, jsonForm);
 		
 		Mockito.verify(em).createQuery(Mockito.anyString());
-	}/*
+	}
 	
 	@Test
 	public void venueServiceTestUpdatedVenue(){
@@ -89,11 +90,12 @@ public class VenueServiceTest {
 		String testObject = "test";
 		Venue fakeVenue = new Venue(1L, "Point Prometheus");
 		Venue fakeVenue2 = new Venue(2L, "Smugglers Hideout");
-		List<Venue> venueList = new ArrayList<Venue>();
+		fakeVenue2.setAddressID(new Long(1));
+	/*	List<Venue> venueList = new ArrayList<Venue>();
 		Venue newVenue = new Venue(testVenueService.addNewVenue("Point Prometheus"));
 		venueList.add(newVenue);
 		Venue newVenue2 = new Venue(testVenueService.addNewVenue("Smugglers Hideout"));
-		
+		*/
 		
 		Mockito.when(util.getObjectForJSON(testObject, Venue.class)).thenReturn(fakeVenue);
 		Mockito.when(testVenueService.findVenue(2L)).thenReturn(fakeVenue2);
@@ -101,5 +103,5 @@ public class VenueServiceTest {
 		String jsonForm = "{\"message\": \"booking sucessfully updated\"}";
 		String assertionString = testVenueService.updateVenue(2L, "Neptunes Bounty");
 		Assert.assertEquals(jsonForm, assertionString);
-	}*/
+	}
 }

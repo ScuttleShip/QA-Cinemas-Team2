@@ -42,8 +42,10 @@ public class VenueServiceDBImpl implements VenueService {
 	public String updateVenue(Long venueID, String updatedVenue) {
 		Venue updateVenue = util.getObjectForJSON(updatedVenue, Venue.class);
 		Venue venue = findVenue(new Long(venueID));
+		Long tempId = venue.getVenueID();
 		if (venue != null){
 			venue = updateVenue;
+			venue.setVenueID(tempId);
 			em.merge(venue);
 		}
 		return "{\"message\": \"venue has been successfully updated\"}";

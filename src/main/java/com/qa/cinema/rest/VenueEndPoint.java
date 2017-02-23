@@ -1,5 +1,6 @@
 package com.qa.cinema.rest;
 
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -9,13 +10,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import com.qa.cinema.service.VenueService;
 import com.qa.cinema.service.VenueServiceDBImpl;
 
 @Path("/cinema")
+@Default
 public class VenueEndPoint {
 
 	@Inject
-	private VenueServiceDBImpl venueService;
+	private VenueService venueService;
 	
 	@GET
 	@Path("/json")
