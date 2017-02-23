@@ -37,7 +37,6 @@ public class Venue {
 	@OneToMany
 	private Set<Screen> Screen = new HashSet<Screen>();
 	
-	@Column(name = "address_ID", nullable = false)
 	@OneToOne
 	private Address address;
 	
