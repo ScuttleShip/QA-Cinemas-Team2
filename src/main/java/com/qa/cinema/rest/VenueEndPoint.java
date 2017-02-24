@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import com.qa.cinema.service.VenueService;
 import com.qa.cinema.service.VenueServiceDBImpl;
 
-@Path("/cinema")
+@Path("/venue")
 @Default
 public class VenueEndPoint {
 

@@ -28,6 +28,20 @@ public class ShowingEndPoint {
 	public String getShowingAsJson() {
 		return showingService.getAllShowings();
 	}
+	
+	@GET
+	@Path("/json/movie/{mid}")
+	@Produces({ "application/json" })
+	public String  getAllMoviesThatHaveUpcomingShowings(@PathParam("mid") Long movie_ID) {
+		return showingService.getAllMoviesThatHaveUpcomingShowings(movie_ID);
+	}
+	
+	@GET
+	@Path("/json/venue/{vid}")
+	@Produces({ "application/json" })
+	public String  getAllShowingsAtAVenue(@PathParam("vid") Long venue_ID) {
+		return showingService.getAllShowingsAtAVenue(venue_ID);
+	}
 
 	@POST
 	@Path("/json")

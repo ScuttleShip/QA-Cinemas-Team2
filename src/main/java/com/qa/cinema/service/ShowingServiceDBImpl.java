@@ -1,5 +1,6 @@
 package com.qa.cinema.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.ejb.Stateless;
@@ -81,10 +82,26 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 
 	@Override
-	public String getAllMoviesThatHaveUpcomingShowings() {
+	public String getAllMoviesThatHaveUpcomingShowings(Long movie_ID) {
 		// TODO This should display all movies that have upcoming showings
 		// within the cinema.
-		return null;
+		// To refactor
+		Query query = em.createQuery("SELECT s FROM Showing s WHERE s.movie = " + movie_ID);
+		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
+		return util.getJSONForObject(showing);
+	}
+	
+	public String getAllShowingsAtAVenue(Long venue_ID){
+		Query query = em.createQuery("SELECT s FROM Showing s");
+		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
+		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
+		for(Showing s : showing){
+			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
+				specific.add(s);
+			}
+		}
+		
+		return util.getJSONForObject(specific);
 	}
 
 	private Showing findShowing(Long id) {

@@ -11,7 +11,7 @@ public interface ShowingService {
 
 	String getAllShowingsByMovieAndDate(Long movieId, String date);
 
-	String getAllMoviesThatHaveUpcomingShowings();
+	String getAllMoviesThatHaveUpcomingShowings(Long movie_ID);
 
 	String addNewShowing(String showingJson);
 
@@ -20,4 +20,6 @@ public interface ShowingService {
 	String deleteShowing(Long showingId);
 
 	Boolean decreaseSeatCount(Long showingId, int count);
+	
+	String getAllShowingsAtAVenue(Long venue_ID);
 }

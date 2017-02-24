@@ -25,17 +25,17 @@ public class Showing {
 	@Id
 	@GeneratedValue
 	private Long showing_ID;
-	
-	@Column(name="booking_ID", nullable = false)
+
+	@Column(name = "booking_ID", nullable = false)
 	@OneToMany
 	private Set<Booking> bookings = new HashSet<Booking>();
 
 	@ManyToOne
 	private Movie movie;
-	
+
 	@ManyToOne
 	private Screen screen;
-	
+
 	@Temporal(TemporalType.TIME)
 	@NotNull
 	private Date startTime;
@@ -51,7 +51,8 @@ public class Showing {
 
 	}
 
-	public Showing(Long showing_ID, Date startTime, Date date, int seatsRemaining) {
+	public Showing(Long showing_ID, Date startTime, Date date,
+			int seatsRemaining) {
 		this.showing_ID = showing_ID;
 		this.startTime = startTime;
 		this.date = date;
@@ -88,6 +89,30 @@ public class Showing {
 
 	public void setSeatsRemaining(int seatsRemaining) {
 		this.seatsRemaining = seatsRemaining;
+	}
+
+	public Set<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(Set<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
+	public Screen getScreen() {
+		return screen;
+	}
+
+	public void setScreen(Screen screen) {
+		this.screen = screen;
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.qa.cinema.persistence;
+package com.qa.cinema.service;
 
 import static org.junit.Assert.*;
 
@@ -11,12 +11,12 @@ import javax.persistence.Query;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.qa.cinema.persistence.Venue;
 import com.qa.cinema.service.VenueService;
 import com.qa.cinema.service.VenueServiceDBImpl;
 import com.qa.cinema.util.JSONUtil;
