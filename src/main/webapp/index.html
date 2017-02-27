@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="qaCinemas">
+<html lang="en" ng-app="qaCinemas2">
 <head>
     <meta charset="UTF-8">
-    <title>Movie application</title>
-    <script src="app/feature/dashboard/dashboard-controller.js"></script>
+    <title>Team 2 - QA Cinemas</title>
+
+    <!-- ALL THE STYLESHEETS -->
+
 </head>
 <body>
+
 <ul>
-    <li ><a ui-sref="dashboard">Dashboard</a></li>
 </ul>
 
     <div ui-view></div>
+
     <!-- Angular modules-->
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/ui-router.min.js"></script>
@@ -22,10 +25,18 @@
     <!-- Services-->
     <script src="app/service/dal/dal.js"></script>
 
+
     <!-- Features-->
-    <script src="app/feature/dashboard/dashboard-controller.js"></script>
-
-
+    <script src="app/feature/booking/bookingController.js"></script>
+    <script src="app/feature/confirmation/confirmationController.js"></script>
+    <script src="app/feature/contact/contactController.js"></script>
+    <script src="app/feature/faqs/faqsController.js"></script>
+    <script src="app/feature/films/filmsController.js"></script>
+    <script src="app/feature/home/homeController.js"></script>
+    <script src="app/feature/offers/offersController.js"></script>
+    <script src="app/feature/payments/paymentsController.js"></script>
+    <script src="app/feature/paymentSuccess/paymentSuccessController.js"></script>
+    <script src="app/feature/venues/venuesController.js"></script>
 
 </body>
 </html>

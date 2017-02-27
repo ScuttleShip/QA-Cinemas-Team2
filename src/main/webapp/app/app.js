@@ -1,1 +1,1 @@
-var movieApp = angular.module('qaCinemas',['ui.router']);
+var movieApp = angular.module('qaCinemas2',['ui.router']);
