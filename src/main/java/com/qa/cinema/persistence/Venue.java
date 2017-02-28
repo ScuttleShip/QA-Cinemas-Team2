@@ -29,6 +29,7 @@ public class Venue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long venue_ID;
+
 		
 	@NotNull
 	private String name;
@@ -40,14 +41,25 @@ public class Venue {
 	@OneToOne
 	private Address address;
 	
+	private String venueImg;
+	
+	public String getVenueImg() {
+		return venueImg;
+	}
+
+	public void setVenueImg(String venueImg) {
+		this.venueImg = venueImg;
+	}
+
 	public Venue(){
 		
 	}
 	
-	public Venue(Long venue_ID, String name) {
+	public Venue(Long venue_ID, String name, String venueImg) {
 		super();
 		this.venue_ID = venue_ID;
 		this.name = name;
+		this.venueImg = venueImg;
 	}
 	
 	public Venue(String name) {
@@ -70,5 +82,14 @@ public class Venue {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }
