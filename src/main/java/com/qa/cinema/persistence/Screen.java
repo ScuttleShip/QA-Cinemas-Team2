@@ -31,12 +31,12 @@ public class Screen {
 		return screen_ID;
 	}
 
-	public void setVenue(Venue venue_ID) {
-		this.venue = venue_ID;
-	}
-
 	public void setScreen_ID(long screen_ID) {
 		this.screen_ID = screen_ID;
+	}
+	
+	public void setVenue(Venue venue_ID) {
+		this.venue = venue_ID;
 	}
 
 	public Venue getVenue() {
@@ -50,9 +50,4 @@ public class Screen {
 	public void setNumberOfSeats(int numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
 	}
-
-
-
-
-
 }

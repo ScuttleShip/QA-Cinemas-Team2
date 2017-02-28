@@ -57,18 +57,14 @@ public class AddressServiceMapImpl implements AddressService {
 	private void generateDummyData() {
 		log("Generating Data");
 		data.put(id++, new Address("11 Example Street", "Cool House", "Townsville", "Countyford", "TO11CF"));
-		printDataState();
+		if(verbose){printDataState();}
 		log("Data Generation Complete");
 	}
 	
 	private void printDataState() {
-		if(verbose)
-			print("Data Map Size:"+ data.size());	
+		print("Data Map Size:"+ data.size());	
+		print(header("Data",65));
 		
-		if(verbose)
-			print(header("Data",65));
-		
-		if(verbose)
 		for(Map.Entry<Long, Address> entry : data.entrySet())
 		{
 			String id = "|ID:" + entry.getValue().getAddress_ID();
@@ -79,16 +75,13 @@ public class AddressServiceMapImpl implements AddressService {
 			String pc = "|Postcode:" + entry.getValue().getPostcode();
 			printBlock(id, fl, sl, to, co, pc, "");
 		}
-		
-		if(verbose)
-			print(header("",65));		
+		print(header("",65));
 	}
 	
 	private void log(String input)
 	{
 		// TODO: Server logger thing
 		
-		if(verbose)
-			print(input);	
+		if(verbose){print(input);}
 	}
 }

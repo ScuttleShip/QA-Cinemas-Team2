@@ -1,5 +1,7 @@
 package com.qa.cinema.persistence;
 
+import static org.junit.Assert.assertNull;
+
 import java.util.Date;
 
 import org.junit.Assert;
@@ -43,11 +45,39 @@ public class ShowingTest {
 		Showing showing = new Showing(1L, new Date(), new Date(), 50);
 		Assert.assertEquals(new Date().getTime(), showing.getDate().getTime());
 	}
-
+	
 	@Test
 	public void setStartTimeTest() {
 		Showing showing = new Showing();
 		showing.setDate(new Date());
 		Assert.assertEquals(new Date().getTime(), showing.getDate().getTime());
+	}
+	
+	@Test
+	public void getSetIDTest()
+	{
+		Showing showing = new Showing();
+		assertNull(showing.getShowing_ID());
+		showing.setShowing_ID(Long.valueOf(1));
+		long result = Long.valueOf(showing.getShowing_ID());
+		Assert.assertEquals(1, result);
+	}
+	
+	@Test
+	public void getSetMovieTest()
+	{
+		Showing showing = new Showing();
+		assertNull(showing.getMovie());
+		showing.setMovie(new Movie());
+		Assert.assertNotNull(showing.getMovie());
+	}
+	
+	@Test
+	public void getSetScreenTest()
+	{
+		Showing showing = new Showing();
+		assertNull(showing.getScreen());
+		showing.setScreen(new Screen());
+		Assert.assertNotNull(showing.getScreen());
 	}
 }

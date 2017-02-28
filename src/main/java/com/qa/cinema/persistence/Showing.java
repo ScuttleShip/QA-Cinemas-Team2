@@ -15,9 +15,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 /**
- * 
  * @author FWasim
- *
  */
 @Entity
 public class Showing {

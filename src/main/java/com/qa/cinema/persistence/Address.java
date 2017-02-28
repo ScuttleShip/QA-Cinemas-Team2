@@ -25,7 +25,10 @@ public class Address {
 	
 	public Address(String firstLine, String secondLine, String townCity, String county, String postcode)
 	{
-		this.firstLine = firstLine;
+		if(firstLine != null)
+			this.firstLine = firstLine;
+		else
+			this.firstLine = "";
 		this.secondLine = secondLine;
 		this.townOrCity = townCity;
 		this.county = county;
@@ -33,7 +36,11 @@ public class Address {
 	}
 	
 	public Address(String firstLine, String postcode) {
-		this.firstLine = firstLine;
+		if(firstLine != null)
+			this.firstLine = firstLine;
+		else
+			this.firstLine = "";
+		
 		this.postcode = postcode;
 	}
 	

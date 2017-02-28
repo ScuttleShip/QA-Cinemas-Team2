@@ -1,8 +1,5 @@
 package com.qa.cinema.persistence;
 
-
-
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,17 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-/**
- * 
- * 
+/** 
  * @author Rupert Langford
- *
  */
 
 @Entity
 public class Venue {
 
-	//Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long venue_ID;
@@ -41,18 +34,22 @@ public class Venue {
 	private Address address;
 	
 	public Venue(){
-		
 	}
 	
 	public Venue(Long venue_ID, String name) {
-		super();
 		this.venue_ID = venue_ID;
-		this.name = name;
+		
+		if(name != null)
+			this.name = name;
+		else
+			this.name = "";
 	}
 	
 	public Venue(String name) {
-		super();
-		this.name = name;
+		if(name != null)
+			this.name = name;
+		else
+			this.name = "";
 	}
 
 	//Getters and Setters

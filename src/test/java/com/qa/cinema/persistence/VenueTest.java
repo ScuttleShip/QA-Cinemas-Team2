@@ -14,4 +14,28 @@ public class VenueTest {
 		String result = venue.getName();
 		assertEquals("Point Prometheus", result);
 	}
+	
+	@Test
+	public void constructorTest()
+	{
+		Venue ven = new Venue("My Cinema");
+		assertEquals(ven.getName(), "My Cinema");
+		ven = new Venue(null);
+		assertEquals(ven.getName(), "");
+		
+		ven = new Venue(Long.valueOf(1),"My Cinema");
+		assertEquals(ven.getName(), "My Cinema");
+		ven = new Venue(Long.valueOf(1), null);
+		assertEquals(ven.getName(), "");
+	}
+	
+	@Test
+	public void getSetIDTest()
+	{
+		Venue ven = new Venue();
+		assertNull(ven.getVenue_ID());
+		ven.setVenue_ID(Long.valueOf(1));
+		long result = Long.valueOf(ven.getVenue_ID());
+		assertEquals(1,result);
+	}
 }
