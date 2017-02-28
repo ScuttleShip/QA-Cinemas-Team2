@@ -54,7 +54,7 @@ public class MovieTest {
 	@Test
 	public void constructorTest()
 	{
-		Movie testMovie = new Movie("Film Name", "it is a film", "Action", "five days", "PG");
+		Movie testMovie = new Movie("Film Name", "it is a film", "Action", "five days", "PG","Link","Img");
 		assertEquals(testMovie.getTitle(),"Film Name");
 		assertEquals(testMovie.getDescription(),"it is a film");
 		assertEquals(testMovie.getGenre(),"Action");

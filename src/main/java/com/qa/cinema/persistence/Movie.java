@@ -8,24 +8,27 @@ import javax.persistence.Id;
 public class Movie {
 	@GeneratedValue
 	@Id
-	Long movie_ID;
-	String title;
-	String description;
-	String genre;
-	String duration;
-	String certification;
+	private Long movie_ID;
+	private String title;
+	private String description;
+	private String genre;
+	private String duration;
+	private String certification;
+	private String filmImg;
+	private String filmUrl;
 
 	public Movie() {
 
 	}
 
 	public Movie(String title, String description, String genre,
-			String duration, String certification) {
+			String duration, String certification, String filmImg, String filmUrl) {
 		this.title = title;
 		this.description = description;
 		this.genre = genre;
 		this.duration = duration;
 		this.certification = certification;
+		this.filmImg = filmImg;
 	}
 
 	public Long getMovie_ID() {
@@ -75,4 +78,21 @@ public class Movie {
 	public void setCertification(String certification) {
 		this.certification = certification;
 	}
+	
+	public String getFilmImg() {
+		return filmImg;
+	}
+
+	public void setFilmImg(String filmImg) {
+		this.filmImg = filmImg;
+	}
+
+	public String getFilmUrl() {
+		return filmUrl;
+	}
+
+	public void setFilmUrl(String filmUrl) {
+		this.filmUrl = filmUrl;
+	}
+
 }
