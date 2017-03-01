@@ -92,16 +92,17 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 	
 	public String getAllShowingsAtAVenue(Long venue_ID){
-		Query query = em.createQuery("SELECT s FROM Showing s");
-		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
-		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
-		for(Showing s : showing){
-			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
-				specific.add(s);
-			}
-		}
-		
-		return util.getJSONForObject(specific);
+//		Query query = em.createQuery("SELECT s FROM Showing s");
+//		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
+//		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
+//		for(Showing s : showing){
+//			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
+//				specific.add(s);
+//			}
+//		}
+//		
+//		return util.getJSONForObject(specific);
+		return "";
 	}
 
 	private Showing findShowing(Long id) {

@@ -1,9 +1,13 @@
 package com.qa.cinema.persistence;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Screen {
@@ -12,19 +16,22 @@ public class Screen {
 	@GeneratedValue
 	private long screen_ID;
 	
-	@ManyToOne
-	private Venue venue;
+	@OneToMany
+	@JoinColumn(name = "showing_ID")
+	private Set<Showing> showings = new HashSet<Showing>();
 	
 	private int numberOfSeats;
+
+	private int screenNumber;
 	
 	public Screen() {
 		
 	}
 
-	public Screen(long screen_ID, long venue_ID, int numberOfSeats) {
-		super();
+	public Screen(long screen_ID, long venue_ID, int numberOfSeats, int screenNumber) {
 		this.screen_ID = screen_ID;
 		this.numberOfSeats = numberOfSeats;
+		this.screenNumber = screenNumber;
 	}
 
 	public long getScreen_ID() {
@@ -35,12 +42,12 @@ public class Screen {
 		this.screen_ID = screen_ID;
 	}
 	
-	public void setVenue(Venue venue_ID) {
-		this.venue = venue_ID;
+	public Set<Showing> getShowings() {
+		return showings;
 	}
 
-	public Venue getVenue() {
-		return venue;
+	public void setShowings(Set<Showing> showings) {
+		this.showings = showings;
 	}
 
 	public int getNumberOfSeats() {
@@ -49,5 +56,13 @@ public class Screen {
 
 	public void setNumberOfSeats(int numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
+	}
+	
+	public int getScreenNumber() {
+		return screenNumber;
+	}
+
+	public void setScreenNumber(int screenNumber) {
+		this.screenNumber = screenNumber;
 	}
 }
