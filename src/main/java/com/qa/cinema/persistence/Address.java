@@ -20,12 +20,11 @@ public class Address {
 	@NotNull
 	private String postcode;
 	
-	//Constructors
 	public Address(){}
 	
 	public Address(String firstLine, String secondLine, String townCity, String county, String postcode)
 	{
-		if(firstLine != null)
+		if(firstLine != null && !firstLine.equals(null))
 			this.firstLine = firstLine;
 		else
 			this.firstLine = "";
@@ -36,7 +35,7 @@ public class Address {
 	}
 	
 	public Address(String firstLine, String postcode) {
-		if(firstLine != null)
+		if(firstLine != null && !firstLine.equals(null))
 			this.firstLine = firstLine;
 		else
 			this.firstLine = "";
@@ -44,7 +43,6 @@ public class Address {
 		this.postcode = postcode;
 	}
 	
-	//Getters & Setters
 	public Long getAddress_ID() {
 		return address_ID;
 	}

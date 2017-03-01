@@ -16,7 +16,6 @@ import com.qa.cinema.util.JSONUtil;
 public class AddressServiceMapImpl implements AddressService {
 	@Inject
 	private JSONUtil converter;
-	
 	private Map<Long, Address> data = new HashMap<Long, Address>();
 	private long id = 1;
 	private final boolean verbose;
@@ -57,7 +56,9 @@ public class AddressServiceMapImpl implements AddressService {
 	private void generateDummyData() {
 		log("Generating Data");
 		data.put(id++, new Address("11 Example Street", "Cool House", "Townsville", "Countyford", "TO11CF"));
-		if(verbose){printDataState();}
+		if(verbose){
+			printDataState();
+		}
 		log("Data Generation Complete");
 	}
 	
@@ -80,8 +81,8 @@ public class AddressServiceMapImpl implements AddressService {
 	
 	private void log(String input)
 	{
-		// TODO: Server logger thing
-		
-		if(verbose){print(input);}
+		if(verbose){
+			print(input);
+		}
 	}
 }

@@ -1,9 +1,7 @@
 package com.qa.cinema.service;
 
 /**
- * 
  * @author FWasim
- *
  */
 public interface ShowingService {
 

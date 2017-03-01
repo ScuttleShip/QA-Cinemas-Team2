@@ -35,15 +35,15 @@ public class Print
 	// ====================EXAMPLE====================
 	public static String header(String title, int width)
 	{	
-		width = ((width - title.length())/2);
+		int sideWidth = ((width - title.length())/2);
 		StringBuilder output = new StringBuilder("");
 		
-		for(int i= 0; i <= width; i++)
+		for(int i= 0; i <= sideWidth; i++)
 			output.append("=");
 		
 		output.append(title.toUpperCase());
 		
-		for(int i= 0; i <= width; i++)
+		for(int i= 0; i <= sideWidth; i++)
 			output.append("=");
 		return output.toString();
 	}
