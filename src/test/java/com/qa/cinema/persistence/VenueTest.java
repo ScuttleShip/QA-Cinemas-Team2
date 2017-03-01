@@ -22,11 +22,6 @@ public class VenueTest {
 		assertEquals(ven.getName(), "My Cinema");
 		ven = new Venue(null);
 		assertEquals(ven.getName(), "");
-		
-		ven = new Venue(Long.valueOf(1),"My Cinema");
-		assertEquals(ven.getName(), "My Cinema");
-		ven = new Venue(Long.valueOf(1), null);
-		assertEquals(ven.getName(), "");
 	}
 	
 	@Test

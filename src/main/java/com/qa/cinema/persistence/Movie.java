@@ -29,6 +29,7 @@ public class Movie {
 		this.duration = duration;
 		this.certification = certification;
 		this.filmImg = filmImg;
+		this.filmUrl = filmUrl;
 	}
 
 	public Long getMovie_ID() {
