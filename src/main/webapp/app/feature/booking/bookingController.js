@@ -9,11 +9,6 @@
 
         function init() {
 
-            sessionStorage.setItem("chosenVenue", "Venue1");
-            sessionStorage.setItem("chosenDate", "2017-09-21");
-            sessionStorage.setItem("chosenShowing", "1");
-            sessionStorage.setItem("chosenNumberOfSeats", "3");
-
             var chosenVenue = sessionStorage.getItem("chosenVenue");
             var chosenDate = sessionStorage.getItem("chosenDate");
             var chosenShowing = sessionStorage.getItem("chosenShowing");
@@ -37,9 +32,10 @@
 
             var booking = {};
             booking.numberOfSeats = sessionStorage.getItem("chosenNumberOfSeats");
-            booking.customerEmail =
+            booking.customerEmail = sessionStorage.getItem("customerEmail");
 
-            bookingService.saveBooking();
+            console.log(booking);
+            bookingService.saveBooking(booking);
 
         }
 
