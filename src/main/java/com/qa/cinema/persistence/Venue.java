@@ -1,8 +1,5 @@
 package com.qa.cinema.persistence;
 
-
-
-
 import java.util.HashSet;
 import java.util.Set;
 
