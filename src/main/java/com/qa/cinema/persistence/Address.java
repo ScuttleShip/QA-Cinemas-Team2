@@ -20,7 +20,6 @@ public class Address {
 	@NotNull
 	private String postcode;
 	
-	//Constructors
 	public Address(){}
 	
 	public Address(String firstLine, String secondLine, String townCity, String county, String postcode)
@@ -44,7 +43,6 @@ public class Address {
 		this.postcode = postcode;
 	}
 	
-	//Getters & Setters
 	public Long getAddress_ID() {
 		return address_ID;
 	}
