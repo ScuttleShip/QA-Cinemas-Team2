@@ -28,11 +28,13 @@ public class BookingServiceDBImpl {
 		Collection<Booking> bookings = (Collection<Booking>) query.getResultList();
 		return util.getJSONForObject(bookings);
 	}
+	
 	public String addNewBooking(String bookingJson) {
 		Booking newBooking = util.getObjectForJSON(bookingJson, Booking.class);
 		em.persist(newBooking);
 		return bookingJson;	
 	}
+	
 	public String replaceBooking(Integer booking_ID, String updatedBooking) {
 		Booking updateBooking = util.getObjectForJSON(updatedBooking, Booking.class);
 		Booking booking = findBooking(Long.valueOf(booking_ID));
