@@ -1,0 +1,180 @@
+<script src="app/feature/home/Carousel.js"></script>
+
+</head>
+
+<!-- Carousel of movies -->
+<div ng-controller="homeController as ctrl">
+    <div class="container" style="background-color: #082753; color: white">
+        <div id="main_area">
+            <!-- Slider -->
+            <div class="row">
+                <div class="col-xs-12" id="slider">
+                    <!-- Top part of the slider -->
+                    <div class="row">
+                        <div class="col-sm-8" id="carousel-bounding-box">
+                            <div class="carousel slide" id="myCarousel">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+                                    <div class="active item" data-slide-number="0">
+                                        <img src="imgs/interstellar.jpg"></div>
+
+                                    <div class="item" data-slide-number="1">
+                                        <img src="imgs/star_wars_the_force_awakens_main_characters_105940_1920x1080.jpg">
+                                    </div>
+
+                                    <div class="item" data-slide-number="2">
+                                        <img src="imgs/gravity.jpg"></div>
+
+                                    <div class="item" data-slide-number="3">
+                                        <img src="imgs/chris_pratt_jurassic_world-1920x1080.jpg"></div>
+
+                                    <div class="item" data-slide-number="4">
+                                        <img src="imgs/58622-the_angry_birds_movie_wallpaper.jpg"></div>
+
+                                    <div class="item" data-slide-number="5">
+                                        <img src="imgs/maxresdefault.jpg"></div>
+                                </div><!-- Carousel nav -->
+                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4" id="carousel-text"></div>
+
+                        <div id="slide-content" style="display: none;">
+                            <div id="slide-content-0">
+                                <h2>Interstellar</h2>
+
+                                <p class="sub-text">Now Showing - Book Now!</p>
+                            </div>
+
+                            <div id="slide-content-1">
+                                <h2>Star Wars - The Force Awakens</h2>
+
+                                <p class="sub-text">Now Showing - Book Now!</p>
+                            </div>
+
+                            <div id="slide-content-2">
+                                <h2>Gravity</h2>
+
+                                <p class="sub-text">Now Showing - Book Now!</p>
+                            </div>
+
+                            <div id="slide-content-3">
+                                <h2>Jurassic World</h2>
+
+                                <p class="sub-text">Now Showing - Book Now!</p>
+                            </div>
+
+                            <div id="slide-content-4">
+                                <h2>The Angry Birds Movie</h2>
+
+                                <p class="sub-text">Now Showing - Book Now!</p>
+                            </div>
+
+                            <div id="slide-content-5">
+                                <h2>Marvel Avengers Assemble</h2>
+
+                                <p class="sub-text">Now Showing - Book Now!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/Slider-->
+
+            <div class="row hidden-xs" id="slider-thumbs" style="background-color: #082753">
+                <!-- Bottom switcher of slider -->
+                <ul class="hide-bullets">
+                    <li class="col-sm-2">
+                        <a class="thumbnail" id="carousel-selector-0"><img src="imgs/interstellar.jpg" onmouseover=""></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail" id="carousel-selector-1"><img
+                                src="imgs/star_wars_the_force_awakens_main_characters_105940_1920x1080.jpg"></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail" id="carousel-selector-2"><img src="imgs/gravity.jpg"></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail" id="carousel-selector-3"><img
+                                src="imgs/chris_pratt_jurassic_world-1920x1080.jpg"></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail" id="carousel-selector-4"><img
+                                src="imgs/58622-the_angry_birds_movie_wallpaper.jpg"></a>
+                    </li>
+
+                    <li class="col-sm-2">
+                        <a class="thumbnail" id="carousel-selector-5"><img src="imgs/maxresdefault.jpg"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <!-- <div class="col-md-2 col-md-offset-1 five-col" style="font-size: 20px">Pick a Venue</div> -->
+            <div class="col-md-2 pls-work">
+                <select class="select" ng-model="selectedVenue" id="myVenue" >
+
+                    <option ng-repeat="x in ctrl.venues" value="{{x.venue_ID}}">{{x.name}}</option>
+                </select>
+
+                <!--
+            <select class="select" id="myVenue">
+                <option selected value="default">Select a Venue</option>
+                <option value="Manchester">Manchster</option>
+                <option value="London">London</option>
+                <option value="Leeds">member Leeeeeeds</option>
+            </select>
+            -->
+            </div>
+
+
+            <!-- <div class="col-md-2 five-col"style="font-size: 20px; align-items: flex-end">Pick a Date</div> -->
+            <div class="col-md-2 pls-work">
+                <!--
+            <select class="select" id="selectedDate">
+                <option value="defaultDate" selected>Select a Date</option>
+                <option value="saab">Today</option>
+                <option value="vw">Tomorrow</option>
+                <option value="audi">Friday</option>
+            </select>
+            -->
+                <p><input type="date" class="select2" id="selectedDate" value="2017-03-01"></p>
+            </div>
+            <!--label for="goddamnSubmit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go and book your movie!</label-->
+            <div class="col-md-2 pls-work"><button class="button" id="goddamnSubmit" ng-click="ctrl.saveVenueDate()"><span>Submit</span></button></div></div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p id="demo"></p>
+    <p id = "demo2"></p>
+
+
+
+
+    <script>
+        function myFunction() {
+            var opt = myVenue.options[myVenue.selectedIndex];
+            document.getElementById("demo").innerHTML = opt.text;
+            var opt2 = selectedDate.options[selectedDate.selectedIndex];
+            document.getElementById("demo2").innerHTML = opt2.text;
+        }
+
+    </script>
+
+
+
+</div>
