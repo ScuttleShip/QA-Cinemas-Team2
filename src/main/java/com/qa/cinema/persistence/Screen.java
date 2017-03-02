@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,7 +18,7 @@ public class Screen {
 	private long screen_ID;
 	
 	@OneToMany
-	@JoinColumn(name = "showing_ID")
+	@JoinColumn(name = "screen_ID")
 	private Set<Showing> showings = new HashSet<Showing>();
 	
 	private int numberOfSeats;

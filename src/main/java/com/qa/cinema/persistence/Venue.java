@@ -3,6 +3,7 @@ package com.qa.cinema.persistence;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,9 +28,9 @@ public class Venue {
 		
 	@NotNull
 	private String name;
-	
+
 	@OneToMany
-	@JoinColumn(name = "screen_ID")
+	@JoinColumn(name = "venue_ID")
 	private Set<Screen> screens = new HashSet<Screen>();
 	
 	@OneToOne
@@ -78,6 +79,23 @@ public class Venue {
 
 	public void setVenueImg(String venueImg) {
 		this.venueImg = venueImg;
+	}
+	
+	
+	public Set<Screen> getScreens() {
+		return screens;
+	}
+
+	public void setScreens(Set<Screen> screens) {
+		this.screens = screens;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }

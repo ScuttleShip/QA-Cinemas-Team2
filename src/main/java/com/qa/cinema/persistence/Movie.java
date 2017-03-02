@@ -22,9 +22,9 @@ public class Movie {
 	private String filmImg;
 	private String filmUrl;
 	
-	@OneToMany
-	@JoinColumn(name="movie_ID")
-	private Set<Showing> showings = new HashSet<Showing>();
+//	@OneToMany
+//	@JoinColumn(name="movie_ID")
+//	private Set<Showing> showings = new HashSet<Showing>();
 
 	public Movie() {
 

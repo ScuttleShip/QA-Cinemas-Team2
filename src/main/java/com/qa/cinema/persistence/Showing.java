@@ -28,12 +28,11 @@ public class Showing {
 	@OneToMany
 	@JoinColumn(name = "showing_ID")
 	private Set<Booking> bookings = new HashSet<Booking>();
-
+	
 	@ManyToOne
+	@JoinColumn(name = "movie_ID")
 	private Movie movie;
-
-	@ManyToOne
-	private Screen screen;
+	
 
 	@Temporal(TemporalType.TIME)
 	@NotNull
@@ -96,22 +95,6 @@ public class Showing {
 
 	public void setBookings(Set<Booking> bookings) {
 		this.bookings = bookings;
-	}
-
-	public Movie getMovie() {
-		return movie;
-	}
-
-	public void setMovie(Movie movie) {
-		this.movie = movie;
-	}
-
-	public Screen getScreen() {
-		return screen;
-	}
-
-	public void setScreen(Screen screen) {
-		this.screen = screen;
 	}
 
 	@Override
