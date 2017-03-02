@@ -3,6 +3,7 @@ package com.qa.cinema.persistence;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Screen {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long screen_ID;
 	
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "screen_ID")
 	private Set<Showing> showings = new HashSet<Showing>();
 	

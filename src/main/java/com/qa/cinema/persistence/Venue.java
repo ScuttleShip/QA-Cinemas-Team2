@@ -30,8 +30,9 @@ public class Venue {
 	@NotNull
 	private String name;
 	
-	@Column(name = "screen_ID", nullable = false)
-	@OneToMany
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "venue_ID")
 	private Set<Screen> Screen = new HashSet<Screen>();
 	
 	@OneToOne(cascade = {CascadeType.ALL})
