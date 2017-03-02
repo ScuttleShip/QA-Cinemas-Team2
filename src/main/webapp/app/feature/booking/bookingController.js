@@ -7,6 +7,6 @@
 
     };
 
-    angular.module("qaCinema2").controller("bookingController", [bookingController]);
+    angular.module("qaCinemas2").controller("bookingController", [bookingController]);
 
 }());

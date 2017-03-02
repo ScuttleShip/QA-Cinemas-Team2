@@ -12,7 +12,7 @@ import com.qa.cinema.util.JSONUtil;
 
 @Stateless
 @Default
-public class AddressServiceDBImpl implements AddressService
+public class AddressServiceDBImpl implements AddressuService
 {
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
