@@ -1,0 +1,10 @@
+<div ng-controller="venueController as ctrl">
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+        </tr>
+        <tr ng-repeat="venue in ctrl.venues">
+            <td>{{venue.name}}</td>
+        </tr>
+    </table>
+</div>
