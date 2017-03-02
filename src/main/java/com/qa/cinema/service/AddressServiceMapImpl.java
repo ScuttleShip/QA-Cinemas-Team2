@@ -13,7 +13,7 @@ import com.qa.cinema.util.JSONUtil;
 
 @ApplicationScoped
 @Alternative
-public class AddressServiceMapImpl implements AddressService {
+public class AddressServiceMapImpl implements AddressuService {
 	@Inject
 	private JSONUtil converter;
 	private Map<Long, Address> data = new HashMap<Long, Address>();
