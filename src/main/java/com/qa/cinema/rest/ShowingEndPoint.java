@@ -42,6 +42,13 @@ public class ShowingEndPoint {
 	public String  getAllShowingsAtAVenue(@PathParam("vid") Long venue_ID) {
 		return showingService.getAllShowingsAtAVenue(venue_ID);
 	}
+	
+	@GET
+	@Path("/json/venue/{vid}/{date}")
+	@Produces({ "application/json" })
+	public String getAllMoviesByVenueAndDate(@PathParam("vid") Long venue_ID, @PathParam("date") String dateSelected){
+		return "[]";
+	}
 
 	@POST
 	@Path("/json")

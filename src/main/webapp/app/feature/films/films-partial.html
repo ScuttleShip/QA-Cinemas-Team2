@@ -1,0 +1,37 @@
+<h1>Films</h1>
+<div ng-controller="filmsController as ctrl">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+           <!-- <form name="searchFilm">
+                <input type="search" placeholder="Search for a film" ng-model="film"/>
+                <input type="submit" value="Search">
+            </form> -->
+
+            Select all films by venue:
+
+            <select ng-options="venue.name for venue in ctrl.venues" ng-model="venueSelected" ng-change="ctrl.getVenue(venueSelected)">
+            </select>
+
+            <p id="results"></p>
+
+        </div>
+    </div>
+</div>
+<hr>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Duration</th>
+        </tr>
+        <tr ng-repeat="film in ctrl.filmsByVenue">
+          <td>{{film.movie.title}}</td>
+            <td>{{film.movie.description}}</td>
+            <td>{{film.movie.genre}}</td>
+            <td>{{film.movie.duration}}</td>
+        </tr>
+    </table>
+</div>
