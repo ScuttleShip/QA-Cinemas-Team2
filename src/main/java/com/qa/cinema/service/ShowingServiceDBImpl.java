@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.qa.cinema.persistence.Booking;
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
@@ -104,6 +105,23 @@ public class ShowingServiceDBImpl implements ShowingService {
 		return util.getJSONForObject(specific);
 	}
 
+	public String getShowingByBookingID(Long booking_ID){
+		Query query = em.createQuery("SELECT s FROM Showing s");
+		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
+		Showing specific = new Showing();
+		for(Showing s : showing){
+			Collection<Booking> bookingsForCurrentShowing = s.getBookings();
+			
+			for (Booking b : bookingsForCurrentShowing) {
+				if (b.getBooking_ID().longValue() == booking_ID.longValue()) {
+					specific = s;
+				}
+			}
+		}
+		
+		return util.getJSONForObject(specific);
+	}
+	
 	private Showing findShowing(Long id) {
 		return em.find(Showing.class, id);
 	}
