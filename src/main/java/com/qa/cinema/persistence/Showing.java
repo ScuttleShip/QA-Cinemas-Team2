@@ -34,6 +34,8 @@ public class Showing {
 	@JoinColumn(name = "movie_ID")
 	private Movie movie;
 	
+	private long screen_ID;
+	
 
 	@Temporal(TemporalType.TIME)
 	@NotNull
@@ -102,6 +104,14 @@ public class Showing {
 	public String toString() {
 		return "Showing [showingID=" + showing_ID + ", startTime=" + startTime
 				+ ", date=" + date + ", seatsRemaining=" + seatsRemaining + "]";
+	}
+
+	public long getScreen_ID() {
+		return screen_ID;
+	}
+
+	public void setScreen_ID(long screen_ID) {
+		this.screen_ID = screen_ID;
 	}
 
 }

@@ -23,6 +23,8 @@ public class Screen {
 	@JoinColumn(name = "screen_ID")
 	private Set<Showing> showings = new HashSet<Showing>();
 	
+	private Long venue_ID;
+
 	private int numberOfSeats;
 
 	private int screenNumber;
@@ -67,5 +69,13 @@ public class Screen {
 
 	public void setScreenNumber(int screenNumber) {
 		this.screenNumber = screenNumber;
+	}
+	
+	public Long getVenue_ID() {
+		return venue_ID;
+	}
+
+	public void setVenue_ID(Long venue_ID) {
+		this.venue_ID = venue_ID;
 	}
 }
