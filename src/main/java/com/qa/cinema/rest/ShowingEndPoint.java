@@ -29,12 +29,12 @@ public class ShowingEndPoint {
 		return showingService.getAllShowings();
 	}
 	
-	@GET
+/*	@GET
 	@Path("/json/movie/{mid}")
 	@Produces({ "application/json" })
 	public String  getAllMoviesThatHaveUpcomingShowings(@PathParam("mid") Long movie_ID) {
 		return showingService.getAllMoviesThatHaveUpcomingShowings(movie_ID);
-	}
+	}*/
 	
 	@GET
 	@Path("/json/venue/{vid}")
@@ -47,7 +47,7 @@ public class ShowingEndPoint {
 	@Path("/json/venue/{vid}/{date}")
 	@Produces({ "application/json" })
 	public String getAllMoviesByVenueAndDate(@PathParam("vid") Long venue_ID, @PathParam("date") String dateSelected){
-		return "[]";
+		return showingService.getAllShowingsAtAVenue(venue_ID, dateSelected);
 	}
 
 	@POST

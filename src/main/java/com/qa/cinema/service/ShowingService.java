@@ -6,18 +6,17 @@ package com.qa.cinema.service;
 public interface ShowingService {
 
 	String getAllShowings();
-
-	String getAllShowingsByMovieAndDate(Long movieId, String date);
-
-	String getAllMoviesThatHaveUpcomingShowings(Long movie_ID);
-
+	
 	String addNewShowing(String showingJson);
-
+	
 	String updateShowing(Long showingId, String showingJson);
 
 	String deleteShowing(Long showingId);
 
 	Boolean decreaseSeatCount(Long showingId, int count);
 	
-	String getAllShowingsAtAVenue(Long venue_ID);
+	String getAllShowingsAtAVenue(Long venue_ID, String date);
+
+	String getAllShowingsAtAVenue(Long venue_ID);	
+
 }

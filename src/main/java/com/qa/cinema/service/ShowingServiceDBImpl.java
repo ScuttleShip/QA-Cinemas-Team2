@@ -1,7 +1,12 @@
 package com.qa.cinema.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
@@ -9,7 +14,12 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
 
+import org.junit.internal.builders.AllDefaultPossibilitiesBuilder;
+
+import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
@@ -74,34 +84,69 @@ public class ShowingServiceDBImpl implements ShowingService {
 		}
 		return returnMessage("the showing was not removed");
 	}
-
+	
 	@Override
-	public String getAllShowingsByMovieAndDate(Long movieID, String date) {
-		// TODO This returns all showing by movie and date
-		return null;
+	public String getAllShowingsAtAVenue(Long venue_ID) {
+		return "";
 	}
 
 	@Override
-	public String getAllMoviesThatHaveUpcomingShowings(Long movie_ID) {
-		// TODO This should display all movies that have upcoming showings
-		// within the cinema.
-		// To refactor
-		Query query = em.createQuery("SELECT s FROM Showing s WHERE s.movie = " + movie_ID);
-		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
-		return util.getJSONForObject(showing);
+	public String getAllShowingsAtAVenue(Long venue_ID, String date){
+/*		HashMap<Movie, List<Showing>> movieAndShowings = new HashMap<Movie, List<Showing>>();
+		
+		List<Movie> allMoviesAtAVenue = getAllMoviesByVenueAndDate(venue_ID, date);
+		
+		for(Movie mv : allMoviesAtAVenue){
+			movieAndShowings.put(mv, getAllShowingsForAMovie(mv.getMovie_ID()));
+		}	
+		*/
+		return util.getJSONForObject(getAllMoviesByVenueAndDate(venue_ID, date));
 	}
 	
-	public String getAllShowingsAtAVenue(Long venue_ID){
+	private HashMap<Movie, List<Showing>> getAllMoviesByVenueAndDate(Long venue_ID, String dateSelected){
+		// This "SHOULD" returns a list of movies for a venue. 
+		
+		HashMap<Movie, List<Showing>> movieAndShowings = new HashMap<Movie, List<Showing>>();
+		
 		Query query = em.createQuery("SELECT s FROM Showing s");
-		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
-		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
-		for(Showing s : showing){
-			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
-				specific.add(s);
+		
+		Collection<Showing> listOfShowings = (Collection<Showing>) query.getResultList();
+		
+		ArrayList<Movie> listOfMoviesAtVenue = new ArrayList<Movie>();
+		ArrayList<Showing> groupShowings = new ArrayList<Showing>();
+		
+		for(Showing show : listOfShowings){
+			if(show.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
+				if(!listOfMoviesAtVenue.contains(show.getMovie())){
+					listOfMoviesAtVenue.add(show.getMovie());
+				}
+				for(Movie mv : listOfMoviesAtVenue){
+					if(mv.getMovie_ID() == show.getMovie().getMovie_ID()){
+						groupShowings.add(show);
+					}
+					//TODO this needs working on
+					movieAndShowings.put(mv, groupShowings);
+				}
 			}
 		}
+		return movieAndShowings;
+	}
 		
-		return util.getJSONForObject(specific);
+	private List<Showing> getAllShowingsForAMovie(Long movie_ID) {
+		Query query = em.createQuery("SELECT s FROM Showing s WHERE s.movie = " + movie_ID);	
+		return query.getResultList();
+	}
+	
+	private Date convertStringToDate(String date){
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		// If no date selected return todays date
+		Date returnDate = new Date();
+		try {
+			returnDate = format.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return returnDate;
 	}
 
 	private Showing findShowing(Long id) {

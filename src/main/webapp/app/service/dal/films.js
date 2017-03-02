@@ -14,9 +14,8 @@
             return dal.http.GET("rest/showing/json/venue/" + venueId);
         };
         
-        this.getFilmsByVenueAndDate = function (chosenVenueId, dateSelected) {
-            return dal.http.GET("rest/showing/json/venue/" + venueId + "/" + dateSelected);
+       this.getFilmsByVenueAndDate = function (chosenVenueId, dateSelected) {
+            return dal.http.GET("rest/showing/json/venue/" + chosenVenueId + "/" + dateSelected);
         }
-
     }
 }());

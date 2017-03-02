@@ -15,11 +15,17 @@
             </select>
 
             <p id="results"></p>
+            
+            <p style="color: white;">{{ctrl.chosenVenueID}}</p>
+            <p style="color: white;">{{ctrl.chosenDate}}</p>
 
         </div>
     </div>
 </div>
 <hr>
+
+    {{ctrl.filmsByVenueAndDate}}
+
     <table class="table table-striped">
         <tr>
             <th>Title</th>
@@ -27,11 +33,16 @@
             <th>Genre</th>
             <th>Duration</th>
         </tr>
-        <tr ng-repeat="film in ctrl.filmsByVenue">
+    <!--    <tr ng-repeat="film in ctrl.filmsByVenueAndDate">
           <td>{{film.movie.title}}</td>
             <td>{{film.movie.description}}</td>
             <td>{{film.movie.genre}}</td>
             <td>{{film.movie.duration}}</td>
+        </tr>-->
+
+        <tr ng-repeat="(k,v) in ctrl.filmsByVenueAndDate">
+            <td>{{k}}</td>
+           <td>{{v}}</td>
         </tr>
     </table>
 </div>
