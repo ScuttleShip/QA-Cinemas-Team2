@@ -22,22 +22,17 @@ public class ScreenTest {
 		assertEquals(testScreen.getScreen_ID(), 1);
 	}
 	
-//	@Test
-//	public void getVenue_ID() {
-//		
-//		Screen testScreen = new Screen();
-//		Venue getVenue_ID = testScreen.getVenue_ID();
-//		assertEquals(getVenue_ID, 0);
-//	}
-//	
-//	@Test
-//	public void setVenue_ID() {
-//		
-//		Screen testScreen = new Screen();
-//		testScreen.setVenue_ID(1);
-//		assertEquals(testScreen.getVenue_ID(), 1);
-//	}
 	
+	@Test
+	public void getSetVenueID()
+	{
+		Screen testScreen = new Screen();
+		Venue venue = testScreen.getVenue();
+		assertNull(venue);
+		testScreen.setVenue(new Venue());
+		assertNotNull(testScreen.getVenue());
+	}
+		
 	@Test
 	public void getNumberofSeats() {
 		

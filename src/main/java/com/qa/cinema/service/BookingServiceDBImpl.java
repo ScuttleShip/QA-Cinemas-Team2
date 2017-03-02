@@ -35,7 +35,7 @@ public class BookingServiceDBImpl {
 	}
 	public String replaceBooking(Integer booking_ID, String updatedBooking) {
 		Booking updateBooking = util.getObjectForJSON(updatedBooking, Booking.class);
-		Booking booking = findBooking(new Long(booking_ID));
+		Booking booking = findBooking(Long.valueOf(booking_ID));
 		if(booking != null) {
 			updateBooking.setBooking_ID(booking.getBooking_ID());
 			booking = updateBooking;
@@ -46,7 +46,7 @@ public class BookingServiceDBImpl {
 		return "{\"message\": \"booking sucessfully updated\"}";
 	}
 	public String deleteBooking(Integer booking_ID) {
-		Booking booking = findBooking(new Long(booking_ID));
+		Booking booking = findBooking(Long.valueOf(booking_ID));
 		if (booking != null) {
 			em.remove(booking);
 		}

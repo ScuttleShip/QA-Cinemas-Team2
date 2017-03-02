@@ -34,9 +34,8 @@ public class BookingTest {
 	
 	@Test
 	public void customerEmailSetter() {
-		Booking testBook = new Booking(3, "test@test.com");
+		Booking testBook = new Booking();
 		testBook.setCustomerEmail("TEST@TEST.com");
 		assertEquals("TEST@TEST.com",testBook.getCustomerEmail());
 	}
-
 }

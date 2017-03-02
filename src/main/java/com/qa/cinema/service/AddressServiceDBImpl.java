@@ -32,7 +32,7 @@ public class AddressServiceDBImpl implements AddressuService
 	public String updateAddress(Long address_ID, String addressDetails)
 	{
 		Address update = util.getObjectForJSON(addressDetails, Address.class);
-		Address addressInDB = findAddress(new Long (address_ID));
+		Address addressInDB = findAddress(Long.valueOf(address_ID));
 		if (addressInDB != null)
 		{
 			update.setAddress_ID(addressInDB.getAddress_ID());
