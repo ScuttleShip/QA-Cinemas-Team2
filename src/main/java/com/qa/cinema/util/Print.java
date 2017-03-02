@@ -6,6 +6,7 @@ package com.qa.cinema.util;
 public class Print
 {
 	// This is just so I don't have to type out "System.out.println()" every time 
+	// Lazy modo
 	public static void print(String input)
 	{
 		System.out.println(input);
@@ -24,26 +25,26 @@ public class Print
 	// Very useful for printing out tables with neat columns
 	public static String fixedString(String input, int length)
 	{
-		String output = input;
+		StringBuilder output = new StringBuilder(input);
 		for(int i = 0; i < (length - input.length()); i++)
-			output += " ";
-		return output;
+			output.append(" ");
+		return output.toString();
 	}
 	
 	// This prints out the string, but with lots of = on each side, to make a head.
 	// ====================EXAMPLE====================
 	public static String header(String title, int width)
 	{	
-		width = ((width - title.length())/2);
-		String output = "";
+		int sideWidth = ((width - title.length())/2);
+		StringBuilder output = new StringBuilder("");
 		
-		for(int i= 0; i <= width; i++)
-			output += "=";
+		for(int i= 0; i <= sideWidth; i++)
+			output.append("=");
 		
-		output += title.toUpperCase();
+		output.append(title.toUpperCase());
 		
-		for(int i= 0; i <= width; i++)
-			output += "=";
-		return output;
+		for(int i= 0; i <= sideWidth; i++)
+			output.append("=");
+		return output.toString();
 	}
 }

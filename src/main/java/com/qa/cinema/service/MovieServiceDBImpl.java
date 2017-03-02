@@ -40,7 +40,7 @@ public class MovieServiceDBImpl implements MovieService{
 	@Override
 	public String replaceMovie(Long movie_ID, String updatedMovie) {
 		Movie updateMovie = util.getObjectForJSON(updatedMovie, Movie.class);
-		Movie movie = findMovie(new Long(movie_ID));
+		Movie movie = findMovie(Long.valueOf(movie_ID));
 		if (movie != null) {
 			updateMovie.setMovie_ID(movie.getMovie_ID());
 			movie = updateMovie;
@@ -51,7 +51,7 @@ public class MovieServiceDBImpl implements MovieService{
 
 	@Override
 	public String deleteMovie(Long movie_ID) {
-		Movie movie = findMovie(new Long(movie_ID));
+		Movie movie = findMovie(Long.valueOf(movie_ID));
 		if (movie != null) {
 			em.remove(movie);
 		}

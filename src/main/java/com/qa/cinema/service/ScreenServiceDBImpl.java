@@ -39,7 +39,7 @@ public class ScreenServiceDBImpl implements ScreenService {
 	@Override
 	public String replaceScreen(Long screen_ID, String updatedScreen) {
 		Screen updateScreen = util.getObjectForJSON(updatedScreen, Screen.class);
-		Screen screen = findScreen(new Long(screen_ID));
+		Screen screen = findScreen(Long.valueOf(screen_ID));
 		if (screen != null) {
 			updateScreen.setScreen_ID(screen.getScreen_ID());
 			screen = updateScreen;
@@ -50,7 +50,7 @@ public class ScreenServiceDBImpl implements ScreenService {
 
 	@Override
 	public String deleteScreen(Long screen_ID) {
-		Screen screen = findScreen(new Long(screen_ID));
+		Screen screen = findScreen(Long.valueOf(screen_ID));
 		if (screen != null) {
 			em.remove(screen);
 		}

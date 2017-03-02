@@ -46,4 +46,33 @@ public class AddressTest {
 		String result = address.getPostcode();
 		assertEquals("Dummy", result);
 	}
+	
+	@Test
+	public void getSetID() {
+		address = new Address();
+		assertNull(address.getAddress_ID());
+		address.setAddress_ID(Long.valueOf(5));
+		long result = Long.valueOf(address.getAddress_ID());
+		result = Long.valueOf(address.getAddress_ID());
+		assertEquals(5, result);
+	}
+	
+	@Test
+	public void constructorTest()
+	{
+		address = new Address("11 Test Street", "TT1TT1");
+		String fl = address.getFirstLine();
+		String pc = address.getPostcode();
+		assertEquals(fl, "11 Test Street");
+		assertEquals(pc, "TT1TT1");
+		address = new Address(null, "TT2TT2");
+		fl = address.getFirstLine();
+		pc = address.getPostcode();
+		assertEquals(fl, "");
+		assertEquals(pc, "TT2TT2");
+		
+		address = new Address(null, null, null, null, null);
+		fl = address.getFirstLine();
+		assertEquals(fl, "");
+	}
 }

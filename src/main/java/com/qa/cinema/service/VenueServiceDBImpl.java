@@ -27,7 +27,6 @@ public class VenueServiceDBImpl implements VenueService {
 	public String getAllVenues() {
 		Query query = em.createQuery("SELECT v FROM Venue v");
 		List<Venue> venueList = (ArrayList<Venue>) query.getResultList();
-		//System.out.println(venueList.size());
 		return util.getJSONForObject(venueList);
 	}
 
@@ -41,19 +40,17 @@ public class VenueServiceDBImpl implements VenueService {
 	@Override
 	public String updateVenue(Long venue_ID, String updatedVenue) {
 		Venue updateVenue = util.getObjectForJSON(updatedVenue, Venue.class);
-		Venue venue = findVenue(new Long(venue_ID));
+		Venue venue = findVenue(Long.valueOf(venue_ID));
 		Long temp_ID = venue.getVenue_ID();
-		if (venue != null){
-			venue = updateVenue;
-			venue.setVenue_ID(temp_ID);
-			em.merge(venue);
-		}
+		venue = updateVenue;
+		venue.setVenue_ID(temp_ID);
+		em.merge(venue);
 		return "{\"message\": \"venue has been successfully updated\"}";
 	}
 
 	@Override
 	public String deleteVenue(Long venue_ID) {
-		Venue venue = findVenue(new Long(venue_ID));
+		Venue venue = findVenue(Long.valueOf(venue_ID));
 		if(venue != null){
 			em.remove(venue);
 		}
@@ -64,4 +61,3 @@ public class VenueServiceDBImpl implements VenueService {
 		return em.find(Venue.class, id);
 	}
 }
-

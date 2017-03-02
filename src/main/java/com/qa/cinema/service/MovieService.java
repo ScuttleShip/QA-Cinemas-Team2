@@ -10,5 +10,4 @@ public interface MovieService {
 	String replaceMovie(Long movie_ID, String updatedMovie);
 
 	String deleteMovie(Long movie_ID);
-	
 }

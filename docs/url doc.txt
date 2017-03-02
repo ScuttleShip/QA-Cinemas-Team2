@@ -1,0 +1,6 @@
+READ ME
+
+when adding/updating the filmImg/filmUrl and the venueImg strings, make sure that to add the / in the paths or urls, to prepend them with \\, for example, http:\\/\\/
+
+dont be silly and not read this, it literally says to read up there.
+
