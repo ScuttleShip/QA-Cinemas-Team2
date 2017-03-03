@@ -3,22 +3,19 @@
     {
         var vm = this;
 
-         function init()
-         {
-            console.log("Initializing...");
-            venueService.getVenue().then(function (results)
-            {
-                console.log("This is working" + results);
+        function init() {
+            venueService.getAllVenues().then(function (results) {
+                console.log(results);
                 vm.venues = results;
-            }, function (error)
-            {
+            }, function (error) {
                 console.log("This is not working" + error);
-                vm.error = true;
+                vm.error=true;
                 vm.errorMessage = error;
-            });
-         }
-      init();
 
+            });
+            }
+
+            init()
     };
     angular.module('qaCinemas2').controller('venueController', ['venueService', venueController]);
 }());

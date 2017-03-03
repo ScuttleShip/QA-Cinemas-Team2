@@ -34,7 +34,7 @@ public class VenueServiceDBImpl implements VenueService {
 	public String addNewVenue(String venueJson) {
 		Venue newVenue = util.getObjectForJSON(venueJson, Venue.class);
 		em.persist(newVenue);
-		return venueJson;
+		return "{\"message\": \"venue has been successfully added\"}";
 	}
 
 	@Override
@@ -42,12 +42,9 @@ public class VenueServiceDBImpl implements VenueService {
 		Venue updateVenue = util.getObjectForJSON(updatedVenue, Venue.class);
 		Venue venue = findVenue(Long.valueOf(venue_ID));
 		Long temp_ID = venue.getVenue_ID();
-		//if (venue != null)
-		//{
-			venue = updateVenue;
-			venue.setVenue_ID(temp_ID);
-			em.merge(venue);
-		//}
+		venue = updateVenue;
+		venue.setVenue_ID(temp_ID);
+		em.merge(venue);
 		return "{\"message\": \"venue has been successfully updated\"}";
 	}
 

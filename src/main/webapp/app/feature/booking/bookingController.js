@@ -1,13 +1,12 @@
 /**
  * Created by Administrator on 27/02/2017.
  */
-/*
- (function() {
+(function() {
 
- var bookingController = function() {
+    var bookingController = function() {
 
- };
+    };
 
- angular.module("qaCinema2").controller("bookingController", [bookingController]);
+    angular.module("qaCinemas2").controller("bookingController", [bookingController]);
 
- }());*/
+}());
