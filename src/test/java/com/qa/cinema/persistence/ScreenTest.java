@@ -23,15 +23,15 @@ public class ScreenTest {
 	}
 	
 	
-	@Test
-	public void getSetVenueID()
-	{
-		Screen testScreen = new Screen();
-		Venue venue = testScreen.getVenue();
-		assertNull(venue);
-		testScreen.setVenue(new Venue());
-		assertNotNull(testScreen.getVenue());
-	}
+//	@Test
+//	public void getSetVenueID()
+//	{
+//		Screen testScreen = new Screen();
+//		Venue venue = testScreen.getVenue();
+//		assertNull(venue);
+//		testScreen.setVenue(new Venue());
+//		assertNotNull(testScreen.getVenue());
+//	}
 		
 	@Test
 	public void getNumberofSeats() {
