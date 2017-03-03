@@ -5,9 +5,14 @@
 
     var confirmationService =  function(confirmationDal) {
 
-        this.getConfirmation = function()
-        {
-            return confirmationDal.getConfirmation();
+        this.getBooking = function() {
+            return confirmationDal.getBooking();
+
+        };
+
+        this.getShowing = function() {
+            return confirmationDal.getShowing();
+
         };
     };
 

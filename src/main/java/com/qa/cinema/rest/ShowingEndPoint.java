@@ -66,9 +66,9 @@ public class ShowingEndPoint {
 	}
 	
 	@GET
-	@Path("/json/{cid}")
+	@Path("/json/{booking_ID}")
 	@Produces({ "application/json" })
-	public String getShowingByBookingID(@PathParam("cid") Long bookingID){
+	public String getShowingByBookingID(@PathParam("booking_ID") Long bookingID){
 		return showingService.getShowingByBookingID(bookingID);
 	}
 

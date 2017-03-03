@@ -11,8 +11,12 @@
 
     function confirmationDal (dal) {
 
-        this.getConfirmation = function (cid) {
-            return dal.http.GET("rest/showing/json" + cid);
+        this.getBooking = function (booking_ID) {
+            return dal.http.GET("rest/booking/json/" + booking_ID);
         };
+
+        this.getShowing = function (booking_ID) {
+            return dal.http.GET("rest/showing/json/" + booking_ID);
+        }
     }
 }());
