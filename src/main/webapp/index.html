@@ -4,15 +4,95 @@
     <meta charset="UTF-8">
     <title>Team 2 - QA Cinemas</title>
 
-    <!-- ALL THE STYLESHEETS -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ALL THE STYLESHEETS (From the interwebs) -->
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- ALL THE STYLESHEETS (Stuff we actually wrote (or copied and pasted) ourselves) -->
+    <link rel="stylesheet" href="indexStyle.css">
+    <link rel = "stylesheet" href="app/feature/home/style.css">
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel = "stylesheet">
+
 
 </head>
-<body>
+    <!-- Company Logo - Also home button -->
+    <body style="background-color: #082753">
+    <div class="jumbotron text-center headert" style="background-color: white ; color: white">
+        <a ui-sref="home">
+            <img class="headerimg" src="imgs/logo.png" alt="">
+        </a>
+    </div>
 
-<ul>
-</ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a ui-sref="home">Home</a></li>
+                <li><a ui-sref="films">Films</a></li>
+                <li><a ui-sref="venues">Venues</a></li>
+                <li><a ui-sref="offers">Offers</a></li>
+                <li><a ui-sref="faqs">FAQs</a></li>
+                <li><a ui-sref="contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <!-- STATE VIEWER-->
     <div ui-view></div>
+
+    <!-- SITE MAP FOOTER -->
+    <div class="container text-center" style="background-color: #082753">
+        <hr/>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-md-3">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a ui-sref="home">Home</a></li>
+                        <li><a ui-sref="films">Films</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a ui-sref="venues">Venues</a></li>
+                        <li><a ui-sref="faqs">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a ui-sref="offers">Offers</a></li>
+                        <li><a ui-sref="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav nav-pills nav-justified">
+                    <li><a href="">© 2017 QA Cinemas.</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- JS From the Web -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="app/feature/home/Carousel.js"></script>
 
     <!-- Angular modules-->
     <script src="scripts/angular.min.js"></script>
@@ -24,6 +104,10 @@
 
     <!-- Services-->
     <script src="app/service/dal/dal.js"></script>
+    <script src="app/service/venueservice.js"></script>
+    <script src="app/service/dal/venue.js"></script>
+    <script src="app/service/confirmationService.js"></script>
+    <script src="app/service/dal/confirmation.js"></script>
 
 
     <!-- Features-->
@@ -37,6 +121,8 @@
     <script src="app/feature/payments/paymentsController.js"></script>
     <script src="app/feature/paymentSuccess/paymentSuccessController.js"></script>
     <script src="app/feature/venues/venuesController.js"></script>
+
+
 
 </body>
 </html>

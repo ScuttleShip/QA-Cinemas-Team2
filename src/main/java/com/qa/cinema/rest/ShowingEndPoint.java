@@ -64,5 +64,12 @@ public class ShowingEndPoint {
 	public String deleteShowing(@PathParam("id") Long showingId){
 		return showingService.deleteShowing(showingId);
 	}
+	
+	@GET
+	@Path("/json/{booking_ID}")
+	@Produces({ "application/json" })
+	public String getShowingByBookingID(@PathParam("booking_ID") Long bookingID){
+		return showingService.getShowingByBookingID(bookingID);
+	}
 
 }

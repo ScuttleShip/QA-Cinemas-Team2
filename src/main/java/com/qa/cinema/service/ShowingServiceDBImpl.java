@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.qa.cinema.persistence.Booking;
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
@@ -92,18 +93,36 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 	
 	public String getAllShowingsAtAVenue(Long venue_ID){
+//		Query query = em.createQuery("SELECT s FROM Showing s");
+//		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
+//		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
+//		for(Showing s : showing){
+//			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
+//				specific.add(s);
+//			}
+//		}
+//		
+//		return util.getJSONForObject(specific);
+		return "";
+	}
+
+	public String getShowingByBookingID(Long booking_ID){
 		Query query = em.createQuery("SELECT s FROM Showing s");
 		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
-		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
+		Showing specific = new Showing();
 		for(Showing s : showing){
-			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
-				specific.add(s);
+			Collection<Booking> bookingsForCurrentShowing = s.getBookings();
+			
+			for (Booking b : bookingsForCurrentShowing) {
+				if (b.getBooking_ID().longValue() == booking_ID.longValue()) {
+					specific = s;
+				}
 			}
 		}
 		
 		return util.getJSONForObject(specific);
 	}
-
+	
 	private Showing findShowing(Long id) {
 		return em.find(Showing.class, id);
 	}

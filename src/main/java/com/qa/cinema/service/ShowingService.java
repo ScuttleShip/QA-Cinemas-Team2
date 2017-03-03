@@ -20,4 +20,6 @@ public interface ShowingService {
 	Boolean decreaseSeatCount(Long showingId, int count);
 	
 	String getAllShowingsAtAVenue(Long venue_ID);
+
+	String getShowingByBookingID(Long bookingID);
 }
