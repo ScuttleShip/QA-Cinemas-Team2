@@ -6,12 +6,12 @@
     var confirmationService =  function(confirmationDal) {
 
         this.getBooking = function() {
-            return confirmationDal.getBooking();
+            return confirmationDal.getBooking(1);
 
         };
 
         this.getShowing = function() {
-            return confirmationDal.getShowing();
+            return confirmationDal.getShowing(1);
 
         };
     };

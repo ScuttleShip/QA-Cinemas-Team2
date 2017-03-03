@@ -1,5 +1,6 @@
 package com.qa.cinema.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.ejb.Stateless;
@@ -10,12 +11,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.qa.cinema.persistence.Booking;
+import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
 
 @Stateless
 @Default
-public class BookingServiceDBImpl {
+public class BookingServiceDBImpl implements BookingService {
 	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
@@ -28,12 +30,14 @@ public class BookingServiceDBImpl {
 		Collection<Booking> bookings = (Collection<Booking>) query.getResultList();
 		return util.getJSONForObject(bookings);
 	}
+	
 	public String addNewBooking(String bookingJson) {
 		Booking newBooking = util.getObjectForJSON(bookingJson, Booking.class);
 		em.persist(newBooking);
 		return bookingJson;	
 	}
-	public String replaceBooking(Integer booking_ID, String updatedBooking) {
+	
+	public String replaceBooking(Long booking_ID, String updatedBooking) {
 		Booking updateBooking = util.getObjectForJSON(updatedBooking, Booking.class);
 		Booking booking = findBooking(Long.valueOf(booking_ID));
 		if(booking != null) {
@@ -45,14 +49,28 @@ public class BookingServiceDBImpl {
 		}
 		return "{\"message\": \"booking sucessfully updated\"}";
 	}
-	public String deleteBooking(Integer booking_ID) {
+	public String deleteBooking(Long booking_ID) {
 		Booking booking = findBooking(Long.valueOf(booking_ID));
 		if (booking != null) {
 			em.remove(booking);
 		}
 		return "{\"message\": \"booking sucessfully removed\"}";
 	}
-	Booking findBooking(Long id) {
-		return em.find(Booking.class, id);
+	
+	public String getBookingByBookingID(Long booking_ID){
+		Query query = em.createQuery("SELECT s FROM Booking s");
+		Collection<Booking> booking = (Collection<Booking>) query.getResultList();
+		Booking specific = new Booking();
+		for(Booking s : booking){
+			if(s.getBooking_ID().longValue() == booking_ID.longValue()){
+				specific = s;
+			}
+		}
+		
+		return util.getJSONForObject(specific);
+	}
+	
+	Booking findBooking(Long booking_id) {
+		return em.find(Booking.class, booking_id);
 	}
 }
