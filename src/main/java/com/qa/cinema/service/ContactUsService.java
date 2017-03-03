@@ -44,7 +44,7 @@ public class ContactUsService {
 		
 		String username = "qacinemas@gmail.com";
 		String password = "IHeartHisoka121";
-		String emailToSendTo = "qacinemas@gmail.com";
+		String emailToSendTo = "leimeih@gmail.com";
 		String subject = "";
 		
 		Properties props = new Properties();
@@ -55,7 +55,7 @@ public class ContactUsService {
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.port", "465");
 		
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {

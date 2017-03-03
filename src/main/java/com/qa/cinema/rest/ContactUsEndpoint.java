@@ -14,40 +14,6 @@ public class ContactUsEndpoint {
 	@Inject
 	private ContactUsService service;
 
-	@Path("/json")
-	@GET
-	@Produces({ "application/json" })
-	public String getFirstName(){
-		return service.getFirstName();
-	}
-
-	@Path("/json")
-	@GET
-	@Produces({ "application/json" })
-	public String getLastName() {
-		return service.getLastName();
-	}
-
-	@Path("/json")
-	@GET
-	@Produces({ "application/json" })
-	public String getEmail() {
-		return service.getEmail();
-	}
-	
-	@Path("/json")
-	@GET
-	@Produces({ "application/json" })
-	public String getPhone() {
-		return service.getPhone();
-	}
-	
-	@Path("/json")
-	@GET
-	@Produces({ "application/json" })
-	public String getMessage() {
-		return service.getMessage();
-	}
 	
 	@Path("/json")
 	@POST

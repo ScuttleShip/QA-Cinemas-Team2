@@ -1,12 +1,12 @@
 <div ng-controller="contactController as ctrl">
-    <form action="" name="myform" id="myform">
+    <form name="myform" id="myform">
         <table cellspacing="2" cellpadding="2" border="0">
             <tr>
                 <td align="right">
                     First Name
                 </td>
                 <td>
-                    <input type="text" name="FirstName" ng-model="emailToSend.firstName"/>
+                    <input type="text" name="FirstName" ng-model="email.firstName"/>
                 </td>
             </tr>
             <tr>
@@ -14,7 +14,7 @@
                     Last Name
                 </td>
                 <td>
-                    <input type="text" name="LastName" ng-model="emailToSend.lastName"/>
+                    <input type="text" name="LastName" ng-model="email.lastName"/>
                 </td>
             </tr>
             <tr>
@@ -22,7 +22,7 @@
                     Email
                 </td>
                 <td>
-                    <input type="text" name="Email" ng-model="emailToSend.email"/>
+                    <input type="text" name="Email" ng-model="email.email"/>
                 </td>
             </tr>
             <tr>
@@ -30,7 +30,7 @@
                     Phone
                 </td>
                 <td>
-                    <input type="text" name="Phone" ng-model="emailToSend.phone"/>
+                    <input type="text" name="Phone" ng-model="email.phone"/>
                 </td>
             </tr>
             <tr>
@@ -38,7 +38,7 @@
                     Cinema Concerned
                 </td>
                 <td>
-                    <select name="List of Cinemas" ng-model="emailToSend.cinemaConcerned">
+                    <select name="List of Cinemas" ng-model="email.cinemaConcerned">
                         <option value="000" selected="selected">
                             [Please select one]
                         </option>
@@ -82,13 +82,13 @@
                     What would you like to say?
                 </td>
                 <td>
-                    <textarea rows="4" col="35" placeholder="Issue you would like to raise" ng-model="emailToSend.message"></textarea>
+                    <textarea rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message"></textarea>
                 </td>
             </tr>
             <tr>
                 <td align="right"></td>
                 <td>
-                    <input type="submit" value="Submit" ng-click="ctrl.sendEmail(emailToSend)"/>
+                    <input type="submit" value="Submit" ng-click="ctrl.sendEmail(email)"/>
                 </td>
             </tr>
         </table>

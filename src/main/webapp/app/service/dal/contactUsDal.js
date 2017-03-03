@@ -6,7 +6,7 @@
     var contactUsDal = function(dal) {
 
         this.sendEmail = function(emailToSend) {
-            return dal.http.POST("/rest/contact/json", emailToSend);
+            return dal.http.POST("rest/contact/json", emailToSend);
         }
 
     }

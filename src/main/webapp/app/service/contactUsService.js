@@ -8,6 +8,6 @@
 
     }
 
-    angular.module("qaCinemas2").service("contactUsService", ["contactUsDal", contactUsService()]);
+    angular.module("qaCinemas2").service("contactUsService", ["contactUsDal", contactUsService]);
 
 }());
