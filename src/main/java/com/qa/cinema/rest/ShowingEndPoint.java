@@ -1,5 +1,8 @@
 package com.qa.cinema.rest;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -9,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.service.ShowingService;
 
 /**
@@ -36,18 +40,18 @@ public class ShowingEndPoint {
 		return showingService.getAllMoviesThatHaveUpcomingShowings(movie_ID);
 	}*/
 	
-	@GET
+/*	@GET
 	@Path("/json/venue/{vid}")
 	@Produces({ "application/json" })
 	public String  getAllShowingsAtAVenue(@PathParam("vid") Long venue_ID) {
 		return showingService.getAllShowingsAtAVenue(venue_ID);
-	}
+	}*/
 	
 	@GET
 	@Path("/json/venue/{vid}/{date}")
 	@Produces({ "application/json" })
 	public String getAllMoviesByVenueAndDate(@PathParam("vid") Long venue_ID, @PathParam("date") String dateSelected){
-		return showingService.getAllShowingsAtAVenue(venue_ID, dateSelected);
+		return showingService.getAllShowingsAtAVenueAndDate(venue_ID, dateSelected);
 	}
 
 	@POST

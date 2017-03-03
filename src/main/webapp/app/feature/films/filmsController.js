@@ -4,6 +4,8 @@
 
         var vm = this;
 
+
+
         vm.filmsByVenueAndDate = [];
 
         vm.venues = [
@@ -19,7 +21,17 @@
 
            filmsService.getFilmsByVenueAndDate(chosenVenueID, chosenDate).then(function (results) {
                console.log("The films displayed" + results);
+
+                /*console.log("All " + results);
+                console.log("Key " + results.key);
+                console.log("Key at 0" + results[0]);
+               console.log("Key at 1" + results[1]);*/
+
+
                vm.filmsByVenueAndDate = results;
+              console.log("This is the value of the venue and date ");
+              console.log(vm.filmsByVenueAndDate);
+
            }, function (error) {
                console.log("error occured" + error);
                vm.error = true;

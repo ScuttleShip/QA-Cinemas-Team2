@@ -24,25 +24,14 @@
 </div>
 <hr>
 
-    {{ctrl.filmsByVenueAndDate}}
+    <div class="container">
+        <div ng-repeat="(key, value) in ctrl.filmsByVenueAndDate">
+         <h3 style="color: white">Film Name: {{key}}</h3>
+  <!--              {{key.title}}-->
+            <div ng-repeat="v in value">
+                <p style="color: white;"> Showing: <button type="button" class="btn btn-warning">{{v}}</button></p>
+            </div>
+        </div>
+    </div>
 
-    <table class="table table-striped">
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Genre</th>
-            <th>Duration</th>
-        </tr>
-    <!--    <tr ng-repeat="film in ctrl.filmsByVenueAndDate">
-          <td>{{film.movie.title}}</td>
-            <td>{{film.movie.description}}</td>
-            <td>{{film.movie.genre}}</td>
-            <td>{{film.movie.duration}}</td>
-        </tr>-->
-
-        <tr ng-repeat="(k,v) in ctrl.filmsByVenueAndDate">
-            <td>{{k}}</td>
-           <td>{{v}}</td>
-        </tr>
-    </table>
 </div>

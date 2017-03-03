@@ -96,4 +96,12 @@ public class Movie {
 		this.filmUrl = filmUrl;
 	}
 
+	@Override
+	public String toString() {
+		return "Movie [movie_ID=" + movie_ID + ", title=" + title
+				+ ", description=" + description + ", genre=" + genre
+				+ ", duration=" + duration + ", certification=" + certification
+				+ ", filmImg=" + filmImg + ", filmUrl=" + filmUrl + "]";
+	}
+	
 }
