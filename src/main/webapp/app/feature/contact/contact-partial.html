@@ -1,0 +1,97 @@
+<div ng-controller="contactController as ctrl">
+    <form name="myform" id="myform">
+        <table cellspacing="2" cellpadding="2" border="0">
+            <tr>
+                <td align="right">
+                    First Name
+                </td>
+                <td>
+                    <input type="text" name="FirstName" ng-model="email.firstName"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Last Name
+                </td>
+                <td>
+                    <input type="text" name="LastName" ng-model="email.lastName"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Email
+                </td>
+                <td>
+                    <input type="text" name="Email" ng-model="email.email"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Phone
+                </td>
+                <td>
+                    <input type="text" name="Phone" ng-model="email.phone"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Cinema Concerned
+                </td>
+                <td>
+                    <select name="List of Cinemas" ng-model="email.cinemaConcerned">
+                        <option value="000" selected="selected">
+                            [Please select one]
+                        </option>
+                        <option value="008">
+                            QA Cinemas Salford Quays
+                        </option>
+                        <option value="012">
+                            QA Cinemas Trafford Centre
+                        </option>
+                        <option value="016">
+                            QA Cinemas Printworks
+                        </option>
+                        <option value="020">
+                            QA Cinemas Deansgate
+                        </option>
+                        <option value="024">
+                            QA Cinemas Westfield
+                        </option>
+                        <option value="660">
+                            QA Cinemas Shepard's Bush
+                        </option>
+                        <option value="010">
+                            QA Cinemas Park Royal
+                        </option>
+                        <option value="028">
+                            QA Cinemas Glasgow
+                        </option>
+                        <option value="032">
+                            QA Cinemas Edinburgh
+                        </option>
+                        <option value="051">
+                            QA Cinemas Aberdeen
+                        </option>
+                        <option value="533">
+                            QA Cinemas Brighton
+                        </option></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    What would you like to say?
+                </td>
+                <td>
+                    <textarea rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td align="right"></td>
+                <td>
+                    <input type="submit" value="Submit" ng-click="ctrl.sendEmail(email)"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
