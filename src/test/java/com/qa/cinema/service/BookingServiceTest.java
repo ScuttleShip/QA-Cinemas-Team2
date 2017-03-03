@@ -64,7 +64,7 @@ public class BookingServiceTest {
 		Mockito.when(testBookingService.findBooking(1L)).thenReturn(fakeBooking2);
 		Mockito.doNothing().when(em).persist(fakeBooking2);
 		String jsonForm = "{\"message\": \"booking sucessfully updated\"}";
-		String assertionString = testBookingService.replaceBooking(1, testObject);
+		String assertionString = testBookingService.replaceBooking((long) 1, testObject);
 		Assert.assertEquals(jsonForm, assertionString);
 	}
 	@Test
@@ -75,7 +75,7 @@ public class BookingServiceTest {
 		Mockito.doNothing().when(em).remove(fakeBooking);
 		//CREATE STRING TO COMPARE TO
 		String jsonForm = "{\"message\": \"booking sucessfully removed\"}"; //THIS WILL EQUAL "test" DUE TO LINE 48
-		String assertionString = testBookingService.deleteBooking(1); // THIS WILL ALSO EQUAL "test"
+		String assertionString = testBookingService.deleteBooking((long) 1); // THIS WILL ALSO EQUAL "test"
 		Assert.assertEquals(assertionString, jsonForm); // "test" EQUALS "test", SCIENCE!!!!
 	}
 

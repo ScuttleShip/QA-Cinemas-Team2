@@ -42,7 +42,7 @@ public class ScreenServiceTest {
 		List<Screen> screenList = new ArrayList <Screen> ();
 		
 			
-		Screen testScreen = new Screen(1, 12, 300);
+		Screen testScreen = new Screen(1, 12, 300, 1);
 		
 		screenList.add(testScreen);
 		
@@ -65,7 +65,7 @@ public class ScreenServiceTest {
 	@Test
 	public void addNewScreenTest() {
 		String testObject = "7";
-		Screen fakeScreen = new Screen(5, 12, 300);
+		Screen fakeScreen = new Screen(5, 12, 300, 1);
 		Mockito.when(util.getObjectForJSON(testObject, Screen.class)).thenReturn(fakeScreen);
 		Mockito.doNothing().when(em).persist(fakeScreen);
 		String jsonForm = testObject; 
@@ -76,8 +76,8 @@ public class ScreenServiceTest {
 	@Test
 	public void replaceScreenTest() {
 		String testObject = "6";
-		Screen fakeScreen = new Screen(5, 12, 300);
-		Screen fakeScreen2 = new Screen(4, 1, 200);
+		Screen fakeScreen = new Screen(5, 12, 300, 1);
+		Screen fakeScreen2 = new Screen(4, 1, 200, 1);
 		Mockito.when(util.getObjectForJSON(testObject, Screen.class)).thenReturn(fakeScreen);
 		Mockito.when(findScreen(4L)).thenReturn(fakeScreen2);
 		Mockito.doNothing().when(em).persist(fakeScreen2);
@@ -88,7 +88,7 @@ public class ScreenServiceTest {
 
 	@Test
 	public void removeScreenTest() {
-		Screen fakeScreen = new Screen(1L, 1L, 300);
+		Screen fakeScreen = new Screen(1L, 1L, 300, 1);
 		Mockito.when(findScreen(1L)).thenReturn(fakeScreen);
 		Mockito.doNothing().when(em).remove(fakeScreen);
 		String jsonForm = "{\"message\": \"screen successfully removed\"}"; 

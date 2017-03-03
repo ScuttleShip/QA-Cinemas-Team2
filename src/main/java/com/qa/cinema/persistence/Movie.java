@@ -1,8 +1,13 @@
 package com.qa.cinema.persistence;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Movie {
@@ -16,6 +21,10 @@ public class Movie {
 	private String certification;
 	private String filmImg;
 	private String filmUrl;
+	
+//	@OneToMany
+//	@JoinColumn(name="movie_ID")
+//	private Set<Showing> showings = new HashSet<Showing>();
 
 	public Movie() {
 
