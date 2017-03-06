@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,12 +26,12 @@ public class Showing {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long showing_ID;
 
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany
 	@JoinColumn(name = "showing_ID")
 	private Set<Booking> bookings = new HashSet<Booking>();
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name = "movie_ID")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "showing_movie_ID")
 	private Movie movie;
 
 	private Long screen_ID;

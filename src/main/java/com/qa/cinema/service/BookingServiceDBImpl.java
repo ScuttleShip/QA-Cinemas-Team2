@@ -12,11 +12,10 @@ import javax.persistence.Query;
 import com.qa.cinema.persistence.Booking;
 import com.qa.cinema.util.JSONUtil;
 
-
 @Stateless
 @Default
 public class BookingServiceDBImpl {
-	
+
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
 
@@ -28,25 +27,30 @@ public class BookingServiceDBImpl {
 		Collection<Booking> bookings = (Collection<Booking>) query.getResultList();
 		return util.getJSONForObject(bookings);
 	}
-	
+
 	public String addNewBooking(String bookingJson) {
 		Booking newBooking = util.getObjectForJSON(bookingJson, Booking.class);
-		em.persist(newBooking);
-		return bookingJson;	
+		em.merge(newBooking);
+		return bookingJson;
 	}
-	
-	public String replaceBooking(Integer booking_ID, String updatedBooking) {
-		Booking updateBooking = util.getObjectForJSON(updatedBooking, Booking.class);
-		Booking booking = findBooking(Long.valueOf(booking_ID));
-		if(booking != null) {
-			updateBooking.setBooking_ID(booking.getBooking_ID());
-			booking = updateBooking;
-			
-			em.merge(booking);
-			
-		}
-		return "{\"message\": \"booking sucessfully updated\"}";
-	}
+
+	// The Customer is not allowed to change a booking after it has been made.
+	// So the code below is no longer used
+	//
+	// public String replaceBooking(Integer booking_ID, String updatedBooking) {
+	// Booking updateBooking = util.getObjectForJSON(updatedBooking,
+	// Booking.class);
+	// Booking booking = findBooking(Long.valueOf(booking_ID));
+	// if(booking != null) {
+	// updateBooking.setBooking_ID(booking.getBooking_ID());
+	// booking = updateBooking;
+	//
+	// em.merge(booking);
+	//
+	// }
+	// return "{\"message\": \"booking sucessfully updated\"}";
+	// }
+
 	public String deleteBooking(Integer booking_ID) {
 		Booking booking = findBooking(Long.valueOf(booking_ID));
 		if (booking != null) {
@@ -54,6 +58,7 @@ public class BookingServiceDBImpl {
 		}
 		return "{\"message\": \"booking sucessfully removed\"}";
 	}
+
 	Booking findBooking(Long id) {
 		return em.find(Booking.class, id);
 	}
