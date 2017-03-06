@@ -2,7 +2,6 @@ package com.qa.cinema.persistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
@@ -11,12 +10,14 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Booking {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Long booking_ID;
 	@NotNull
 	private int numberOfSeats;
 	@NotNull
 	private String customerEmail;
+	
+	private Long showing_ID;
 
 	public Booking(int numberOfSeats, String customerEmail) {
 		this.numberOfSeats = numberOfSeats;
@@ -50,5 +51,14 @@ public class Booking {
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
+	
+	public Long getShowing_ID() {
+		return showing_ID;
+	}
+
+	public void setShowing_ID(Long showing_ID) {
+		this.showing_ID = showing_ID;
+	}
+
 
 }

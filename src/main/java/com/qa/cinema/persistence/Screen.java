@@ -9,11 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Screen {
+public class Screen { 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +32,7 @@ public class Screen {
 		
 	}
 
-	public Screen(long screen_ID, long venue_ID, int numberOfSeats, int screenNumber) {
-		this.screen_ID = screen_ID;
+	public Screen(long venue_ID, int numberOfSeats, int screenNumber) {
 		this.numberOfSeats = numberOfSeats;
 		this.screenNumber = screenNumber;
 	}
