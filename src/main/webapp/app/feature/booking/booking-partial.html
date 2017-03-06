@@ -1,7 +1,7 @@
-<div ng-controller="bookingController as ctrl" class="col-xs-12">
+<div ng-controller="bookingController as ctrl" id="popupContainer">
 
     <h2>Chosen Venue:</h2>
-    <p id="chosenVenue"></p>
+    <p id="chosenVenue" ng-model="currentBooking.venue"></p>
 
     <h2>Chosen Date:</h2>
     <p id="chosenDate"></p>
@@ -12,8 +12,12 @@
     <h2>Chosen Number of Seats:</h2>
     <p id="chosenNumberOfSeats"></p>
 
-    <div class="col-md-2 pls-work"><button class="button" id="plsSubmit" ng-click="ctrl.saveBooking()"><span>Checkout</span></button></div></div>
+    <div class="col-md-2 pls-work"><button class="button" id="plsSubmit" ng-click="ctrl.saveBooking()"><span>Checkout</span></button></div>
 
-    <div class="col-md-2 pls-work"><button class="button" id="plsEdit" ng-click="ctrl.saveBooking()"><span>Edit order</span></button></div></div>
+    <div class="col-md-2 pls-work"><button class="button" id="plsEdit" ng-click="ctrl.editBooking($event)"><span>Edit order</span></button></div>
+
+    <div id="editBookingWindow">
+        <p>Please do something</p>
+    </div>
 
 </div>
