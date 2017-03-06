@@ -16,7 +16,7 @@ public class Screen {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long screen_ID;
+	private Long screen_ID;
 	
 	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "screen_ID")

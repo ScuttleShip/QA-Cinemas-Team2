@@ -33,7 +33,7 @@ public class Venue {
 	
 	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "venue_ID")
-	private Set<Screen> Screen = new HashSet<Screen>();
+	private Set<Screen> screen = new HashSet<Screen>();
 	
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="venue_address_id")
@@ -85,11 +85,11 @@ public class Venue {
 	}
 	
 	public Set<Screen> getScreen() {
-		return Screen;
+		return screen;
 	}
 
 	public void setScreen(Set<Screen> screen) {
-		Screen = screen;
+		screen = screen;
 	}
 
 	public Address getAddress() {

@@ -33,10 +33,9 @@ public class Showing {
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "movie_ID")
 	private Movie movie;
-	
-	private long screen_ID;
-	
 
+	private Long screen_ID;
+	
 	@Temporal(TemporalType.TIME)
 	@NotNull
 	private Date startTime;
@@ -100,18 +99,27 @@ public class Showing {
 		this.bookings = bookings;
 	}
 
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+	
+	public void setScreen_ID(Long screen_ID) {
+		this.screen_ID = screen_ID;
+	}
+	
+	public Long getScreen_ID() {
+		return screen_ID;
+	}
+	
 	@Override
 	public String toString() {
 		return "Showing [showingID=" + showing_ID + ", startTime=" + startTime
 				+ ", date=" + date + ", seatsRemaining=" + seatsRemaining + "]";
 	}
 
-	public long getScreen_ID() {
-		return screen_ID;
-	}
-
-	public void setScreen_ID(long screen_ID) {
-		this.screen_ID = screen_ID;
-	}
-
+	
 }

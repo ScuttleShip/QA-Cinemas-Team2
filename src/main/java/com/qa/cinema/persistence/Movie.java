@@ -1,9 +1,12 @@
 package com.qa.cinema.persistence;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Movie {
@@ -18,6 +21,9 @@ public class Movie {
 	private String certification;
 	private String filmImg;
 	private String filmUrl;
+	
+	  @OneToMany(mappedBy = "movie")
+	  private List<Showing> showings;
 	
 	public Movie() {
 
