@@ -1,5 +1,21 @@
+<link rel="stylesheet" href="app/feature/venues/style.css">
 <div ng-controller="venueController as ctrl">
 
-    <button ng-click="ctrl.doSomething()">Press here</button>
-    <p id="whelp"></p>
+    <div class = "addresslist" ng-repeat="place in ctrl.venues">
+        <div class = "col-sm-12">
+        <div class = "col-sm-6">
+
+        <h1>{{place.name}}</h1>
+        {{place.address.firstLine}}<br>
+        {{place.address.secondLine}}<br>
+        {{place.address.townOrCity}}<br>
+        {{place.address.county}}<br>
+        {{place.address.postcode}}
+        </div>
+
+        <div class = "col-sm-6">
+           <img src="{{place.venueImg}}">
+        </div>
+        </div>
+    </div>
 </div>

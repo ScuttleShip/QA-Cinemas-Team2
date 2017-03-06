@@ -2,13 +2,13 @@ insert into address(address_id, county, firstline, postcode, secondline, townorc
 insert into address(address_id, county, firstline, postcode, secondline, townorcity) values (2,'Exampleshire','22 Example Street','2TT2TT','Example','Testington');
 insert into address(address_id, county, firstline, postcode, secondline, townorcity) values (3,'ManTester','33 Example Street','3TT3TT','Example','Testcaster');
 
-
 insert into movie(movie_id, certification, description, duration, genre, title) values (1, 'PG', 'This is a film', '01:30:00', 'Animation', 'Example Film');
 insert into movie(movie_id, certification, description, duration, genre, title) values (2, '12', 'This is another film', '02:00:00', 'Animation', 'Test Film');
 insert into movie(movie_id, certification, description, duration, genre, title) values (3, '18', 'This is the third film', '01:50:00', 'Horror', 'Demo Film');
-insert into venue(venue_id, name, venueimg, address_address_id) values(1,'Exampleshire','myimg',1);
-insert into venue(venue_id, name, venueimg, address_address_id) values(2,'Exampleshire Arena','myimg',2);
-insert into venue(venue_id, name, venueimg, address_address_id) values(3,'ManTester','myimg',3);
+
+insert into venue(venue_id, name, venueimg, address_address_id) values(1,'Exampleshire','imgs/venue1.jpg',1);
+insert into venue(venue_id, name, venueimg, address_address_id) values(2,'Exampleshire Arena','imgs/venue2.jpg',2);
+insert into venue(venue_id, name, venueimg, address_address_id) values(3,'ManTester','imgs/venue3.jpg',3);
 
 insert into screen(screen_id, numberofseats, screennumber, venue_id) values (1,100,1,1);
 insert into screen(screen_id, numberofseats, screennumber, venue_id) values (2,100,2,1);
