@@ -1,31 +1,35 @@
 <div ng-controller="bookingController as ctrl" id="popupContainer">
+<form ng-submit="ctrl.saveBooking(booking)">
+    <input type="email" ng-model="booking.bookingEmail" required placeholder="Enter your email address">
+    <input type="email" ng-model="booking.confirmBookingEmail" required placeholder="Confirm your email address">
 
     <h2>Chosen Venue:</h2>
-    <p id="chosenVenue">{{ctrl.currentBooking.chosenVenue}}</p>
+    <p>{{ctrl.currentBooking.chosenVenue}}</p>
 
     <h2>Chosen Date:</h2>
-    <p id="chosenDate">{{ctrl.currentBooking.chosenDate}}</p>
+    <p>{{ctrl.currentBooking.chosenDate}}</p>
 
     <h2>Chosen Showing:</h2>
-    <p id="chosenShowing">{{ctrl.currentBooking.chosenShowing}}</p>
+    <p>{{ctrl.currentBooking.chosenShowing}}</p>
 
     <h2>Chosen Number of Seats:</h2>
-    <p id="chosenNumberOfSeats">{{ctrl.currentBooking.chosenNumberOfSeats}}</p>
+    <p>{{ctrl.currentBooking.chosenNumberOfSeats}}</p>
 
     <h2>Booking Total:</h2>
-    <p>{{ctrl.currentBooking.chosenNumberOfSeats * 6.99 | currency : "£"}}</p>
+    <p>{{ctrl.currentBooking.bookingTotal | currency : "£"}}</p>
 
-    <div class="col-md-2 pls-work"><button class="button" id="plsSubmit" ng-click="ctrl.saveBooking()"><span>Checkout</span></button></div>
+    <div class="col-md-2 pls-work"><input type="submit" class="button" id="plsSubmit"><span>Checkout</span></button></div>
 
     <div class="col-md-2 pls-work"><button class="button" id="opener"><span>Edit order</span></button></div>
-
+</form>
     <div id="dialog">
         <label>Number Of Seats:
-            <input type="number" ng-model="ctrl.newNumberOfSeats" ng-change="ctrl.saveChanges()" min="0">
+            <input type="number" ng-model="ctrl.newNumberOfSeats" min="0">
         </label>
-        <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" ng-click="vm.saveChanges()">
-            <span class="ui-button-text">Save</span>
-        </button>
+    </div>
+
+    <div id="errorDialog">
+        <p>Your email was invalid. Please correct it!</p>
     </div>
 
 </div>
