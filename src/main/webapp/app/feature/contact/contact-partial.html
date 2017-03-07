@@ -1,3 +1,4 @@
+<script src="scriptValidation.js"></script>
 <div ng-controller="contactController as ctrl">
     <form name="myform" id="myform">
         <table cellspacing="2" cellpadding="2" border="0">
@@ -38,43 +39,22 @@
                     Cinema Concerned
                 </td>
                 <td>
-                    <select name="List of Cinemas" ng-model="email.cinemaConcerned">
-                        <option value="000" selected="selected">
-                            [Please select one]
-                        </option>
-                        <option value="008">
-                            QA Cinemas Salford Quays
-                        </option>
-                        <option value="012">
-                            QA Cinemas Trafford Centre
-                        </option>
-                        <option value="016">
-                            QA Cinemas Printworks
-                        </option>
-                        <option value="020">
-                            QA Cinemas Deansgate
-                        </option>
-                        <option value="024">
-                            QA Cinemas Westfield
-                        </option>
-                        <option value="660">
-                            QA Cinemas Shepard's Bush
-                        </option>
-                        <option value="010">
-                            QA Cinemas Park Royal
-                        </option>
-                        <option value="028">
-                            QA Cinemas Glasgow
-                        </option>
-                        <option value="032">
-                            QA Cinemas Edinburgh
-                        </option>
-                        <option value="051">
-                            QA Cinemas Aberdeen
-                        </option>
-                        <option value="533">
-                            QA Cinemas Brighton
-                        </option></select>
+                    <div class="col-md-2 pls-work">
+                        <select class="select" ng-model="selectedVenue" id="myVenue" >
+
+                            <option ng-repeat="x in ctrl.venues" value="{{x.venue_ID}}">{{x.name}}</option>
+                        </select>
+
+                        <!--
+                    <select class="select" id="myVenue">
+                        <option selected value="default">Select a Venue</option>
+                        <option value="Manchester">Manchster</option>
+                        <option value="London">London</option>
+                        <option value="Leeds">member Leeeeeeds</option>
+                    </select>
+                    -->
+                    </div>
+
                 </td>
             </tr>
             <tr>
@@ -83,15 +63,17 @@
                 </td>
                 <td>
                     <textarea rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message"></textarea>
+
                 </td>
             </tr>
             <tr>
                 <td align="right"></td>
                 <td>
-                    <input type="submit" value="Submit" ng-click="ctrl.sendEmail(email)"/>
+                    <input type="submit" value="Submit" ng-click="ctrl.sendEmail(email); ctrl.validateBox()"/>
                 </td>
             </tr>
         </table>
     </form>
+
 
 </div>
