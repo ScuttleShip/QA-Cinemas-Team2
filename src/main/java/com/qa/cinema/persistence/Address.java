@@ -1,7 +1,9 @@
 package com.qa.cinema.persistence;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
@@ -9,7 +11,8 @@ import javax.validation.constraints.NotNull;
 public class Address {
 	//attributes
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="address_ID")
 	private Long address_ID;
 	
 	@NotNull

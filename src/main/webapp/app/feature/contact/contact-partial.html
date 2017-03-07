@@ -1,0 +1,80 @@
+<script src="scriptValidation.js"></script>
+
+<div ng-controller="contactController as ctrl">
+    <form name="myform" id="myform">
+        <table cellspacing="2" cellpadding="2" border="0">
+            <tr>
+                <td align="right">
+                    First Name
+                </td>
+                <td>
+                    <input type="text" name="FirstName" ng-model="email.firstName"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Last Name
+                </td>
+                <td>
+                    <input type="text" name="LastName" ng-model="email.lastName"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Email
+                </td>
+                <td>
+                    <input type="text" name="Email" ng-model="email.email"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Phone
+                </td>
+                <td>
+                    <input type="text" name="Phone" ng-model="email.phone"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Cinema Concerned
+                </td>
+                <td>
+                    <div class="col-md-2 pls-work">
+                        <select class="select" ng-model="selectedVenue" id="myVenue" >
+
+                            <option ng-repeat="x in ctrl.venues" value="{{x.venue_ID}}">{{x.name}}</option>
+                        </select>
+
+                        <!--
+                    <select class="select" id="myVenue">
+                        <option selected value="default">Select a Venue</option>
+                        <option value="Manchester">Manchster</option>
+                        <option value="London">London</option>
+                        <option value="Leeds">member Leeeeeeds</option>
+                    </select>
+                    -->
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    What would you like to say?
+                </td>
+                <td>
+                    <textarea rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message"></textarea>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right"></td>
+                <td>
+                    <input type="submit" value="Submit" ng-click="ctrl.sendEmail(email); ctrl.validateBox()"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>

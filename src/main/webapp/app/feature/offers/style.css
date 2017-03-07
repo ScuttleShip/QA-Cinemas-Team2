@@ -1,0 +1,26 @@
+div.img
+{
+    margin: 100px;
+    border: 1px solid #000000;
+    float: left;
+    width: 250px;
+}
+
+div.img:hover
+{
+    border: 1px solid #f9f9f9;
+    color: gray;
+}
+
+div.img img
+{
+    width: 100%;
+    height: auto;
+}
+
+div.desc
+{
+    padding: 15px;
+    text-align: center;
+    color: grey;
+}

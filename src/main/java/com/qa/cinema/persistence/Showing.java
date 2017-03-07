@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,11 +30,12 @@ public class Showing {
 	@JoinColumn(name = "showing_ID")
 	private Set<Booking> bookings = new HashSet<Booking>();
 	
-	@ManyToOne
-	@JoinColumn(name = "movie_ID")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "showing_movie_ID")
 	private Movie movie;
-	
 
+	private Long screen_ID;
+	
 	@Temporal(TemporalType.TIME)
 	@NotNull
 	private Date startTime;
@@ -97,10 +99,27 @@ public class Showing {
 		this.bookings = bookings;
 	}
 
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+	
+	public void setScreen_ID(Long screen_ID) {
+		this.screen_ID = screen_ID;
+	}
+	
+	public Long getScreen_ID() {
+		return screen_ID;
+	}
+	
 	@Override
 	public String toString() {
 		return "Showing [showingID=" + showing_ID + ", startTime=" + startTime
 				+ ", date=" + date + ", seatsRemaining=" + seatsRemaining + "]";
 	}
 
+	
 }

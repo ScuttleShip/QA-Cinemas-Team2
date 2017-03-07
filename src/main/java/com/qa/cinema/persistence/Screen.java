@@ -3,24 +3,27 @@ package com.qa.cinema.persistence;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Screen {
+public class Screen { 
 	
 	@Id
-	@GeneratedValue
-	private long screen_ID;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long screen_ID;
 	
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "screen_ID")
 	private Set<Showing> showings = new HashSet<Showing>();
 	
+	private Long venue_ID;
+
 	private int numberOfSeats;
 
 	private int screenNumber;
@@ -29,8 +32,7 @@ public class Screen {
 		
 	}
 
-	public Screen(long screen_ID, long venue_ID, int numberOfSeats, int screenNumber) {
-		this.screen_ID = screen_ID;
+	public Screen(long venue_ID, int numberOfSeats, int screenNumber) {
 		this.numberOfSeats = numberOfSeats;
 		this.screenNumber = screenNumber;
 	}
@@ -65,5 +67,13 @@ public class Screen {
 
 	public void setScreenNumber(int screenNumber) {
 		this.screenNumber = screenNumber;
+	}
+	
+	public Long getVenue_ID() {
+		return venue_ID;
+	}
+
+	public void setVenue_ID(Long venue_ID) {
+		this.venue_ID = venue_ID;
 	}
 }
