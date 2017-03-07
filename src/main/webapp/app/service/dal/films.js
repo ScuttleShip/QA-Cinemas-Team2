@@ -10,6 +10,10 @@
             return dal.http.GET("rest/movie/json");
         };
 
+        this.getFilmById = function (filmId) {
+            return dal.http.GET("rest/movie/json" + filmId);
+        }
+
         this.getFilmsByVenue = function(venueId){
             return dal.http.GET("rest/showing/json/venue/" + venueId);
         };

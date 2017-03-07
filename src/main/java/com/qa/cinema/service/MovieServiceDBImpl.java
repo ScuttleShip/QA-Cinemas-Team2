@@ -57,6 +57,12 @@ public class MovieServiceDBImpl implements MovieService{
 		}
 		return "{\"message\": \"movie sucessfully removed\"}";
 	}
+	
+	@Override
+	public String getMovieById(Long movie_ID){
+		Movie movie  = findMovie(movie_ID);
+		return util.getJSONForObject(movie);
+	}
 
 	private Movie findMovie(Long movie_ID) {
 		return em.find(Movie.class, movie_ID);

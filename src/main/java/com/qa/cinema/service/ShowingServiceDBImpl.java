@@ -3,10 +3,13 @@ package com.qa.cinema.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
@@ -15,8 +18,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.hibernate.boot.jaxb.hbm.internal.CacheAccessTypeConverter;
+
 import com.qa.cinema.persistence.Movie;
+import com.qa.cinema.persistence.Screen;
 import com.qa.cinema.persistence.Showing;
+import com.qa.cinema.persistence.Venue;
 import com.qa.cinema.util.JSONUtil;
 
 @Stateless
@@ -81,46 +88,118 @@ public class ShowingServiceDBImpl implements ShowingService {
 		return returnMessage("the showing was not removed");
 	}
 	
-	private List<Movie> getAllMoviesByVenueAndDate(Long venue_ID, String dateSelected){	
-		Query query = em.createQuery("SELECT s FROM Showing s");
-		Collection<Showing> listOfShowings = (Collection<Showing>) query.getResultList();
-		ArrayList<Movie> listOfMoviesAtVenue = new ArrayList<Movie>();
-		for(Showing show : listOfShowings){
-			if(show.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
-				if(!listOfMoviesAtVenue.contains(show.getMovie())){
-					listOfMoviesAtVenue.add(show.getMovie());
-				}
-			}
-		}		
-		return listOfMoviesAtVenue;
-	}
+	private List<Movie> getAllMoviesByVenue(Long venue_ID){	
+		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);
+		List<Venue> venue = query.getResultList();
 		
-	// Alternative way of getting movies 
-	private List<Long> getAllMoviesAtAVenue(Long venue_ID, String dateSelected){
-		Query query = em.createQuery("SELECT movie.movie_ID FROM Showing JOIN Screen WHERE venue_ID = " + venue_ID + "");
-		List<Long> moveIds = query.getResultList();
-		System.out.println(moveIds);
-		return moveIds;
+		Set<Screen> listOfScreens = venue.get(0).getScreens();
+		Set<Showing> listOfShowings = new HashSet<Showing>();
+		ArrayList<Movie> listOfMoviesAtVenue = new ArrayList<Movie>();
+		
+		for(Screen screen : listOfScreens){
+			listOfShowings = screen.getShowings();
+			for(Showing show : listOfShowings){
+				if(!listOfMoviesAtVenue.contains(show.getMovie())){
+						listOfMoviesAtVenue.add(show.getMovie());
+				}
+			}		
+		}
+			
+		return listOfMoviesAtVenue;
 	}
 	
 	@Override
 	public String getAllShowingsAtAVenueAndDate(Long venue_ID, String dateSelected){
 
-		HashMap<String, List<String>> listOfMoviesAndShowings = new HashMap<String, List<String>>();
 		
-		List<Movie> movies = getAllMoviesByVenueAndDate(venue_ID, dateSelected); 
+		HashMap<String, List<Showing>> listOfMoviesAndShowings = new HashMap<String, List<Showing>>();
 		
-		for(Movie movie : movies){
-			listOfMoviesAndShowings.put(movie.getTitle(), getShowingsForAMovie(venue_ID, dateSelected, movie.getMovie_ID()));
+		Set<Screen> screensAtVenue = getScreensForVenue(venue_ID);
+		
+		List<Showing> showingsAtVenue = new ArrayList();
+		
+		for (Screen currentScreen : screensAtVenue) {
+			
+			showingsAtVenue.addAll(currentScreen.getShowings());
+			
+		}
+		
+		List<Showing> showingsAtVenueByDate = new ArrayList();
+		Date selectedDate = convertStringToDate(dateSelected);
+		
+		for (Showing currentShowing : showingsAtVenue) {
+			
+			Date showingDate = currentShowing.getDate();
+			
+			if (showingDate.equals(selectedDate)) {
+				showingsAtVenueByDate.add(currentShowing);
+			}
+			
+		}
+		
+		List<Movie> movies = new ArrayList();
+		
+		for (Showing currentShowing : showingsAtVenueByDate) {
+			
+			Movie movieForShowing = currentShowing.getMovie();
+			
+			if (!(movies.contains(movieForShowing))) {
+				movies.add(movieForShowing);
+			}
+			
+		}
+			
+		for (Movie currentMovie : movies) {
+			
+			List<Showing> showingsForMovie = new ArrayList<Showing>();
+			
+			for (Showing currentShowing : showingsAtVenueByDate) {
+				
+				if (currentShowing.getMovie().equals(currentMovie)) {
+
+					showingsForMovie.add(currentShowing);
+					
+				}		
+			}
+			
+			listOfMoviesAndShowings.put(util.getJSONForObject(currentMovie), showingsForMovie);
+			
 		}
 		
 		return util.getJSONForObject(listOfMoviesAndShowings);
 	}
 	
-	private List<String> getShowingsForAMovie(Long venue_ID, String dateSelected, Long movieId){
-		Query query = em.createQuery("SELECT s.startTime FROM Showing s JOIN s.screen sc WHERE sc.venue = " + venue_ID + " AND s.movie = " + movieId  + "");
-		List<String> listOfStartTimes = query.getResultList();
-		return listOfStartTimes;
+
+	private Movie getMovieForShowing(Long movie_ID) {
+		Query query = em.createQuery("SELECT movie_ID FROM Movie WHERE movie_ID = " + movie_ID);
+		List<Movie> movies = query.getResultList();
+		return movies.get(0);
+		
+	}
+	
+	private List<Showing> getShowingsByVenue(Long screen_ID) {
+		
+		Query query = em.createQuery("SELECT showing_ID FROM Showing WHERE screen_ID = " + screen_ID);
+		List<Showing> showingsAtScreen = query.getResultList();
+		return showingsAtScreen;
+		
+	}
+	
+	private List<Showing> getShowingsForAMovie(Long venue_ID, String dateSelected, Long movie_ID){
+		//Query query = em.createQuery("SELECT s.startTime FROM Showing s JOIN s.screen sc WHERE sc.venue = " + venue_ID + " AND s.movie = " + movieId  + "");
+		Query query = em.createQuery("SELECT s.startTime FROM Showing s WHERE s.movie = " + movie_ID  + "");
+		List<Showing> listOfShowings= query.getResultList();
+		return listOfShowings;
+	}
+	
+	private Set<Screen> getScreensForVenue(Long venue_ID) {
+		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);
+		List<Venue> venue = query.getResultList();
+		
+		/*	Query query = em.createQuery("SELECT screen_ID from Screen s WHERE venue_ID = " + venue_ID);
+		List<Screen> listOfScreens = query.getResultList();*/
+		return venue.get(0).getScreens();
+		
 	}
 	
 	private Date convertStringToDate(String date){

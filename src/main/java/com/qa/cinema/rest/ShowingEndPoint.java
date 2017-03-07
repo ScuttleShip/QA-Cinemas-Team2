@@ -48,9 +48,9 @@ public class ShowingEndPoint {
 	}*/
 	
 	@GET
-	@Path("/json/venue/{vid}/{date}")
+	@Path("/json/venue/{venue_ID}/{date}")
 	@Produces({ "application/json" })
-	public String getAllMoviesByVenueAndDate(@PathParam("vid") Long venue_ID, @PathParam("date") String dateSelected){
+	public String getAllMoviesByVenueAndDate(@PathParam("venue_ID") Long venue_ID, @PathParam("date") String dateSelected){
 		return showingService.getAllShowingsAtAVenueAndDate(venue_ID, dateSelected);
 	}
 
@@ -76,11 +76,11 @@ public class ShowingEndPoint {
 		return showingService.deleteShowing(showingId);
 	}
 	
-	@GET
+/*	@GET
 	@Path("/json/{booking_ID}")
 	@Produces({ "application/json" })
 	public String getShowingByBookingID(@PathParam("booking_ID") Long bookingID){
 		return showingService.getShowingByBookingID(bookingID);
-	}
+	}*/
 
 }
