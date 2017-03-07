@@ -18,6 +18,8 @@ public class Booking {
 	@NotNull
 	private String customerEmail;
 	
+	private Double orderTotal;
+	
 	private Long showing_ID;
 
 	public Booking(int numberOfSeats, String customerEmail, Long showing_ID) {
@@ -40,6 +42,14 @@ public class Booking {
 
 	public void setNumberOfSeats(int numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
+	}
+
+	public Double getPrice() {
+		return orderTotal;
+	}
+
+	public void setPrice(Double orderTotal) {
+		this.orderTotal = orderTotal;
 	}
 
 	public String getCustomerEmail() {
