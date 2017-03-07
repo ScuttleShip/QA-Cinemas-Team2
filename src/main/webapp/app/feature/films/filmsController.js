@@ -1,3 +1,10 @@
-/**
- * Created by Administrator on 27/02/2017.
- */
+(function() {
+
+    var filmsController = function () {
+
+
+    }
+
+    angular.module("qaCinemas2").controller("filmsController", [filmsController]);
+
+}());
