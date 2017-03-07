@@ -18,7 +18,7 @@
                 "confirmation",
                 {
                     url: "/confirmation",
-                    templateUrl:"app/feature/confirmation/confirmation.html"
+                    templateUrl:"app/feature/confirmation/confirmation-partial.html"
                 }
             )
             .state(

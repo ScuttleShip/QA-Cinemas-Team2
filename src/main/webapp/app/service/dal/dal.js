@@ -2,7 +2,7 @@
 
 (function () {
 
-    angular.module("qaCinemas").service("dal", ["$http", "$q", "$log", Dal]);
+    angular.module("qaCinemas2").service("dal", ["$http", "$q", "$log", Dal]);
 
     function Dal ($http, $q, $log) {
         this.http = (function serviceCaller() {

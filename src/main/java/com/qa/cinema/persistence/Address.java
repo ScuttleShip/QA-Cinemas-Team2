@@ -27,7 +27,7 @@ public class Address {
 	
 	public Address(String firstLine, String secondLine, String townCity, String county, String postcode)
 	{
-		if(firstLine != null && !firstLine.equals(null))
+		if(firstLine != null)
 			this.firstLine = firstLine;
 		else
 			this.firstLine = "";
@@ -38,7 +38,7 @@ public class Address {
 	}
 	
 	public Address(String firstLine, String postcode) {
-		if(firstLine != null && !firstLine.equals(null))
+		if(firstLine != null)
 			this.firstLine = firstLine;
 		else
 			this.firstLine = "";
