@@ -42,11 +42,10 @@
             frmvalidator.addValidation("Phone","maxlen=11");
             frmvalidator.addValidation("Phone","numeric");
 
-            window.location.href();
 
             if(document.myform.onsubmit())
             {
-                document.myform.submit();
+                window.location.href = 'index.html';
 
             }
         }
