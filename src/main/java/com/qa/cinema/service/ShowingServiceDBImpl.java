@@ -55,11 +55,12 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 
 	@Override
-	public Boolean decreaseSeatCount(Long showingId, int count) {
+	public Boolean decreaseSeatCount(Long showingId, int numberOfSeatsBooked) {
 		Showing showing = findShowing(showingId);
 		boolean isShowingUpdated = false;
-		if (showing != null && showing.getSeatsRemaining() >= count) {
-			showing.setSeatsRemaining(showing.getSeatsRemaining() - count);
+		int count = showing.getSeatsRemaining();
+		if (showing != null && count >= numberOfSeatsBooked) {                                   
+			showing.setSeatsRemaining(count - numberOfSeatsBooked);
 			em.merge(showing);
 			isShowingUpdated = true;
 		}

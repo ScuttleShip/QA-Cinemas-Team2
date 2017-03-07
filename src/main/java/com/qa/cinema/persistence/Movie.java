@@ -1,18 +1,17 @@
 package com.qa.cinema.persistence;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Movie {
-	@GeneratedValue
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "movie_ID")
 	private Long movie_ID;
 	private String title;
 	private String description;
@@ -22,10 +21,9 @@ public class Movie {
 	private String filmImg;
 	private String filmUrl;
 	
-//	@OneToMany
-//	@JoinColumn(name="movie_ID")
-//	private Set<Showing> showings = new HashSet<Showing>();
-
+//	  @OneToMany(mappedBy = "movie")
+//	  private List<Showing> showings;
+	
 	public Movie() {
 
 	}
