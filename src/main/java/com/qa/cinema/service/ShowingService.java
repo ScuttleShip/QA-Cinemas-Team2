@@ -17,7 +17,7 @@ public interface ShowingService {
 
 	String deleteShowing(Long showingId);
 
-	Boolean decreaseSeatCount(Long showingId, int count);
+	Boolean decreaseSeatCount(Long showingId, int numberOfSeatsBooked);
 	
 	String getAllShowingsAtAVenue(Long venue_ID);
 

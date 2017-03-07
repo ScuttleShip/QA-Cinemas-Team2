@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.qa.cinema.persistence.Booking;
+import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
 @Stateless
@@ -21,6 +22,9 @@ public class BookingServiceDBImpl {
 
 	@Inject
 	private JSONUtil util;
+	
+	@Inject 
+	private ShowingService showing;
 
 	public String getAllBookings() {
 		Query query = em.createQuery("SELECT e FROM Booking e");
@@ -31,11 +35,16 @@ public class BookingServiceDBImpl {
 	public String addNewBooking(String bookingJson) {
 		Booking newBooking = util.getObjectForJSON(bookingJson, Booking.class);
 		em.merge(newBooking);
+		int seatsBooked = newBooking.getNumberOfSeats();
+		Long showing_ID = newBooking.getShowing_ID();
+		
+		showing.decreaseSeatCount(showing_ID, seatsBooked);
+		
 		return bookingJson;
 	}
 
 	// The Customer is not allowed to change a booking after it has been made.
-	// So the code below is no longer used
+	// So the code below is no longer used but it is being kept, just in case.
 	//
 	// public String replaceBooking(Integer booking_ID, String updatedBooking) {
 	// Booking updateBooking = util.getObjectForJSON(updatedBooking,
