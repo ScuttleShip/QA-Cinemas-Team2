@@ -3,9 +3,12 @@ insert into address(address_id, county, firstline, postcode, secondline, townorc
 insert into address(address_id, county, firstline, postcode, secondline, townorcity) values (3,'ManTester','33 Example Street','3TT3TT','Example','Testcaster');
 
 
-insert into movie(movie_id, certification, description, duration, genre, title) values (1, 'PG', 'This is a film', '01:30:00', 'Animation', 'Example Film');
-insert into movie(movie_id, certification, description, duration, genre, title) values (2, '12', 'This is another film', '02:00:00', 'Animation', 'Test Film');
-insert into movie(movie_id, certification, description, duration, genre, title) values (3, '18', 'This is the third film', '01:50:00', 'Horror', 'Demo Film');
+insert into movie(movie_id, certification, description, duration, genre, title, filmImg) values (1, '12A', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanitys survival', '02:30:00', 'Space', 'Interstellar', 'imgs/interstellar.jpg');
+insert into movie(movie_id, certification, description, duration, genre, title, filmImg) values (2, '12A', 'Three decades after the defeat of the Galactic Empire, a new threat arises. The First Order attempts to rule the galaxy and only a ragtag group of heroes can stop them, along with the help of the Resistance.', '02:30:00', 'Space', 'Star Wars : The Force Awakens', 'imgs\star_wars_the_force_awakens_main_characters_105940_1920x1080.jpg');
+insert into movie(movie_id, certification, description, duration, genre, title, filmImg) values (3, '12A', 'Two astronauts work together to survive after an accident which leaves them alone in space.', '02:30:00', 'Space', 'Gravity', 'imgs/gravity.jpg');
+insert into movie(movie_id, certification, description, duration, genre, title, filmImg) values (4, '12A', 'A new theme park, built on the original site of Jurassic Park, creates a genetically modified hybrid dinosaur, which escapes containment and goes on a killing spree.', '02:30:00', 'Dinosaur', 'Jurassic World', 'imgs\chris_pratt_jurassic_world-1920x1080.jpg');
+insert into movie(movie_id, certification, description, duration, genre, title, filmImg) values (5, '12A', 'Earths mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.', '02:30:00', 'Superhero', 'Marvel Avengers Assemble', 'imgs\maxresdefault.jpg');
+
 insert into venue(venue_id, name, venueimg, address_address_id) values(1,'Exampleshire','myimg',1);
 insert into venue(venue_id, name, venueimg, address_address_id) values(2,'Exampleshire Arena','myimg',2);
 insert into venue(venue_id, name, venueimg, address_address_id) values(3,'ManTester','myimg',3);
