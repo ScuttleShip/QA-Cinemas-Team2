@@ -3,6 +3,8 @@
 </head>
 
 <!-- Carousel of movies -->
+<!-- To change the movies in this carousel, see homeController Line 39 -->
+
 <div ng-controller="homeController as ctrl">
     <div class="container" style="background-color: #082753; color: white">
         <div id="main_area">
@@ -16,23 +18,23 @@
                                 <!-- Carousel items -->
                                 <div class="carousel-inner">
                                     <div class="active item" data-slide-number="0">
-                                        <img src="imgs/interstellar.jpg"></div>
+                                        <img src="imgs/QAwelcome3.png"></div>
 
                                     <div class="item" data-slide-number="1">
-                                        <img src="imgs/star_wars_the_force_awakens_main_characters_105940_1920x1080.jpg">
+                                        <img src="{{ctrl.movies[ctrl.slideMovie_ID1].filmImg}}">
                                     </div>
 
                                     <div class="item" data-slide-number="2">
-                                        <img src="imgs/gravity.jpg"></div>
+                                        <img src="{{ctrl.movies[ctrl.slideMovie_ID2].filmImg}}"></div>
 
                                     <div class="item" data-slide-number="3">
-                                        <img src="imgs/chris_pratt_jurassic_world-1920x1080.jpg"></div>
+                                        <img src="{{ctrl.movies[ctrl.slideMovie_ID3].filmImg}}"></div>
 
                                     <div class="item" data-slide-number="4">
-                                        <img src="imgs/58622-the_angry_birds_movie_wallpaper.jpg"></div>
+                                        <img src="{{ctrl.movies[ctrl.slideMovie_ID4].filmImg}}"></div>
 
                                     <div class="item" data-slide-number="5">
-                                        <img src="imgs/maxresdefault.jpg"></div>
+                                        <img src="{{ctrl.movies[ctrl.slideMovie_ID5].filmImg}}"></div>
                                 </div><!-- Carousel nav -->
                                 <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
@@ -46,40 +48,53 @@
                         <div class="col-sm-4" id="carousel-text"></div>
 
                         <div id="slide-content" style="display: none;">
-                            <div id="slide-content-0">
-                                <h2>Interstellar</h2>
 
-                                <p class="sub-text">Now Showing - Book Now!</p>
+
+                            <div id="slide-content-0">
+                                <h2></h2>
+
+                                <p> </p>
+
                             </div>
 
                             <div id="slide-content-1">
-                                <h2>Star Wars - The Force Awakens</h2>
+                                <h2>{{ctrl.movies[ctrl.slideMovie_ID1].title}}</h2>
 
-                                <p class="sub-text">Now Showing - Book Now!</p>
+                                <p class="sub-text">{{ctrl.movies[ctrl.slideMovie_ID1].description}}</p>
+                                <p class="sub-text">Genre : {{ctrl.movies[ctrl.slideMovie_ID1].genre}}</p>
+                                <p class="sub-text">Certification : {{ctrl.movies[ctrl.slideMovie_ID1].certification}}</p>
                             </div>
 
                             <div id="slide-content-2">
-                                <h2>Gravity</h2>
+                                <h2>{{ctrl.movies[ctrl.slideMovie_ID2].title}}</h2>
 
-                                <p class="sub-text">Now Showing - Book Now!</p>
+                                <p class="sub-text">{{ctrl.movies[ctrl.slideMovie_ID2].description}}</p>
+                                <p class="sub-text">Genre : {{ctrl.movies[ctrl.slideMovie_ID2].genre}}</p>
+                                <p class="sub-text">Certification : {{ctrl.movies[ctrl.slideMovie_ID2].certification}}</p>
                             </div>
 
                             <div id="slide-content-3">
-                                <h2>Jurassic World</h2>
+                                <h2>{{ctrl.movies[ctrl.slideMovie_ID3].title}}</h2>
 
-                                <p class="sub-text">Now Showing - Book Now!</p>
+                                <p class="sub-text">{{ctrl.movies[ctrl.slideMovie_ID3].description}}</p>
+                                <p class="sub-text">Genre : {{ctrl.movies[ctrl.slideMovie_ID3].genre}}</p>
+                                <p class="sub-text">Certification : {{ctrl.movies[ctrl.slideMovie_ID3].certification}}</p>
                             </div>
 
                             <div id="slide-content-4">
-                                <h2>The Angry Birds Movie</h2>
+                                <h2>{{ctrl.movies[ctrl.slideMovie_ID4].title}}</h2>
 
-                                <p class="sub-text">Now Showing - Book Now!</p>
+                                <p class="sub-text">{{ctrl.movies[ctrl.slideMovie_ID4].description}}</p>
+                                <p class="sub-text">Genre : {{ctrl.movies[ctrl.slideMovie_ID4].genre}}</p>
+                                <p class="sub-text">Certification : {{ctrl.movies[ctrl.slideMovie_ID4].certification}}</p>
                             </div>
 
                             <div id="slide-content-5">
-                                <h2>Marvel Avengers Assemble</h2>
+                                <h2>{{ctrl.movies[ctrl.slideMovie_ID5].title}}</h2>
 
-                                <p class="sub-text">Now Showing - Book Now!</p>
+                                <p class="sub-text">{{ctrl.movies[ctrl.slideMovie_ID5].description}}</p>
+                                <p class="sub-text">Genre : {{ctrl.movies[ctrl.slideMovie_ID5].genre}}</p>
+                                <p class="sub-text">Certification : {{ctrl.movies[ctrl.slideMovie_ID5].certification}}</p>
                             </div>
                         </div>
                     </div>
@@ -90,30 +105,30 @@
                 <!-- Bottom switcher of slider -->
                 <ul class="hide-bullets">
                     <li class="col-sm-2">
-                        <a class="thumbnail" id="carousel-selector-0"><img src="imgs/interstellar.jpg" onmouseover=""></a>
+                        <a class="thumbnail" id="carousel-selector-0"><img src="imgs/QAwelcome3.png" onmouseover=""></a>
                     </li>
 
                     <li class="col-sm-2">
-                        <a class="thumbnail" id="carousel-selector-1"><img
-                                src="imgs/star_wars_the_force_awakens_main_characters_105940_1920x1080.jpg"></a>
+                        <a class="thumbnail tint" id="carousel-selector-1"><img
+                                src="{{ctrl.movies[ctrl.slideMovie_ID1].filmImg}}"></a>
                     </li>
 
                     <li class="col-sm-2">
-                        <a class="thumbnail" id="carousel-selector-2"><img src="imgs/gravity.jpg"></a>
+                        <a class="thumbnail" id="carousel-selector-2"><img src="{{ctrl.movies[ctrl.slideMovie_ID2].filmImg}}"></a>
                     </li>
 
                     <li class="col-sm-2">
                         <a class="thumbnail" id="carousel-selector-3"><img
-                                src="imgs/chris_pratt_jurassic_world-1920x1080.jpg"></a>
+                                src="{{ctrl.movies[ctrl.slideMovie_ID3].filmImg}}"></a>
                     </li>
 
                     <li class="col-sm-2">
                         <a class="thumbnail" id="carousel-selector-4"><img
-                                src="imgs/58622-the_angry_birds_movie_wallpaper.jpg"></a>
+                                src="{{ctrl.movies[ctrl.slideMovie_ID4].filmImg}}"></a>
                     </li>
 
                     <li class="col-sm-2">
-                        <a class="thumbnail" id="carousel-selector-5"><img src="imgs/maxresdefault.jpg"></a>
+                        <a class="thumbnail" id="carousel-selector-5"><img src="{{ctrl.movies[ctrl.slideMovie_ID5].filmImg}}"></a>
                     </li>
                 </ul>
             </div>

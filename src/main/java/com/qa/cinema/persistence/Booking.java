@@ -2,6 +2,7 @@ package com.qa.cinema.persistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
@@ -10,16 +11,21 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Booking {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long booking_ID;
 	@NotNull
 	private int numberOfSeats;
 	@NotNull
 	private String customerEmail;
+	
+	private Double orderTotal;
+	
+	private Long showing_ID;
 
-	public Booking(int numberOfSeats, String customerEmail) {
+	public Booking(int numberOfSeats, String customerEmail, Long showing_ID) {
 		this.numberOfSeats = numberOfSeats;
 		this.customerEmail = customerEmail;
+		this.showing_ID = showing_ID;
 	}
 
 	public Booking() {
@@ -30,16 +36,20 @@ public class Booking {
 		return booking_ID;
 	}
 
-	public void setBooking_ID(Long bookingID) {
-		this.booking_ID = bookingID;
-	}
-
 	public int getNumberOfSeats() {
 		return numberOfSeats;
 	}
 
 	public void setNumberOfSeats(int numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
+	}
+
+	public Double getPrice() {
+		return orderTotal;
+	}
+
+	public void setPrice(Double orderTotal) {
+		this.orderTotal = orderTotal;
 	}
 
 	public String getCustomerEmail() {
@@ -49,5 +59,14 @@ public class Booking {
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
+	
+	public Long getShowing_ID() {
+		return showing_ID;
+	}
+
+	public void setShowing_ID(Long showing_ID) {
+		this.showing_ID = showing_ID;
+	}
+
 
 }
