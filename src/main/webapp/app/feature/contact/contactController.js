@@ -1,5 +1,3 @@
-//You should create the validator only after the definition of the HTML form
-
 (function() {
 
     var contactController = function(contactUsService) {
@@ -24,6 +22,33 @@
 
         vm.doSomething = function() {
             console.log("did something");
+        }
+
+        vm.validateBox = function(){
+            var frmvalidator  = new Validator("myform");
+
+            frmvalidator.addValidation("FirstName","req","Please enter your First Name");
+            /*
+            frmvalidator.addValidation("FirstName","maxlen=20",	"Max length for FirstName is 20");
+            frmvalidator.addValidation("FirstName","alpha","Alphabetic chars only");
+
+            frmvalidator.addValidation("LastName","req","Please enter your Last Name");
+            frmvalidator.addValidation("LastName","maxlen=20","Max length is 20");
+
+            frmvalidator.addValidation("Email","maxlen=50");
+            frmvalidator.addValidation("Email","req");
+            frmvalidator.addValidation("Email","email");
+            */
+            frmvalidator.addValidation("Phone","maxlen=11");
+            frmvalidator.addValidation("Phone","numeric");
+
+            window.location.href();
+
+            if(document.myform.onsubmit())
+            {
+                document.myform.submit();
+
+            }
         }
 
     }
