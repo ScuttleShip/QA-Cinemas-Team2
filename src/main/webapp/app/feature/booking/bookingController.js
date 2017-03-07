@@ -3,11 +3,12 @@
  */
 (function() {
 
-    var bookingController = function(bookingService, $mdDialog) {
+    var bookingController = function($scope, bookingService) {
 
         var vm = this;
 
         vm.currentBooking = {};
+        vm.newNumberOfSeats = 0;
 
         function init() {
 
@@ -18,26 +19,69 @@
             sessionStorage.setItem("chosenNumberOfSeats", 2);
 
             //retrieve data from session storage
-            var chosenVenue = sessionStorage.getItem("chosenVenue");
-            var chosenDate = sessionStorage.getItem("chosenDate");
-            var chosenShowing = sessionStorage.getItem("chosenShowing");
-            var chosenNumberOfSeats = sessionStorage.getItem("chosenNumberOfSeats");
+            vm.currentBooking.chosenVenue = sessionStorage.getItem("chosenVenue");
+            vm.currentBooking.chosenDate = sessionStorage.getItem("chosenDate");
+            vm.currentBooking.chosenShowing = sessionStorage.getItem("chosenShowing");
+            vm.currentBooking.chosenNumberOfSeats = parseInt(sessionStorage.getItem("chosenNumberOfSeats"));
+            vm.newNumberOfSeats = 15;
 
-            //assign paragraph elements for each location data belongs
-            var venuePlace = document.getElementById("chosenVenue");
-            var datePlace = document.getElementById("chosenDate");
-            var showingPlace = document.getElementById("chosenShowing");
-            var seatsPlace = document.getElementById("chosenNumberOfSeats");
+            console.log(vm.newNumberOfSeats);
 
-            //assign data values to location
-            venuePlace.innerHTML = chosenVenue;
-            datePlace.innerHTML = chosenDate;
-            showingPlace.innerHTML = chosenShowing;
-            seatsPlace.innerHTML = chosenNumberOfSeats;
+            // //assign paragraph elements for each location data belongs
+            // var venuePlace = document.getElementById("chosenVenue");
+            // var datePlace = document.getElementById("chosenDate");
+            // var showingPlace = document.getElementById("chosenShowing");
+            // var seatsPlace = document.getElementById("chosenNumberOfSeats");
+            //
+            // //assign data values to location
+            // venuePlace.innerHTML = chosenVenue;
+            // datePlace.innerHTML = chosenDate;
+            // showingPlace.innerHTML = chosenShowing;
+            // seatsPlace.innerHTML = chosenNumberOfSeats;
+
+            $( function() {
+                $( "#dialog" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    buttons: [
+                        {
+                            text: "Cancel",
+                            icons: {
+                                primary: ""
+                            },
+                            click: function() {
+                                $(this).dialog("close");
+                            }
+                        },
+                        {
+                            text: "Save",
+                            icons: {
+                                primary: ""
+                            },
+                            click: function() {
+                                $(this).dialog("close");
+                                vm.saveChanges();
+                            }
+                        }
+                    ]
+                });
+
+                $( "#opener" ).on( "click", function() {
+                    $( "#dialog" ).dialog( "open" );
+                });
+            } );
 
         }
 
         init();
+
+        function saveChanges2() {
+            vm.saveChanges();
+        }
+
+        vm.saveChanges = function() {
+            console.log(vm.newNumberOfSeats);
+        }
 
         vm.saveBooking = function() {
 
@@ -50,40 +94,14 @@
 
         };
 
-        vm.editBooking = function(ev) {
-
-            var parentThing = angular.element(document.body);
-            $mdDialog.show({
-                parent: parentThing,
-                targetEvent: $event,
-                template:
-                '<md-dialog aria-label="Edit Number Of Seats">'+
-                    '<md-dialog-content>'+
-                    '<'+
-
-            })
-
-        };
-
-        function DialogController($mdDialog) {
-
-            var vm = this;
-
-            vm.closeDialog = function () {
-                $mdDialog.hide();
-            }
-        }
-
-        vm.closeEdit = function() {
-
-        };
-
-        function update() {
-
-        }
-
     };
 
-    angular.module("qaCinemas2").controller("bookingController", ['bookingService', bookingController]);
+    angular.module("qaCinemas2").controller("bookingController", ['$scope', 'bookingService', bookingController]);
+
+    angular.module("qaCinemas2").filter('num', (function() {
+        return function(input) {
+            return parseInt(input, 10);
+        }
+    }));
 
 }());

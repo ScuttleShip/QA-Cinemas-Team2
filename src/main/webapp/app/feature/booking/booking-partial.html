@@ -1,23 +1,31 @@
 <div ng-controller="bookingController as ctrl" id="popupContainer">
 
     <h2>Chosen Venue:</h2>
-    <p id="chosenVenue" ng-model="currentBooking.venue"></p>
+    <p id="chosenVenue">{{ctrl.currentBooking.chosenVenue}}</p>
 
     <h2>Chosen Date:</h2>
-    <p id="chosenDate"></p>
+    <p id="chosenDate">{{ctrl.currentBooking.chosenDate}}</p>
 
     <h2>Chosen Showing:</h2>
-    <p id="chosenShowing"></p>
+    <p id="chosenShowing">{{ctrl.currentBooking.chosenShowing}}</p>
 
     <h2>Chosen Number of Seats:</h2>
-    <p id="chosenNumberOfSeats"></p>
+    <p id="chosenNumberOfSeats">{{ctrl.currentBooking.chosenNumberOfSeats}}</p>
+
+    <h2>Booking Total:</h2>
+    <p>{{ctrl.currentBooking.chosenNumberOfSeats * 6.99 | currency : "£"}}</p>
 
     <div class="col-md-2 pls-work"><button class="button" id="plsSubmit" ng-click="ctrl.saveBooking()"><span>Checkout</span></button></div>
 
-    <div class="col-md-2 pls-work"><button class="button" id="plsEdit" ng-click="ctrl.editBooking($event)"><span>Edit order</span></button></div>
+    <div class="col-md-2 pls-work"><button class="button" id="opener"><span>Edit order</span></button></div>
 
-    <div id="editBookingWindow">
-        <p>Please do something</p>
+    <div id="dialog">
+        <label>Number Of Seats:
+            <input type="number" ng-model="ctrl.newNumberOfSeats" ng-change="ctrl.saveChanges()" min="0">
+        </label>
+        <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" ng-click="vm.saveChanges()">
+            <span class="ui-button-text">Save</span>
+        </button>
     </div>
 
 </div>
