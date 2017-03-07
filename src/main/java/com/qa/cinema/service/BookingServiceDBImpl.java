@@ -25,7 +25,7 @@ public class BookingServiceDBImpl {
 	
 	@Inject 
 	private ShowingService showing;
-
+  
 	public String getAllBookings() {
 		Query query = em.createQuery("SELECT e FROM Booking e");
 		Collection<Booking> bookings = (Collection<Booking>) query.getResultList();
@@ -34,13 +34,17 @@ public class BookingServiceDBImpl {
 
 	public String addNewBooking(String bookingJson) {
 		Booking newBooking = util.getObjectForJSON(bookingJson, Booking.class);
-		em.merge(newBooking);
 		int seatsBooked = newBooking.getNumberOfSeats();
 		Long showing_ID = newBooking.getShowing_ID();
 		
-		showing.decreaseSeatCount(showing_ID, seatsBooked);
+		Boolean bookingConfirmed = showing.decreaseSeatCount(showing_ID, seatsBooked);
 		
-		return bookingJson;
+		if(bookingConfirmed){
+			em.merge(newBooking);
+			return bookingJson;	
+		}else{
+			return "{\"message\": \"booking could not be completed, there are only" + showing.findShowingByID(showing_ID).getSeatsRemaining() + "seats remaining \"}";
+		}
 	}
 
 	// The Customer is not allowed to change a booking after it has been made.

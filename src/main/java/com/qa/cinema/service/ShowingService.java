@@ -1,5 +1,7 @@
 package com.qa.cinema.service;
 
+import com.qa.cinema.persistence.Showing;
+
 /**
  * @author FWasim
  */
@@ -22,4 +24,6 @@ public interface ShowingService {
 	String getAllShowingsAtAVenue(Long venue_ID);
 
 	String getShowingByBookingID(Long bookingID);
+	
+	Showing findShowingByID(Long id);
 }

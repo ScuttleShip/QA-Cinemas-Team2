@@ -19,7 +19,7 @@ import com.qa.cinema.util.JSONUtil;
 public class ShowingServiceDBImpl implements ShowingService {
 
 	@PersistenceContext(unitName = "primary")
-	private EntityManager em;
+	private EntityManager em; 
 
 	@Inject
 	private JSONUtil util;
@@ -125,6 +125,10 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 	
 	private Showing findShowing(Long id) {
+		return em.find(Showing.class, id);
+	}
+	
+	public Showing findShowingByID(Long id) {
 		return em.find(Showing.class, id);
 	}
 
