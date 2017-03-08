@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
  * @author FWasim
  */
 @Entity
-public class Showing {
+public class Showing implements Comparable<Showing>{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -121,5 +121,8 @@ public class Showing {
 				+ ", date=" + date + ", seatsRemaining=" + seatsRemaining + "]";
 	}
 
-	
+	@Override
+	public int compareTo(Showing o) {
+		return getStartTime().compareTo(o.getStartTime());
+	}
 }

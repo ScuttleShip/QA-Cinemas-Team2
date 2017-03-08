@@ -21,16 +21,20 @@ public class MovieEndPoint {
 	@GET
 	@Produces({"application/json"})
 	public String getAllMovies(){
-		
-		
 		return service.getAllMovies();
+	}
+	
+	@Path("/json/{id}")
+	@GET
+	@Produces({"application/json"})
+	public String getMovieById(@PathParam("id") Long movieId){
+		return service.getMovieById(movieId);
 	}
 	
 	@Path("/json")
 	@POST
 	@Produces({"application/json"})
 	public String addMovie(String movie){
-		
 		return service.addNewMovie(movie);
 	}
 	
@@ -45,7 +49,6 @@ public class MovieEndPoint {
 	@DELETE
 	@Produces({"application/json"})
 	public String deleteMovie(@PathParam("id") Long movieId, String movie){
-		
 		return service.deleteMovie(movieId);
 	}
 

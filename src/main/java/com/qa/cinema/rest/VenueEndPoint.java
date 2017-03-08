@@ -28,6 +28,13 @@ public class VenueEndPoint {
 		
 	}
 	
+	@GET
+	@Path("/json/{id}")
+	@Produces({ "application/json" })
+	public String getVenueByIDAsJson(@PathParam("id")Long venue_ID) {
+		return venueService.findVenueByID(venue_ID);
+	}
+	
 	@POST
 	@Path("/json")
 	@Produces({ "application/json" })
@@ -38,14 +45,14 @@ public class VenueEndPoint {
 	@PUT
 	@Path("/json/{id}")
 	@Produces({ "application/json" })
-	public String updateVenueFromCinema(@PathParam("id")Long id, String venueJson){
-		return venueService.updateVenue(id, venueJson);
+	public String updateVenueFromCinema(@PathParam("id")Long venue_ID, String venueJson){
+		return venueService.updateVenue(venue_ID, venueJson);
 	}
 	
 	@DELETE
 	@Path("/json/{id}")
 	@Produces({ "application/json" })
-	public String deleteVenueFromCinema(@PathParam("id")Long id){
-		return venueService.deleteVenue(id);
+	public String deleteVenueFromCinema(@PathParam("id")Long venue_ID){
+		return venueService.deleteVenue(venue_ID);
 	}
 }
