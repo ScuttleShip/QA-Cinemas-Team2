@@ -76,7 +76,13 @@
                     url: "/venues",
                     templateUrl:"app/feature/venues/venues-partial.html"
                 }
-            );
+            ).state(
+            "allFilms",
+            {
+                url: "/films/all",
+                templateUrl:"app/feature/film/film-partial.html"
+            }
+        );
 
     });
 }());

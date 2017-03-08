@@ -10,6 +10,15 @@
            var chosenDate = sessionStorage.getItem("chosenDate");
            var venuePlace = document.getElementById("venuePlace");
 
+           /*$("#seatChooser").dialog({
+               autoOpen: false,
+               buttons: [
+
+               ]
+           });*/
+
+
+
            venueService.getVenueByID(chosenVenueID).then(function (results) {
                venuePlace.innerHTML = "Films on at QA Cinemas: " + results.name;
            }, function (error) {
@@ -27,6 +36,20 @@
                vm.error = true;
                vm.errorMessage = error;
            });
+       }
+
+       function submitSeatChooser() {
+
+       }
+
+       vm.showSeatChooser = function (showing) {
+
+           console.log("Open seat chooser");
+
+           console.log(showing.showing_ID);
+
+           //$("#seatChooser").dialog("open");
+
        }
 
        vm.convertKeyToJSON = function (objectToConvert) {

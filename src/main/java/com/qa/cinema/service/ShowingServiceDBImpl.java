@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -88,27 +89,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 		}
 		return returnMessage("the showing was not removed");
 	}
-	
-	private List<Movie> getAllMoviesByVenue(Long venue_ID){	
-		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);
-		List<Venue> venue = query.getResultList();
 		
-		Set<Screen> listOfScreens = venue.get(0).getScreens();
-		Set<Showing> listOfShowings = new HashSet<Showing>();
-		ArrayList<Movie> listOfMoviesAtVenue = new ArrayList<Movie>();
-		
-		for(Screen screen : listOfScreens){
-			listOfShowings = screen.getShowings();
-			for(Showing show : listOfShowings){
-				if(!listOfMoviesAtVenue.contains(show.getMovie())){
-						listOfMoviesAtVenue.add(show.getMovie());
-				}
-			}		
-		}
-			
-		return listOfMoviesAtVenue;
-	}
-	
 	@Override
 	public String getAllShowingsAtAVenueAndDate(Long venue_ID, String dateSelected){
 
@@ -163,6 +144,8 @@ public class ShowingServiceDBImpl implements ShowingService {
 				}		
 			}
 			
+			Collections.sort(showingsForMovie);
+			
 			listOfMoviesAndShowings.put(util.getJSONForObject(currentMovie), showingsForMovie);
 			
 		}
@@ -170,28 +153,6 @@ public class ShowingServiceDBImpl implements ShowingService {
 		return util.getJSONForObject(listOfMoviesAndShowings);
 	}
 	
-
-	private Movie getMovieForShowing(Long movie_ID) {
-		Query query = em.createQuery("SELECT movie_ID FROM Movie WHERE movie_ID = " + movie_ID);
-		List<Movie> movies = query.getResultList();
-		return movies.get(0);
-		
-	}
-	
-	private List<Showing> getShowingsByVenue(Long screen_ID) {
-		
-		Query query = em.createQuery("SELECT showing_ID FROM Showing WHERE screen_ID = " + screen_ID);
-		List<Showing> showingsAtScreen = query.getResultList();
-		return showingsAtScreen;
-		
-	}
-	
-	private List<Showing> getShowingsForAMovie(Long venue_ID, String dateSelected, Long movie_ID){
-		//Query query = em.createQuery("SELECT s.startTime FROM Showing s JOIN s.screen sc WHERE sc.venue = " + venue_ID + " AND s.movie = " + movieId  + "");
-		Query query = em.createQuery("SELECT s.startTime FROM Showing s WHERE s.movie = " + movie_ID  + "");
-		List<Showing> listOfShowings= query.getResultList();
-		return listOfShowings;
-	}
 	
 	private Set<Screen> getScreensForVenue(Long venue_ID) {
 		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);
@@ -199,7 +160,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 		
 		/*	Query query = em.createQuery("SELECT screen_ID from Screen s WHERE venue_ID = " + venue_ID);
 		List<Screen> listOfScreens = query.getResultList();*/
-		return venue.get(0).getScreens();
+		return venue.get(0).getScreen();
 		
 	}
 	
@@ -225,5 +186,11 @@ public class ShowingServiceDBImpl implements ShowingService {
 
 	public static final String returnMessage(String message) {
 		return "{\"message\": \"" + message + "\"}";
+	}
+
+	@Override
+	public String getShowingByBookingID(Long bookingID) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

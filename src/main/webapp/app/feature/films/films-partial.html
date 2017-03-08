@@ -42,15 +42,18 @@
                 <div class="col-md-6">
                     <div class="btn-group" style="display: inline-flex;">
                         <div ng-repeat="v in value">
-                            <a type="button" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-xs">{{ctrl.trimTime(v.startTime)}}</a>
+                            <button ng-click="ctrl.showSeatChooser(v)" type="button"  class="btn btn-warning btn-xs">{{ctrl.trimTime(v.startTime)}}</button>
                         </div>
                     </div>
                 </div>
-            </div>
-                <hr><br>
+            </div><hr><br>
         </div>
     </div>
 </div>
+<!--
+<div id="seatChooser">
+    <input type="number">
+</div>-->
 
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -60,6 +63,7 @@
                 <h4 class="modal-title">Set number of seats</h4>
             </div>
             <div class="modal-body">
+                <p>Showing ID : {{ctrl.getShowingID}}</p>
                 <div class="form-group">
                     <label for="setSeats">Seats Required:</label>
                     <input type="number" class="form-control" id="setSeats">
