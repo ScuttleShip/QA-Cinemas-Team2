@@ -1,41 +1,16 @@
 
-<div ng-controller="filmController as ctrl">
 
-    <h1 style="color: white; text-align: center">View All Films</h1>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table FilmTable table-hover">
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr ng-repeat="film in ctrl.films">
-                        <td>{{film.title}}</td>
-                        <td>{{film.description}}</td>
-                    </tr>
-                </table>
+<div  ng-controller="filmController as ctrl2">
+    <div ng-repeat="film in ctrl2.films " class="col-sm-4">
+    <a class="list-quotes" href="/">
+        <!-- Recommended size 360X360 -->
+        <img class='img-responsive' alt="img" src="{{film.filmImg}}">
+        <div class="quotes">
+            <h1>{{film.title}}</h1>
+            <p >
+                {{film.description}} <span>&nbsp;...Read More</span>
+            </p>
         </div>
-    </div>
+    </a>
 </div>
-
-
-    <div class="container">
-        <div class="row" style="border-radius: 0 !important;">
-            <div class="col-md-12">
-
-                <div class="col-md-3">
-                    <div ng-repeat="film in ctrl.films" class="well">
-                            <td>{{film.title}}</td>
-                            <td>{{film.description}}</td>
-                        </div>
-                    <a href="/films/logan"><span class="title">Logan</span></a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <hr>
-
 </div>
