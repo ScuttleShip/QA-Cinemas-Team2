@@ -28,6 +28,8 @@ button.accordion.active, button.accordion:hover
 div.panel
 {
     padding: 0 18px;
-    background-color: white;
+    background-color: #082753;
+    color: white;
     display: none;
+    font-size: 18pt;
 }

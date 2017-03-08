@@ -10,9 +10,9 @@ insert into movie(movie_id, certification, description, duration, genre, title, 
 insert into movie(movie_id, certification, description, duration, genre, title, filmImg) values (4, '12A', 'A new theme park, built on the original site of Jurassic Park, creates a genetically modified hybrid dinosaur, which escapes containment and goes on a killing spree.', '02:30:00', 'Dinosaur', 'Jurassic World', 'imgs\chris_pratt_jurassic_world-1920x1080.jpg');
 insert into movie(movie_id, certification, description, duration, genre, title, filmImg) values (5, '12A', 'Earths mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.', '02:30:00', 'Superhero', 'Marvel Avengers Assemble', 'imgs\maxresdefault.jpg');
 
-insert into venue(venue_id, name, venueimg, venue_address_id) values(1,'QA Newcastle','myimg',1);
-insert into venue(venue_id, name, venueimg, venue_address_id) values(2,'QA Leeds','myimg',2);
-insert into venue(venue_id, name, venueimg, venue_address_id) values(3,'QA Manchester','myimg',3);
+insert into venue(venue_id, name, venueimg, venue_address_id) values(1,'QA Newcastle','imgs/venue1.jpg',1);
+insert into venue(venue_id, name, venueimg, venue_address_id) values(2,'QA Leeds','imgs/venue2.jpg',2);
+insert into venue(venue_id, name, venueimg, venue_address_id) values(3,'QA Manchester','imgs/venue3.jpg',3);
 
 insert into screen(screen_id, numberofseats, screennumber, venue_id) values (1,100,1,1);
 insert into screen(screen_id, numberofseats, screennumber, venue_id) values (2,100,2,1);

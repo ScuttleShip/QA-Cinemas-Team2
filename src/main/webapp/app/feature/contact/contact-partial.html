@@ -1,49 +1,54 @@
 <script src="scriptValidation.js"></script>
+<div>
+    <div class="leftContactThing" >
 
-<div ng-controller="contactController as ctrl">
+    </div>
+<div class="contactMainThing" ng-controller="contactController as ctrl" >
     <form name="myform" id="myform">
-        <table cellspacing="2" cellpadding="2" border="0">
+        <table cellspacing="2" cellpadding="2" border="0" style="margin-left: 34.3%">
             <tr>
-                <td align="right">
-                    First Name
+                <td class="whiteText" align="right">
+                    First Name - &nbsp;&nbsp;
                 </td>
                 <td>
-                    <input type="text" name="FirstName" ng-model="email.firstName"/>
+                    <input class="blackText contactFormField" type="text" name="FirstName" ng-model="email.firstName"/>
+                </td>
+            </tr>
+            <br>
+
+            <tr>
+                <td class="whiteText" align="right">
+                    Last Name - &nbsp;&nbsp;
+                </td>
+                <td>
+                    <input class="blackText contactFormField" type="text" name="LastName" ng-model="email.lastName"/>
                 </td>
             </tr>
             <tr>
-                <td align="right">
-                    Last Name
+                <td class="whiteText" align="right">
+                    Email - &nbsp;&nbsp;
                 </td>
                 <td>
-                    <input type="text" name="LastName" ng-model="email.lastName"/>
+                    <input class="blackText contactFormField" type="text" name="Email" ng-model="email.email"/>
                 </td>
             </tr>
             <tr>
-                <td align="right">
-                    Email
+                <td class="whiteText" align="right">
+                    Phone - &nbsp;&nbsp;
                 </td>
                 <td>
-                    <input type="text" name="Email" ng-model="email.email"/>
+                    <input class="blackText contactFormField" type="text" name="Phone" ng-model="email.phone"/>
                 </td>
             </tr>
             <tr>
-                <td align="right">
-                    Phone
+                <td class="whiteText" align="right">
+                    Cinema Concerned - &nbsp;&nbsp;
                 </td>
                 <td>
-                    <input type="text" name="Phone" ng-model="email.phone"/>
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    Cinema Concerned
-                </td>
-                <td>
-                    <div class="col-md-2 pls-work" ng-controller="venueController as ctrl1">
+                    <div class="col-md-2 pls-work contactFormField" ng-controller="venueController as ctrl1">
                         <select class="select" ng-model="selectedVenue" id="myVenue" >
 
-                            <option ng-repeat="x in ctrl1.venues" value="{{x.venue_ID}}">{{x.name}}</option>
+                            <option selected class="contactFormField" ng-repeat="x in ctrl1.venues" value="{{x.venue_ID}}">{{x.name}}</option>
                         </select>
 
                         <!--
@@ -59,18 +64,18 @@
                 </td>
             </tr>
             <tr>
-                <td>
-                    What would you like to say?
+                <td class="whiteText" >
+                    What would you like to say? &nbsp;&nbsp;
                 </td>
                 <td>
-                    <textarea rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message"></textarea>
+                    <textarea class="contactFormField" rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message"></textarea>
 
                 </td>
             </tr>
             <tr>
                 <td align="right"></td>
                 <td>
-                    <input type="submit" value="Submit" ng-click="ctrl.sendEmail(email); ctrl.validateBox()"/>
+                    <input class="input" type="submit" value="Submit" ng-click="ctrl.sendEmail(email); ctrl.validateBox()"/>
                 </td>
             </tr>
         </table>
@@ -78,3 +83,9 @@
 
 
 </div>
+    <div class="rightContactThing">
+
+    </div>
+</div>
+<br>
+<br>

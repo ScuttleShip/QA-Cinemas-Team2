@@ -57,6 +57,12 @@ public class VenueServiceDBImpl implements VenueService {
 		return null;
 	}
 	
+	@Override
+	public String findVenueByID(Long venue_ID) {
+		Venue venue = findVenue(venue_ID);
+		return util.getJSONForObject(venue);
+	}
+	
 	public Venue findVenue(Long id){
 		return em.find(Venue.class, id);
 	}
