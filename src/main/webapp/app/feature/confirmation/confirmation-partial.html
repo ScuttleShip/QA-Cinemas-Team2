@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="app/feature/confirmation/style.css">
+<div ng-controller="confirmationController as ctrl">
+    <div class = "col-md-12" style="color: white">
+        <h1>Order Details</h1>
+
+        <table style="color: white; width: 40%;">
+            <tr>
+                <td>Booking ID</td>
+                <td>{{ctrl.booking.booking_ID}}</td>
+            </tr>
+            <tr>
+                <td>Number of Seats</td>
+                <td>{{ctrl.booking.numberOfSeats}}</td>
+            </tr>
+            <tr>
+                <td>Customer Email</td>
+                <td>{{ctrl.booking.customerEmail}}</td>
+            </tr>
+            <tr>
+                <td>Film</td>
+                <td>{{ctrl.showing.movie.title}}</td>
+            </tr>
+            <tr>
+                <td>Screen</td>
+                <td>{{ctrl.showing.screen.screenNumber}}</td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>{{ctrl.showing.date}}</td>
+            </tr>
+            <tr>
+                <td>Start Time</td>
+                <td>{{ctrl.showing.startTime}}</td>
+            </tr>
+        </table>
+
+        <!--
+        <p>Booking ID: {{ctrl.booking.booking_ID}}</p>
+        <p>Number of Seats: {{ctrl.booking.numberOfSeats}}</p>
+        <p>Customer Email: {{ctrl.booking.customerEmail}}</p>
+        <p>Film: {{ctrl.showing.movie.title}}</p>
+        <p>Screen: {{ctrl.showing.screen.screenNumber}}</p>
+        <p>Date: {{ctrl.showing.date}}</p>
+        <p>Start Time: {{ctrl.showing.startTime}}
+        -->
+    </div>
+</div>

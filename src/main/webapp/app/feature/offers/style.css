@@ -1,0 +1,30 @@
+.offersRow {
+    margin-left: 160px;
+}
+
+div.Offersimg {
+    margin: 100px;
+    border: 1px solid #000000;
+    float: left;
+    width: 100%;
+    height: 200px;
+}
+
+div.Offersimg img {
+
+    width: 100%;
+    height: 250px;
+}
+
+div.Offersdesc {
+    padding: 15px;
+    text-align: center;
+    background: linear-gradient(#fdb914, #e98536), #f5a422;
+    color: black;
+    font-size: 14pt;
+
+}
+.col-sm-3 {
+    align-content: center;
+    width: 20%;
+}

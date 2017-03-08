@@ -1,13 +1,17 @@
 package com.qa.cinema.persistence;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Movie {
-	@GeneratedValue
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "movie_ID")
 	private Long movie_ID;
 	private String title;
 	private String description;
@@ -16,7 +20,10 @@ public class Movie {
 	private String certification;
 	private String filmImg;
 	private String filmUrl;
-
+	
+//	  @OneToMany(mappedBy = "movie")
+//	  private List<Showing> showings;
+	
 	public Movie() {
 
 	}

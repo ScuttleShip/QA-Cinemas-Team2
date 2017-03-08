@@ -6,13 +6,13 @@ import org.junit.Test;
 
 public class ScreenTest {
 
-	@Test
-	public void getScreen_ID() {
-		
-		Screen testScreen = new Screen();
-		long getScreen_ID = testScreen.getScreen_ID();
-		assertEquals(getScreen_ID, 0);
-	}
+//	@Test
+//	public void getScreen_ID() {
+//		
+//		Screen testScreen = new Screen();
+//		long getScreen_ID = testScreen.getScreen_ID();
+//		assertEquals(getScreen_ID, 0);
+//	}
 	
 	@Test
 	public void setScreen_ID() {
@@ -23,15 +23,15 @@ public class ScreenTest {
 	}
 	
 	
-	@Test
-	public void getSetVenueID()
-	{
-		Screen testScreen = new Screen();
-		Venue venue = testScreen.getVenue();
-		assertNull(venue);
-		testScreen.setVenue(new Venue());
-		assertNotNull(testScreen.getVenue());
-	}
+//	@Test
+//	public void getSetVenueID()
+//	{
+//		Screen testScreen = new Screen();
+//		Venue venue = testScreen.getVenue();
+//		assertNull(venue);
+//		testScreen.setVenue(new Venue());
+//		assertNotNull(testScreen.getVenue());
+//	}
 		
 	@Test
 	public void getNumberofSeats() {

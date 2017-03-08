@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.qa.cinema.persistence.Booking;
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
@@ -18,7 +19,7 @@ import com.qa.cinema.util.JSONUtil;
 public class ShowingServiceDBImpl implements ShowingService {
 
 	@PersistenceContext(unitName = "primary")
-	private EntityManager em;
+	private EntityManager em; 
 
 	@Inject
 	private JSONUtil util;
@@ -54,11 +55,12 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 
 	@Override
-	public Boolean decreaseSeatCount(Long showingId, int count) {
+	public Boolean decreaseSeatCount(Long showingId, int numberOfSeatsBooked) {
 		Showing showing = findShowing(showingId);
 		boolean isShowingUpdated = false;
-		if (showing != null && showing.getSeatsRemaining() >= count) {
-			showing.setSeatsRemaining(showing.getSeatsRemaining() - count);
+		int count = showing.getSeatsRemaining();
+		if (showing != null && count >= numberOfSeatsBooked) {                                   
+			showing.setSeatsRemaining(count - numberOfSeatsBooked);
 			em.merge(showing);
 			isShowingUpdated = true;
 		}
@@ -92,19 +94,41 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 	
 	public String getAllShowingsAtAVenue(Long venue_ID){
+//		Query query = em.createQuery("SELECT s FROM Showing s");
+//		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
+//		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
+//		for(Showing s : showing){
+//			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
+//				specific.add(s);
+//			}
+//		}
+//		
+//		return util.getJSONForObject(specific);
+		return "";
+	}
+
+	public String getShowingByBookingID(Long booking_ID){
 		Query query = em.createQuery("SELECT s FROM Showing s");
 		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
-		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
+		Showing specific = new Showing();
 		for(Showing s : showing){
-			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
-				specific.add(s);
+			Collection<Booking> bookingsForCurrentShowing = s.getBookings();
+			
+			for (Booking b : bookingsForCurrentShowing) {
+				if (b.getBooking_ID().longValue() == booking_ID.longValue()) {
+					specific = s;
+				}
 			}
 		}
 		
 		return util.getJSONForObject(specific);
 	}
-
+	
 	private Showing findShowing(Long id) {
+		return em.find(Showing.class, id);
+	}
+	
+	public Showing findShowingByID(Long id) {
 		return em.find(Showing.class, id);
 	}
 
