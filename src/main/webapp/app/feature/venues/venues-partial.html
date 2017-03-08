@@ -1,9 +1,10 @@
-<link rel="stylesheet" href="app/feature/venues/style.css">
+
 <div ng-controller="venueController as ctrl">
 
     <div class = "addresslist" ng-repeat="place in ctrl.venues">
         <div class = "col-sm-12">
-        <div class = "col-sm-6">
+            <div class="col-sm-4"></div>
+        <div class = "col-sm-3">
 
         <h1>{{place.name}}</h1>
         {{place.address.firstLine}}<br>
@@ -13,9 +14,12 @@
         {{place.address.postcode}}
         </div>
 
-        <div class = "col-sm-6">
-           <img src="{{place.venueImg}}">
+        <div class = "col-sm-3" >
+           <img class="contactImg" src="{{place.venueImg}}">
+
         </div>
-        </div>
+            <div class="col-sm-2"></div>
+
     </div>
+</div>
 </div>

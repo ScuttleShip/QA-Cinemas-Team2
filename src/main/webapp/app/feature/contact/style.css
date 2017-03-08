@@ -1,0 +1,84 @@
+.whiteText {
+    color: white;
+    font-size: 16pt;
+}
+.blackText {
+    color: black;
+}
+.aligner {
+    margin-left: 50%;
+    align-self: center;
+    align-items: center;
+    align-content: center;
+
+}
+.pls-work {
+    width: 30%;
+}
+
+.contactMainThing {
+    width: 80%;
+    margin: 0px auto;
+    align-content: center;
+}
+
+.leftContactThing {
+    float: left;
+    width: 100px;
+    display: block;
+}
+
+.rightContactThing {
+    float: right;
+    width: 100px;
+    display: block;
+}
+
+.contactFormField {
+    width: 100%;
+}
+
+.pleaseCenterMe {
+    width: 100%;
+}
+.input {
+    border-radius: 4px;
+    background: linear-gradient(#fdb914, #e98536), #f5a422;
+
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 22px;
+    padding: 10px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px auto;
+
+}
+
+
+.input span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.input span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.input:hover span {
+    padding-right: 25px;
+}
+
+.input:hover span:after {
+    opacity: 1;
+    right: 0;
+}
