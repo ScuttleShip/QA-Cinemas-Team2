@@ -153,6 +153,15 @@ public class ShowingServiceDBImpl implements ShowingService {
 		return util.getJSONForObject(listOfMoviesAndShowings);
 	}
 	
+	@Override
+	public String getMovieByShowingID(Long showing_ID) {
+		
+		Showing showingForID = findShowing(showing_ID);
+		Movie movieForShowing = showingForID.getMovie();
+		
+		return util.getJSONForObject(movieForShowing);
+	}
+	
 	
 	private Set<Screen> getScreensForVenue(Long venue_ID) {
 		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);

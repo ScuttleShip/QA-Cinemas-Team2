@@ -15,6 +15,7 @@
         vm.sendEmail = function(emailToSend) {
             console.log(emailToSend);
             erm = emailToSend;
+            console.log(erm);
             var emailToJson = JSON.stringify(erm);
             console.log(emailToJson);
             contactUsService.sendEmail(emailToSend);

@@ -33,6 +33,13 @@ public class ShowingEndPoint {
 		return showingService.getAllShowings();
 	}
 	
+	@GET
+	@Path("/movie/{showing_ID}")
+	@Produces({ "application/json" })
+	public String getMovieByShowingID(@PathParam("showing_ID") Long showing_ID) {
+		return showingService.getMovieByShowingID(showing_ID);
+	}
+	
 /*	@GET
 	@Path("/json/movie/{mid}")
 	@Produces({ "application/json" })

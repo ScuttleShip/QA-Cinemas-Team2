@@ -16,20 +16,25 @@
     <p>{{ctrl.currentBooking.chosenNumberOfSeats}}</p>
 
     <h2>Booking Total:</h2>
-    <p>{{ctrl.currentBooking.bookingTotal | currency : "£"}}</p>
+    <p>{{ctrl.currentBooking.orderTotal | currency : "£"}}</p>
 
-    <div class="col-md-2 pls-work"><input type="submit" class="button" id="plsSubmit"><span>Checkout</span></button></div>
+    <div class="col-md-2 pls-work"><input type="submit" class="button" id="plsSubmit" value="Checkout"></div>
 
-    <div class="col-md-2 pls-work"><button class="button" id="opener"><span>Edit order</span></button></div>
 </form>
-    <div id="dialog">
+    <div class="col-md-2 pls-work"><button class="button" ng-click="ctrl.openSeatChooserAlt()"><span>Edit order</span></button></div>
+
+    <div id="seatChooserDialog">
         <label>Number Of Seats:
             <input type="number" ng-model="ctrl.newNumberOfSeats" min="0">
         </label>
     </div>
 
     <div id="errorDialog">
-        <p>Your email was invalid. Please correct it!</p>
+        <p>Your emails did not match. Please correct it!</p>
+    </div>
+
+    <div id="bookingErrorDialog">
+        <p>Something went wrong with your booking!</p>
     </div>
 
 </div>

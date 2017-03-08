@@ -9,15 +9,13 @@
 
         vm.currentBooking = {};
         vm.newNumberOfSeats = 0;
-        vm.booking = {};
-        vm.bookingTotal = 0;
 
         function init() {
 
             //setting test data
             sessionStorage.setItem("chosenVenue", 1);
             sessionStorage.setItem("chosenDate", "2017-09-23");
-            sessionStorage.setItem("chosenShowingID", 34);
+            sessionStorage.setItem("chosenShowingID", 1);
             sessionStorage.setItem("chosenNumberOfSeats", 2);
 
             //retrieve data from session storage
@@ -26,9 +24,9 @@
             vm.currentBooking.chosenShowingID = parseInt(sessionStorage.getItem("chosenShowingID"));
             vm.currentBooking.chosenNumberOfSeats = parseInt(sessionStorage.getItem("chosenNumberOfSeats"));
             vm.newNumberOfSeats = vm.currentBooking.chosenNumberOfSeats;
-            vm.currentBooking.bookingTotal = vm.chosenNumberOfSeats * 6.99;
+            updateOrderTotal();
 
-            showingService.getMovieByShowingID().then(function (results) {
+            showingService.getMovieByShowingID(vm.currentBooking.chosenShowingID).then(function (results) {
 
                 vm.movieForChosenShowing = results;
 
@@ -39,20 +37,8 @@
 
             });
 
-            // //assign paragraph elements for each location data belongs
-            // var venuePlace = document.getElementById("chosenVenue");
-            // var datePlace = document.getElementById("chosenDate");
-            // var showingPlace = document.getElementById("chosenShowing");
-            // var seatsPlace = document.getElementById("chosenNumberOfSeats");
-            //
-            // //assign data values to location
-            // venuePlace.innerHTML = chosenVenue;
-            // datePlace.innerHTML = chosenDate;
-            // showingPlace.innerHTML = chosenShowing;
-            // seatsPlace.innerHTML = chosenNumberOfSeats;
-
             $( function() {
-                $( "#dialog" ).dialog({
+                $( "#seatChooserDialog" ).dialog({
                     autoOpen: false,
                     modal: true,
                     buttons: [
@@ -78,13 +64,18 @@
                     ]
                 });
 
-                $( "#opener" ).on( "click", function() {
-                    $( "#dialog" ).dialog( "open" );
-                });
-
                 $("#errorDialog").dialog({
                     autoOpen: false,
                     modal: true
+                });
+
+                $("#bookingErrorDialog").dialog({
+                    autoOpen: false,
+                    modal: true
+                });
+
+                $("#opener").click(function() {
+                    $("#dialog").dialog("open");
                 });
             } );
 
@@ -92,10 +83,31 @@
 
         init();
 
+        function updateOrderTotal() {
+            vm.currentBooking.orderTotal = vm.currentBooking.chosenNumberOfSeats * 6.99;
+        }
+
         function saveChanges() {
             vm.currentBooking.chosenNumberOfSeats = vm.newNumberOfSeats;
+            updateOrderTotal();
             $scope.$apply();
         }
+
+        vm.openSeatChooser = function() {
+
+        };
+
+        vm.openEmailError = function() {
+
+        };
+
+        vm.openBookingError = function() {
+
+        };
+
+        vm.openSeatChooserAlt = function () {
+            $("#seatChooserDialog").dialog("open");
+        };
 
         vm.saveBooking = function(bookingDetails) {
 
@@ -103,24 +115,24 @@
                 console.log("They're the same!");
 
                 var booking = {};
-                booking.numberOfSeats = vm.chosenNumberOfSeats;
+                booking.numberOfSeats = vm.currentBooking.chosenNumberOfSeats;
                 booking.customerEmail = bookingDetails.bookingEmail;
-                booking.orderTotal = vm.chosenNumberOfSeats * 6.99;
-                booking.showing_ID = vm.chosenShowingID;
+                booking.orderTotal = vm.currentBooking.chosenNumberOfSeats * 6.99;
+                booking.showing_ID = vm.currentBooking.chosenShowingID;
 
-                var bookingJSON = JSON.stringify(booking);
-                bookingService.saveBooking(bookingJSON).then(function (results) {
+                bookingService.saveBooking(booking).then(function (results) {
 
                     vm.bookingMessage = results;
+                    $state.go('confirmation');
 
                 }, function (error) {
 
                     vm.error = true;
                     vm.errorMessage = error;
+                    $("#bookingErrorDialog").dialog("open");
 
                 });
 
-                $state.go('confirmation');
 
             } else {
                 $("#errorDialog").dialog("open");
@@ -131,11 +143,5 @@
     };
 
     angular.module("qaCinemas2").controller("bookingController", ['$scope', '$state', 'bookingService', 'showingService', bookingController]);
-
-    angular.module("qaCinemas2").filter('num', (function() {
-        return function(input) {
-            return parseInt(input, 10);
-        }
-    }));
 
 }());

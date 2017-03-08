@@ -14,6 +14,8 @@ public interface ShowingService {
 	String updateShowing(Long showingId, String showingJson);
 
 	String deleteShowing(Long showingId);
+	
+	String getMovieByShowingID(Long showing_ID);
 
 	Boolean decreaseSeatCount(Long showingId, int numberOfSeatsBooked);
 	
