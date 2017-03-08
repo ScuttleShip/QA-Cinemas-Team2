@@ -3,7 +3,7 @@
  */
 (function() {
 
-    var bookingController = function($scope, bookingService, showingService) {
+    var bookingController = function($scope, $state, bookingService, showingService) {
 
         var vm = this;
 
@@ -17,16 +17,27 @@
             //setting test data
             sessionStorage.setItem("chosenVenue", 1);
             sessionStorage.setItem("chosenDate", "2017-09-23");
-            sessionStorage.setItem("chosenShowing", 34);
+            sessionStorage.setItem("chosenShowingID", 34);
             sessionStorage.setItem("chosenNumberOfSeats", 2);
 
             //retrieve data from session storage
             vm.currentBooking.chosenVenue = sessionStorage.getItem("chosenVenue");
             vm.currentBooking.chosenDate = sessionStorage.getItem("chosenDate");
-            vm.currentBooking.chosenShowing = sessionStorage.getItem("chosenShowing");
+            vm.currentBooking.chosenShowingID = parseInt(sessionStorage.getItem("chosenShowingID"));
             vm.currentBooking.chosenNumberOfSeats = parseInt(sessionStorage.getItem("chosenNumberOfSeats"));
             vm.newNumberOfSeats = vm.currentBooking.chosenNumberOfSeats;
             vm.currentBooking.bookingTotal = vm.chosenNumberOfSeats * 6.99;
+
+            showingService.getMovieByShowingID().then(function (results) {
+
+                vm.movieForChosenShowing = results;
+
+            }, function (error) {
+
+                vm.error = true;
+                vm.errorMessage = error;
+
+            });
 
             // //assign paragraph elements for each location data belongs
             // var venuePlace = document.getElementById("chosenVenue");
@@ -94,9 +105,22 @@
                 var booking = {};
                 booking.numberOfSeats = vm.chosenNumberOfSeats;
                 booking.customerEmail = bookingDetails.bookingEmail;
+                booking.orderTotal = vm.chosenNumberOfSeats * 6.99;
+                booking.showing_ID = vm.chosenShowingID;
 
                 var bookingJSON = JSON.stringify(booking);
-                bookingService.saveBooking(bookingJSON);
+                bookingService.saveBooking(bookingJSON).then(function (results) {
+
+                    vm.bookingMessage = results;
+
+                }, function (error) {
+
+                    vm.error = true;
+                    vm.errorMessage = error;
+
+                });
+
+                $state.go('confirmation');
 
             } else {
                 $("#errorDialog").dialog("open");
@@ -106,7 +130,7 @@
 
     };
 
-    angular.module("qaCinemas2").controller("bookingController", ['$scope', 'bookingService', 'showingService', bookingController]);
+    angular.module("qaCinemas2").controller("bookingController", ['$scope', '$state', 'bookingService', 'showingService', bookingController]);
 
     angular.module("qaCinemas2").filter('num', (function() {
         return function(input) {

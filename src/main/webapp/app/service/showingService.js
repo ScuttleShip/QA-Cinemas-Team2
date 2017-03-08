@@ -11,6 +11,6 @@
 
     };
 
-    angular.module("qaCinemas2").service("showingService", ['showingDal', showingService]);
+    angular.module("qaCinemas2").service('showingService', ['showingDal', showingService]);
 
 }());

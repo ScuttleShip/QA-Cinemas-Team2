@@ -11,6 +11,6 @@
 
     };
 
-    angular.module('qaCinemas2').controller('showingDal', ['dal', showingDal]);
+    angular.module('qaCinemas2').service('showingDal', ['dal', showingDal]);
 
 }());
