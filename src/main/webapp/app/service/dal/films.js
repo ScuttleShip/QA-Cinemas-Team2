@@ -25,9 +25,6 @@
         this.getFilmsImage = function (paramObj) {
             return dal.http.GET("http://www.omdbapi.com/?t=" + paramObj);
         };
-        
-        this.getFilmByTitle = function (filmTitle) {
-            return dal.http.GET("rest/movie/json/title/" + filmTitle);
-        }
+
     }
 }());

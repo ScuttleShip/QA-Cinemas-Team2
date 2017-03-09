@@ -67,18 +67,5 @@ public class MovieServiceDBImpl implements MovieService{
 	private Movie findMovie(Long movie_ID) {
 		return em.find(Movie.class, movie_ID);
 	}
-
-	@Override
-	public String getMovieByTitle(String title) {
-		Query query = em.createQuery("SELECT m FROM Movie m");
-		Collection<Movie> listOfMovies = (Collection<Movie>) query.getSingleResult();
-		Movie movie = new Movie();
-		for(Movie m : listOfMovies){
-			if(m.getTitle().equalsIgnoreCase(title)){
-				movie = m;
-				break;
-			}
-		}
-		return util.getJSONForObject(movie);
-	}
+	
 }

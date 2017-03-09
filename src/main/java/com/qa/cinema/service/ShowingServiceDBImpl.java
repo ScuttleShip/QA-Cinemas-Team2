@@ -3,12 +3,10 @@ package com.qa.cinema.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,8 +16,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.hibernate.boot.jaxb.hbm.internal.CacheAccessTypeConverter;
 
 import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.persistence.Screen;
@@ -98,7 +94,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 		
 		Set<Screen> screensAtVenue = getScreensForVenue(venue_ID);
 		
-		List<Showing> showingsAtVenue = new ArrayList();
+		List<Showing> showingsAtVenue = new ArrayList<Showing>();
 		
 		for (Screen currentScreen : screensAtVenue) {
 			
@@ -106,7 +102,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 			
 		}
 		
-		List<Showing> showingsAtVenueByDate = new ArrayList();
+		List<Showing> showingsAtVenueByDate = new ArrayList<Showing>();
 		Date selectedDate = convertStringToDate(dateSelected);
 		
 		for (Showing currentShowing : showingsAtVenue) {
@@ -119,7 +115,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 			
 		}
 		
-		List<Movie> movies = new ArrayList();
+		List<Movie> movies = new ArrayList<Movie>();
 		
 		for (Showing currentShowing : showingsAtVenueByDate) {
 			
@@ -156,9 +152,8 @@ public class ShowingServiceDBImpl implements ShowingService {
 	
 	private Set<Screen> getScreensForVenue(Long venue_ID) {
 		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);
-		List<Venue> venue = query.getResultList();
-		return venue.get(0).getScreen();
-		
+		Venue venue = (Venue) query.getSingleResult();
+		return venue.getScreen();
 	}
 	
 	private Date convertStringToDate(String date){

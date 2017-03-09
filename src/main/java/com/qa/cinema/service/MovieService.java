@@ -13,5 +13,4 @@ public interface MovieService {
 
 	String getMovieById(Long movie_ID);
 	
-	String getMovieByTitle(String title);
 }
