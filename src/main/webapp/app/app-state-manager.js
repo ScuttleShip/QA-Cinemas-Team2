@@ -82,6 +82,11 @@
                 url: "/films/all",
                 templateUrl:"app/feature/film/film-partial.html"
             }
+        ).state (
+            "singleFilm", {
+                url: "/film/:film_ID",
+                templateUrl: "app/feature/singleFilm/singleFilm-partial.html"
+            }
         );
 
     });

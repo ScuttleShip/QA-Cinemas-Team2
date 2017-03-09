@@ -1,7 +1,5 @@
 package com.qa.cinema.service;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +15,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.cinema.persistence.Venue;
-import com.qa.cinema.service.VenueService;
-import com.qa.cinema.service.VenueServiceDBImpl;
 import com.qa.cinema.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)

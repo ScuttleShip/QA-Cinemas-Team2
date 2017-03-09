@@ -1,0 +1,26 @@
+
+<div ng-controller="singleFilmController as ctrl" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-5">
+    <img style="width: 140%"; height="100%" src="{{ctrl.singleFilm.filmImg}}">
+    </div>
+    <div class="col-sm-4"></div>
+
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12">
+               <h1 style="color: white; text-align: center" id="singleFilmName"></h1>
+               <p style="text-align: center;"><img style="width: 5%;" src="{{ctrl.certImage}}"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4"></div>
+                <div class="col-sm-4 col-md-4">
+                    <h4 style="color: white; text-align: center">{{ctrl.singleFilm.description}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

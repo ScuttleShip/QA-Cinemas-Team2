@@ -1,8 +1,5 @@
 package com.qa.cinema.rest;
 
-import java.util.HashMap;
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -12,7 +9,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.service.ShowingService;
 
 /**
@@ -31,6 +27,13 @@ public class ShowingEndPoint {
 	@Produces({ "application/json" })
 	public String getShowingAsJson() {
 		return showingService.getAllShowings();
+	}
+	
+	@GET
+	@Path("/movie/{showing_ID}")
+	@Produces({ "application/json" })
+	public String getMovieByShowingID(@PathParam("showing_ID") Long showing_ID) {
+		return showingService.getMovieByShowingID(showing_ID);
 	}
 	
 /*	@GET
@@ -55,7 +58,7 @@ public class ShowingEndPoint {
 	}
 	
 	@GET
-	@Path("/json/showing/{sid}")
+	@Path("/{sid}")
 	@Produces({ "application/json" })
 	public String  getShowingByID(@PathParam("sid") Long showing_ID) {
 		return showingService.findShowingByIDREST(showing_ID);
@@ -83,11 +86,11 @@ public class ShowingEndPoint {
 		return showingService.deleteShowing(showingId);
 	}
 	
-/*	@GET
+	@GET
 	@Path("/json/{booking_ID}")
 	@Produces({ "application/json" })
 	public String getShowingByBookingID(@PathParam("booking_ID") Long bookingID){
 		return showingService.getShowingByBookingID(bookingID);
-	}*/
+	}
 
 }

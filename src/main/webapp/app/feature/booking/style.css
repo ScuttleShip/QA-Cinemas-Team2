@@ -1,0 +1,17 @@
+input:required:invalid {
+    border-color: red;
+}
+form{
+    color: white;
+}
+.formText {
+    color: black;
+    width: 100%;
+}
+.bookingDetails{
+    font-size: 14pt;
+}
+
+.halfu {
+    width: 100%;
+}

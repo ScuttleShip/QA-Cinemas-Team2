@@ -24,6 +24,13 @@ public class BookingEndPoint {
 		return bookingService.getAllBookings();
 	}
 	
+	@GET
+	@Path("/json/{id}")
+	@Produces({ "application/json" })
+	public String getBookingById(@PathParam("id") Long booking_ID) {
+		return bookingService.getBookingById(booking_ID);
+	}
+	
 	@POST
 	@Path("/json")
 	@Produces({ "application/json" })
