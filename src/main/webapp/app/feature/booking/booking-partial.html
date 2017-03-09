@@ -1,6 +1,6 @@
 <div class="container" ng-controller="bookingController as ctrl">
     <div class="col-sm-4"></div>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
         <form class="whiteText" ng-submit="ctrl.saveBooking(booking)">
             <label>Enter your email address:</label>
             <input class="formText" type="email" ng-model="booking.bookingEmail" required
@@ -23,13 +23,13 @@
             <h2>Booking Total:</h2>
             <p class="bookingDetails">{{ctrl.currentBooking.orderTotal | currency : "£"}}</p>
 
-            <div class="col-md-2 pls-work">
+            <div class="pls-work halfu">
                 <button class="button formText"><span>Checkout</span></button>
             </div>
 
         </form>
-        <div class="col-md-2 pls-work">
-            <button class="button formText" ng-click="ctrl.openSeatChooserAlt()"><span>Edit order</span></button>
+        <div class="pls-work halfu">
+            <button class="button formText" ng-click="ctrl.openSeatChooserAlt()"><span>Edit</span></button>
         </div>
 
         <div id="seatChooserDialog">
@@ -47,7 +47,7 @@
         </div>
 
     </div>
-    <div class="col-sm-3"></div>
+    <div class="col-sm-4"></div>
 </div>
 <br>
 <br>
