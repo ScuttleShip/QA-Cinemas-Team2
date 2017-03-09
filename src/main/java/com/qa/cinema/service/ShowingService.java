@@ -26,4 +26,6 @@ public interface ShowingService {
 	String getShowingByBookingID(Long bookingID);
 	
 	Showing findShowingByID(Long id);
+	
+	String findShowingByIDREST(Long showing_ID);
 }
