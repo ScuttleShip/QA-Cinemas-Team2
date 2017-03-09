@@ -3,7 +3,7 @@
  */
 (function() {
 
-    var bookingController = function($scope, $state, bookingService, showingService) {
+    var bookingController = function($scope, $state, bookingService, showingService, venueService) {
 
         var vm = this;
 
@@ -19,12 +19,26 @@
             sessionStorage.setItem("chosenNumberOfSeats", 2);
 
             //retrieve data from session storage
-            vm.currentBooking.chosenVenue = sessionStorage.getItem("chosenVenue");
+            vm.currentBooking.chosenVenue = parseInt(sessionStorage.getItem("chosenVenue"));
             vm.currentBooking.chosenDate = sessionStorage.getItem("chosenDate");
             vm.currentBooking.chosenShowingID = parseInt(sessionStorage.getItem("chosenShowingID"));
             vm.currentBooking.chosenNumberOfSeats = parseInt(sessionStorage.getItem("chosenNumberOfSeats"));
             vm.newNumberOfSeats = vm.currentBooking.chosenNumberOfSeats;
             updateOrderTotal();
+
+            venueService.getVenueByID(vm.currentBooking.chosenVenue).then(function (results) {
+                vm.venueForChosenShowing = results;
+            }, function (error) {
+                vm.error = true;
+                vm.venueErrorMessage = error;
+            });
+
+            showingService.getShowingByShowingID(vm.currentBooking.chosenShowingID).then(function() {
+                vm.showingForShowingID = results;
+            }, function(error) {
+                vm.error = true;
+                vm.showingErrorMessage = error;
+            });
 
             showingService.getMovieByShowingID(vm.currentBooking.chosenShowingID).then(function (results) {
 
@@ -33,7 +47,7 @@
             }, function (error) {
 
                 vm.error = true;
-                vm.errorMessage = error;
+                vm.showingErrorMessage = error;
 
             });
 
@@ -142,6 +156,6 @@
 
     };
 
-    angular.module("qaCinemas2").controller("bookingController", ['$scope', '$state', 'bookingService', 'showingService', bookingController]);
+    angular.module("qaCinemas2").controller("bookingController", ['$scope', '$state', 'bookingService', 'showingService', 'venueService', bookingController]);
 
 }());

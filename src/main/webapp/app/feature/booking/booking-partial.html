@@ -4,13 +4,15 @@
     <input type="email" ng-model="booking.confirmBookingEmail" required placeholder="Confirm your email address">
 
     <h2>Chosen Venue:</h2>
-    <p>{{ctrl.currentBooking.chosenVenue}}</p>
+    <p>{{ctrl.venueForChosenShowing.name}}</p>
 
     <h2>Chosen Date:</h2>
     <p>{{ctrl.currentBooking.chosenDate}}</p>
 
+
     <h2>Chosen Showing:</h2>
     <p>{{ctrl.movieForChosenShowing.title}}</p>
+    <p>{{ctrl.showingForShowingID.startTime}}</p>
 
     <h2>Chosen Number of Seats:</h2>
     <p>{{ctrl.currentBooking.chosenNumberOfSeats}}</p>

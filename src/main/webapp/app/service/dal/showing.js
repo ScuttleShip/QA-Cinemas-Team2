@@ -9,6 +9,10 @@
             return dal.http.GET("rest/showing/movie/" + showingID);
         }
 
+        this.getShowingByShowingID = function (showingID) {
+            return dal.http.GET("rest/showing/" + showingID);
+        }
+
     };
 
     angular.module('qaCinemas2').service('showingDal', ['dal', showingDal]);
