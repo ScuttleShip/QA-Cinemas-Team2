@@ -22,4 +22,6 @@ public interface ShowingService {
 	Showing findShowingByID(Long id);
 
 	String getAllShowingsAtAVenueAndDate(Long venue_ID, String dateSelected);
+	
+	String findShowingByIDREST(Long id);
 }

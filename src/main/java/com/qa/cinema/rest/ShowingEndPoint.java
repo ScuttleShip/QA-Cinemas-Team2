@@ -35,6 +35,13 @@ public class ShowingEndPoint {
 	public String getAllMoviesByVenueAndDate(@PathParam("venue_ID") Long venue_ID, @PathParam("date") String dateSelected){
 		return showingService.getAllShowingsAtAVenueAndDate(venue_ID, dateSelected);
 	}
+	
+	@GET
+	@Path("/json/showing/{sid}")
+	@Produces({ "application/json" })
+	public String  getShowingByID(@PathParam("sid") Long showing_ID) {
+		return showingService.findShowingByIDREST(showing_ID);
+	}
 
 	@POST
 	@Path("/json")
