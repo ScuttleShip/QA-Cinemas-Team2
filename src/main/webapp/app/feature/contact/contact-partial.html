@@ -1,89 +1,96 @@
 <!--script src="scriptValidation.js"></script-->
+<div class="container">
 <div>
-    <div class="leftContactThing" >
+    <div class="col-sm-3">
 
     </div>
-<div class="contactMainThing" ng-controller="contactController as ctrl" >
-    <form name="myform" id="myform">
-        <table cellspacing="2" cellpadding="2" border="0" style="margin-left: 34.3%">
-            <tr>
-                <td class="whiteText" align="right">
-                    First Name - &nbsp;&nbsp;
-                </td>
-                <td>
-                    <input class="blackText contactFormField" type="text" name="FirstName" ng-model="email.firstName"/>
-                </td>
-            </tr>
-            <br>
+    <div class="col-sm-6 " style="align-content: center" ng-controller="contactController as ctrl">
+        <form name="myform" id="myform" style="width: 100%">
+            <table cellspacing="2" cellpadding="2" border="0" style="align-content: center">
+                <tr>
+                    <td class="whiteText" align="right">
+                        First Name - &nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <input class="blackText contactFormField" type="text" name="FirstName"
+                               ng-model="email.firstName"/>
+                    </td>
+                </tr>
+                <br>
 
-            <tr>
-                <td class="whiteText" align="right">
-                    Last Name - &nbsp;&nbsp;
-                </td>
-                <td>
-                    <input class="blackText contactFormField" type="text" name="LastName" ng-model="email.lastName"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="whiteText" align="right">
-                    Email - &nbsp;&nbsp;
-                </td>
-                <td>
-                    <input class="blackText contactFormField" type="email" required name="Email" ng-model="email.email" />
-                </td>
-            </tr>
-            <tr>
-                <td class="whiteText" align="right">
-                    Phone - &nbsp;&nbsp;
-                </td>
-                <td>
-                    <input class="blackText contactFormField" type="text" name="Phone" ng-model="email.phone"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="whiteText" align="right">
-                    Cinema Concerned - &nbsp;&nbsp;
-                </td>
-                <td>
-                    <div class="col-md-2 pls-work contactFormField" ng-controller="venueController as ctrl1">
-                        <select class="select" ng-model="selectedVenue" id="myVenue" >
+                <tr>
+                    <td class="whiteText" align="right">
+                        Last Name - &nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <input class="blackText contactFormField" type="text" name="LastName"
+                               ng-model="email.lastName"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="whiteText" align="right">
+                        Email - &nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <input class="blackText contactFormField" type="email" required name="Email"
+                               ng-model="email.email"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="whiteText" align="right">
+                        Phone - &nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <input class="blackText contactFormField" type="text" name="Phone" ng-model="email.phone"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="whiteText" align="right">
+                        Cinema Concerned - &nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <div class="col-md-2 pls-work contactFormField" ng-controller="venueController as ctrl1">
+                            <select class="select" ng-model="selectedVenue" id="myVenue">
 
-                            <option selected class="contactFormField" ng-repeat="x in ctrl1.venues" value="{{x.venue_ID}}">{{x.name}}</option>
+                                <option selected class="contactFormField" ng-repeat="x in ctrl1.venues"
+                                        value="{{x.venue_ID}}">{{x.name}}
+                                </option>
+                            </select>
+
+                            <!--
+                        <select class="select" id="myVenue">
+                            <option selected value="default">Select a Venue</option>
+                            <option value="Manchester">Manchster</option>
+                            <option value="London">London</option>
+                            <option value="Leeds">member Leeeeeeds</option>
                         </select>
+                        -->
+                        </div>
 
-                        <!--
-                    <select class="select" id="myVenue">
-                        <option selected value="default">Select a Venue</option>
-                        <option value="Manchester">Manchster</option>
-                        <option value="London">London</option>
-                        <option value="Leeds">member Leeeeeeds</option>
-                    </select>
-                    -->
-                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="whiteText">
+                        What would you like to say? &nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <textarea class="contactFormField" rows="4" col="35" placeholder="Issue you would like to raise"
+                                  ng-model="email.message" required></textarea>
 
-                </td>
-            </tr>
-            <tr>
-                <td class="whiteText" >
-                    What would you like to say? &nbsp;&nbsp;
-                </td>
-                <td>
-                    <textarea class="contactFormField" rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message" required></textarea>
-
-                </td>
-            </tr>
-            <tr>
-                <td align="right"></td>
-                <td>
-                    <input class="input" type="submit" value="Submit" ng-click="ctrl.sendEmail(email)" />
-                </td>
-            </tr>
-        </table>
-    </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"></td>
+                    <td>
+                        <input class="input" type="submit" value="Submit" ng-click="ctrl.sendEmail(email)"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
 
 
-</div>
-    <div class="rightContactThing">
+    </div>
+    <div class="col-sm-3">
 
     </div>
 </div>
@@ -96,3 +103,4 @@
         window.location.href = 'index.html';
     }
 </script>
+</div>

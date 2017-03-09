@@ -1,3 +1,4 @@
+
 <div ng-controller="filmsController as ctrl">
 
     <h1 style="color: white; text-align: center">Films</h1>
@@ -8,45 +9,49 @@
         <div class="row">
             <div class="col-md-12">
 
-<!--                <form class="navbar-form">
-                    <div class="form-group" style="display:inline;">
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                        </div>
-                    </div>
-                </form>-->
+                <!--                <form class="navbar-form">
+                                    <div class="form-group" style="display:inline;">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                                        </div>
+                                    </div>
+                                </form>-->
 
+            </div>
         </div>
     </div>
-</div>
-<hr>
+    <hr>
 
     <div class="container">
 
-            <div ng-repeat="(key, value) in ctrl.filmsByVenueAndDate">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="col-md-5">
-                            <img src="http://placehold.it/210x210" width="250" height="250">
-                            <!--<img src="{{ctrl.convertKeyToJSON(key).filmUrl}}">-->
-                        </div>
-                        <div class="col-md-5 col-md-offset-1">
-                            <h3 style="color: white"><b>{{ctrl.convertKeyToJSON(key).title}}</b></h3>
-                            <h4 style="color: white">Running Time : {{ctrl.convertKeyToJSON(key).duration}}</h4>
-                            <br>
-                            <h5 style="color: white">{{ctrl.convertKeyToJSON(key).description}}</h5>
-                        </div>
+        <div ng-repeat="(key, value) in ctrl.filmsByVenueAndDate">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-5">
+                        <img src="http://placehold.it/210x210" width="250" height="250">
+                        <!--<img src="{{ctrl.convertKeyToJSON(key).filmUrl}}">-->
                     </div>
+                    <div class="col-md-5 col-md-offset-1">
+                        <h3 style="color: white"><b>{{ctrl.convertKeyToJSON(key).title}}</b></h3>
+                        <h4 style="color: white">Running Time : {{ctrl.convertKeyToJSON(key).duration}}</h4>
+                        <br>
+                        <h5 style="color: white">{{ctrl.convertKeyToJSON(key).description}}</h5>
+                    </div>
+                </div>
 
                 <div class="col-md-6">
                     <div class="btn-group" style="display: inline-flex;">
                         <div ng-repeat="v in value">
-                            <button ng-click="ctrl.showSeatChooser(v)" type="button"  class="btn btn-warning btn-xs">{{ctrl.trimTime(v.startTime)}}</button>
+                            <button ng-click="ctrl.showSeatChooser(v)" type="button" class="btn btn-warning btn-xs">
+                                {{ctrl.trimTime(v.startTime)}}
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div><hr><br>
+            </div>
+            <hr>
+            <br>
         </div>
     </div>
 </div>
@@ -59,7 +64,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Set number of seats</h4>
             </div>
             <div class="modal-body">
