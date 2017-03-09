@@ -2,14 +2,12 @@ package com.qa.cinema.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import com.qa.cinema.persistence.Venue;
 import com.qa.cinema.util.JSONUtil;
 

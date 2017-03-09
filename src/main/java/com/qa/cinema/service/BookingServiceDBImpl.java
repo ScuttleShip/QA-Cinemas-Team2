@@ -1,17 +1,14 @@
 package com.qa.cinema.service;
 
 import java.util.Collection;
-
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import com.qa.cinema.persistence.Booking;
 import com.qa.cinema.util.JSONUtil;
-
 
 @Stateless
 @Default
@@ -41,12 +38,11 @@ public class BookingServiceDBImpl {
 		if(booking != null) {
 			updateBooking.setBooking_ID(booking.getBooking_ID());
 			booking = updateBooking;
-			
-			em.merge(booking);
-			
+			em.merge(booking);		
 		}
 		return "{\"message\": \"booking sucessfully updated\"}";
 	}
+	
 	public String deleteBooking(Integer booking_ID) {
 		Booking booking = findBooking(Long.valueOf(booking_ID));
 		if (booking != null) {
@@ -54,6 +50,7 @@ public class BookingServiceDBImpl {
 		}
 		return "{\"message\": \"booking sucessfully removed\"}";
 	}
+	
 	Booking findBooking(Long id) {
 		return em.find(Booking.class, id);
 	}

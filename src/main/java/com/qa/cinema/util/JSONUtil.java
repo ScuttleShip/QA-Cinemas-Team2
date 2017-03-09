@@ -18,5 +18,4 @@ public class JSONUtil {
 		System.out.println("Not again......");
 		return gson.fromJson(jsonString, clazz);
 	}
-
 }

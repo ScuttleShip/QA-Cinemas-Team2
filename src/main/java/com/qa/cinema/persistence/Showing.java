@@ -3,7 +3,6 @@ package com.qa.cinema.persistence;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,7 +32,6 @@ public class Showing {
 	@JoinColumn(name = "movie_ID")
 	private Movie movie;
 	
-
 	@Temporal(TemporalType.TIME)
 	@NotNull
 	private Date startTime;
@@ -102,5 +100,4 @@ public class Showing {
 		return "Showing [showingID=" + showing_ID + ", startTime=" + startTime
 				+ ", date=" + date + ", seatsRemaining=" + seatsRemaining + "]";
 	}
-
 }

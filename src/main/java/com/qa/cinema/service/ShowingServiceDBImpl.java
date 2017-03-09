@@ -1,15 +1,12 @@
 package com.qa.cinema.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
@@ -92,16 +89,6 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 	
 	public String getAllShowingsAtAVenue(Long venue_ID){
-//		Query query = em.createQuery("SELECT s FROM Showing s");
-//		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
-//		Collection<Showing> specific = (Collection<Showing>) new ArrayList();
-//		for(Showing s : showing){
-//			if(s.getScreen().getVenue().getVenue_ID().longValue() == venue_ID.longValue()){
-//				specific.add(s);
-//			}
-//		}
-//		
-//		return util.getJSONForObject(specific);
 		return "";
 	}
 

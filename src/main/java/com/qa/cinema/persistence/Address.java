@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Address {
-	//attributes
 	@Id
 	@GeneratedValue
 	private Long address_ID;

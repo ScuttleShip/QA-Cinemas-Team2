@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-
-
 @Entity
 public class Booking {
 	@Id
@@ -23,7 +21,7 @@ public class Booking {
 	}
 
 	public Booking() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Long getBooking_ID() {
@@ -49,5 +47,4 @@ public class Booking {
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
-
 }

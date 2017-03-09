@@ -8,14 +8,12 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.util.JSONUtil;
 
 @Stateless
 @Default
 public class MovieServiceDBImpl implements MovieService{
-
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
@@ -60,6 +58,5 @@ public class MovieServiceDBImpl implements MovieService{
 
 	private Movie findMovie(Long movie_ID) {
 		return em.find(Movie.class, movie_ID);
-	}
-	
+	}	
 }

@@ -1,14 +1,12 @@
 package com.qa.cinema.service;
 
 import java.util.Collection;
-
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import com.qa.cinema.persistence.Screen;
 import com.qa.cinema.util.JSONUtil;
 
@@ -60,5 +58,4 @@ public class ScreenServiceDBImpl implements ScreenService {
 	private Screen findScreen(Long screen_ID) {
 		return em.find(Screen.class, screen_ID);
 	}
-
 }

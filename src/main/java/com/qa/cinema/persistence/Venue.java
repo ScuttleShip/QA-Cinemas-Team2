@@ -2,8 +2,6 @@ package com.qa.cinema.persistence;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -56,7 +54,6 @@ public class Venue {
 			this.name = "";
 	}
 
-	//Getters and Setters
 	public Long getVenue_ID() {
 		return venue_ID;
 	}
@@ -97,5 +94,4 @@ public class Venue {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
 }

@@ -12,9 +12,7 @@ import javax.ws.rs.Produces;
 import com.qa.cinema.service.ShowingService;
 
 /**
- * 
  * @author FWasim
- *
  */
 @Path("/showing")
 public class ShowingEndPoint {
@@ -64,5 +62,4 @@ public class ShowingEndPoint {
 	public String deleteShowing(@PathParam("id") Long showingId){
 		return showingService.deleteShowing(showingId);
 	}
-
 }
