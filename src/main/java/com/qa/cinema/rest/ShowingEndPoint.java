@@ -35,21 +35,7 @@ public class ShowingEndPoint {
 	public String getMovieByShowingID(@PathParam("showing_ID") Long showing_ID) {
 		return showingService.getMovieByShowingID(showing_ID);
 	}
-	
-/*	@GET
-	@Path("/json/movie/{mid}")
-	@Produces({ "application/json" })
-	public String  getAllMoviesThatHaveUpcomingShowings(@PathParam("mid") Long movie_ID) {
-		return showingService.getAllMoviesThatHaveUpcomingShowings(movie_ID);
-	}*/
-	
-/*	@GET
-	@Path("/json/venue/{vid}")
-	@Produces({ "application/json" })
-	public String  getAllShowingsAtAVenue(@PathParam("vid") Long venue_ID) {
-		return showingService.getAllShowingsAtAVenue(venue_ID);
-	}*/
-	
+		
 	@GET
 	@Path("/json/venue/{venue_ID}/{date}")
 	@Produces({ "application/json" })
