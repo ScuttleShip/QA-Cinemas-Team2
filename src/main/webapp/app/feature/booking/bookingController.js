@@ -33,9 +33,10 @@
                 vm.venueErrorMessage = error;
             });
 
-            showingService.getShowingByShowingID(vm.currentBooking.chosenShowingID).then(function() {
+            showingService.getShowingByShowingID(vm.currentBooking.chosenShowingID).then(function (results) {
                 vm.showingForShowingID = results;
-            }, function(error) {
+                console.log(vm.showingForShowingID);
+            }, function (error) {
                 vm.error = true;
                 vm.showingErrorMessage = error;
             });

@@ -62,7 +62,7 @@ public class ShowingEndPoint {
 	}
 	
 	@GET
-	@Path("/json/showing/{sid}")
+	@Path("/{sid}")
 	@Produces({ "application/json" })
 	public String  getShowingByID(@PathParam("sid") Long showing_ID) {
 		return showingService.findShowingByIDREST(showing_ID);

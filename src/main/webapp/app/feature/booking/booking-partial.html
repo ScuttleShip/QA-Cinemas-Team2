@@ -1,42 +1,54 @@
-<div ng-controller="bookingController as ctrl" id="popupContainer">
-<form ng-submit="ctrl.saveBooking(booking)">
-    <input type="email" ng-model="booking.bookingEmail" required placeholder="Enter your email address">
-    <input type="email" ng-model="booking.confirmBookingEmail" required placeholder="Confirm your email address">
+<div class="container" ng-controller="bookingController as ctrl">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-5">
+        <form class="whiteText" ng-submit="ctrl.saveBooking(booking)">
+            <label>Enter your email address:</label>
+            <input class="formText" type="email" ng-model="booking.bookingEmail" required
+                   placeholder="Enter your email address">
+            <label>Confirm your email address:</label>
+            <input class="formText" type="email" ng-model="booking.confirmBookingEmail" required
+                   placeholder="Confirm your email address">
 
-    <h2>Chosen Venue:</h2>
-    <p>{{ctrl.venueForChosenShowing.name}}</p>
+            <h2>Chosen Venue:</h2>
+            <p class="bookingDetails">{{ctrl.venueForChosenShowing.name}}</p>
 
-    <h2>Chosen Date:</h2>
-    <p>{{ctrl.currentBooking.chosenDate}}</p>
+            <h2>Chosen Showing:</h2>
+            <p class="bookingDetails">{{ctrl.movieForChosenShowing.title}}</p>
+            <p class="bookingDetails">{{ctrl.showingForShowingID.startTime}}</p>
+            <p class="bookingDetails">{{ctrl.currentBooking.chosenDate}}</p>
 
+            <h2>Chosen Number of Seats:</h2>
+            <p class="bookingDetails">{{ctrl.currentBooking.chosenNumberOfSeats}}</p>
 
-    <h2>Chosen Showing:</h2>
-    <p>{{ctrl.movieForChosenShowing.title}}</p>
-    <p>{{ctrl.showingForShowingID.startTime}}</p>
+            <h2>Booking Total:</h2>
+            <p class="bookingDetails">{{ctrl.currentBooking.orderTotal | currency : "£"}}</p>
 
-    <h2>Chosen Number of Seats:</h2>
-    <p>{{ctrl.currentBooking.chosenNumberOfSeats}}</p>
+            <div class="col-md-2 pls-work">
+                <button class="button formText"><span>Checkout</span></button>
+            </div>
 
-    <h2>Booking Total:</h2>
-    <p>{{ctrl.currentBooking.orderTotal | currency : "£"}}</p>
+        </form>
+        <div class="col-md-2 pls-work">
+            <button class="button formText" ng-click="ctrl.openSeatChooserAlt()"><span>Edit order</span></button>
+        </div>
 
-    <div class="col-md-2 pls-work"><input type="submit" class="button" id="plsSubmit" value="Checkout"></div>
+        <div id="seatChooserDialog">
+            <label>Number Of Seats:
+                <input type="number" ng-model="ctrl.newNumberOfSeats" min="0">
+            </label>
+        </div>
 
-</form>
-    <div class="col-md-2 pls-work"><button class="button" ng-click="ctrl.openSeatChooserAlt()"><span>Edit order</span></button></div>
+        <div id="errorDialog">
+            <p>Your emails did not match. Please correct it!</p>
+        </div>
 
-    <div id="seatChooserDialog">
-        <label>Number Of Seats:
-            <input type="number" ng-model="ctrl.newNumberOfSeats" min="0">
-        </label>
+        <div id="bookingErrorDialog">
+            <p>Something went wrong with your booking!</p>
+        </div>
+
     </div>
-
-    <div id="errorDialog">
-        <p>Your emails did not match. Please correct it!</p>
-    </div>
-
-    <div id="bookingErrorDialog">
-        <p>Something went wrong with your booking!</p>
-    </div>
-
+    <div class="col-sm-3"></div>
 </div>
+<br>
+<br>
+<br>

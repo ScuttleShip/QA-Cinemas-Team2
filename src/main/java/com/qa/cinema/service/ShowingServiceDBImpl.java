@@ -91,7 +91,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 	}
 		
 	@Override
-	public String getAllShowingsAtAVenueAndDate(Long venue_ID, String dateSelected){
+	public String getAllShowingsAtAVenueAndDate(Long venue_ID, String dateSelected) {
 
 		
 		HashMap<String, List<Showing>> listOfMoviesAndShowings = new HashMap<String, List<Showing>>();
