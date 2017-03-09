@@ -3,12 +3,10 @@ package com.qa.cinema.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,8 +16,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.hibernate.boot.jaxb.hbm.internal.CacheAccessTypeConverter;
 
 import com.qa.cinema.persistence.Booking;
 import com.qa.cinema.persistence.Movie;
@@ -164,11 +160,6 @@ public class ShowingServiceDBImpl implements ShowingService {
 		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);
 		List<Venue> venue = query.getResultList();
 
-		/*
-		 * Query query =
-		 * em.createQuery("SELECT screen_ID from Screen s WHERE venue_ID = " +
-		 * venue_ID); List<Screen> listOfScreens = query.getResultList();
-		 */
 		return venue.get(0).getScreen();
 
 	}
@@ -204,27 +195,16 @@ public class ShowingServiceDBImpl implements ShowingService {
 
 	@Override
 	public String getShowingByBookingID(Long booking_ID) {
-
 		Query query = em.createQuery("SELECT s FROM Showing s");
-
 		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
-
 		Showing specific = new Showing();
-
 		for (Showing s : showing) {
-
 			Collection<Booking> bookingsForCurrentShowing = s.getBookings();
-
 			for (Booking b : bookingsForCurrentShowing) {
-
 				if (b.getBooking_ID().longValue() == booking_ID.longValue()) {
-
 					specific = s;
-
 				}
-
 			}
-
 		}
 
 		return util.getJSONForObject(specific);

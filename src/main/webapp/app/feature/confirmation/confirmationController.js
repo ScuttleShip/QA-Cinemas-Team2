@@ -19,7 +19,7 @@
             confirmationService.getBooking(bookingID).then(function (results) {
                 console.log("In confirmation controller about to return data to the client with results " + results);
                 vm.booking = results;
-                console.log(vm.booking + "dicks");
+                console.log(vm.booking);
                 var showingID = vm.booking.showing_ID;
                 console.log(vm.booking.showing_ID);
                 confirmationService.getShowing(showingID).then(function (results) {

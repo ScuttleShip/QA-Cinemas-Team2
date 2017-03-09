@@ -1,15 +1,18 @@
 (function() {
 
-    var filmsController = function($state, filmsService, venueService) {
+    var filmsController = function($scope, $state, filmsService, venueService) {
 
         var vm = this;
         vm.filmsByVenueAndDate = [];
 
         function init() {
+            vm.numberOfSeats = 3;
+            vm.newNumberOfSeats = 3;
 
             var chosenVenueID = sessionStorage.getItem("chosenVenue");
             var chosenDate = sessionStorage.getItem("chosenDate");
             var venuePlace = document.getElementById("venuePlace");
+
 
             venueService.getVenueByID(chosenVenueID).then(function (results) {
                 venuePlace.innerHTML = "Films on at QA Cinemas: " + results.name;
@@ -45,6 +48,7 @@
                         click: function() {
                             $(this).dialog("close");
                             submitSeatChooser();
+                            saveSeatNumberAndGo();
                         }
                     }
                 ]
@@ -53,10 +57,17 @@
         }
 
         function submitSeatChooser() {
+            vm.numberOfSeats = vm.newNumberOfSeats;
+            $scope.$apply();
+            console.log(vm.numberOfSeats + "number of seats in the thingssss");
+            console.log(vm.newNumberOfSeats + "hopefully what is in the input");
+        }
 
+        function saveSeatNumberAndGo() {
             sessionStorage.setItem("chosenNumberOfSeats", vm.numberOfSeats);
+            console.log(vm.numberOfSeats + "Farhaads Page");
+            console.log(sessionStorage.getItem("chosenNumberOfSeats") + "Farhaads Page");
             $state.go("booking");
-
         }
 
         vm.showSeatChooser = function (showing) {
@@ -90,6 +101,6 @@
 
     }
 
-    angular.module("qaCinemas2").controller('filmsController', ['$state', 'filmsService', 'venueService', filmsController]);
+    angular.module("qaCinemas2").controller('filmsController', ['$scope', '$state', 'filmsService', 'venueService', filmsController]);
 
 }());

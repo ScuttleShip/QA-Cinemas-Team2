@@ -13,10 +13,10 @@
         function init() {
 
             //setting test data
-            sessionStorage.setItem("chosenVenue", 1);
-            sessionStorage.setItem("chosenDate", "2017-09-23");
-            sessionStorage.setItem("chosenShowingID", 1);
-            sessionStorage.setItem("chosenNumberOfSeats", 2);
+            // sessionStorage.setItem("chosenVenue", 1);
+            // sessionStorage.setItem("chosenDate", "2017-09-23");
+            // sessionStorage.setItem("chosenShowingID", 1);
+            // sessionStorage.setItem("chosenNumberOfSeats", 2);
 
             //retrieve data from session storage
             vm.currentBooking.chosenVenue = parseInt(sessionStorage.getItem("chosenVenue"));
