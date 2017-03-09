@@ -1,0 +1,27 @@
+<form ng-submit="generateToken" id="payment-form">
+<span class="payment-errors"></span>
+
+<div class="row">
+    <label>
+        <span>Card Number</span>
+        <input type="text" data-stripe="number" maxlength="16">
+    </label>
+</div>
+
+<div class="row">
+    <label>
+        <span>CVC</span>
+        <input type="text" data-stripe="cvc" maxlength="4">
+    </label>
+</div>
+
+<div class="row">
+    <label>
+        <span>Expiration (MM/YYYY)</span>
+        <input type="text" data-stripe="exp-month" maxlength="2">
+    </label>
+    <input type="text" data-stripe="exp-year" maxlength="4">
+</div>
+
+<button type="submit">Buy Now</button>
+</form>

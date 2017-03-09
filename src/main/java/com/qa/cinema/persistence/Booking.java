@@ -26,7 +26,7 @@ public class Booking {
 		this.numberOfSeats = numberOfSeats;
 		this.customerEmail = customerEmail;
 		this.showing_ID = showing_ID;
-	}
+	}  
 
 	public Booking() {
 		// TODO Auto-generated constructor stub
