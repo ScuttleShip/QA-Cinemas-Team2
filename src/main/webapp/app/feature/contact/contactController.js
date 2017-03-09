@@ -18,17 +18,22 @@
             var emailToJson = JSON.stringify(erm);
             console.log(emailToJson);
             contactUsService.sendEmail(emailToSend);
-        }
+
+
+
+
+        };
 
         vm.doSomething = function() {
             console.log("did something");
-        }
+            window.location.href = 'index.html';
+        };
 
         vm.validateBox = function(){
-            var frmvalidator  = new Validator("myform");
+            /*var frmvalidator  = new Validator("myform");
 
-            frmvalidator.addValidation("FirstName","req","Please enter your First Name");
-            /*
+            /*frmvalidator.addValidation("FirstName","req","Please enter your First Name");
+
             frmvalidator.addValidation("FirstName","maxlen=20",	"Max length for FirstName is 20");
             frmvalidator.addValidation("FirstName","alpha","Alphabetic chars only");
 
@@ -39,18 +44,16 @@
             frmvalidator.addValidation("Email","req");
             frmvalidator.addValidation("Email","email");
             */
+            /*
             frmvalidator.addValidation("Phone","maxlen=11");
             frmvalidator.addValidation("Phone","numeric");
+            */
 
 
-            if(document.myform.onsubmit())
-            {
-                window.location.href = 'index.html';
 
-            }
         }
 
-    }
+    };
 
     angular.module("qaCinemas2").controller("contactController", ["contactUsService", contactController]);
 

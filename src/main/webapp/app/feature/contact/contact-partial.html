@@ -1,4 +1,4 @@
-<script src="scriptValidation.js"></script>
+<!--script src="scriptValidation.js"></script-->
 <div>
     <div class="leftContactThing" >
 
@@ -29,7 +29,7 @@
                     Email - &nbsp;&nbsp;
                 </td>
                 <td>
-                    <input class="blackText contactFormField" type="text" name="Email" ng-model="email.email"/>
+                    <input class="blackText contactFormField" type="email" required name="Email" ng-model="email.email" />
                 </td>
             </tr>
             <tr>
@@ -68,14 +68,14 @@
                     What would you like to say? &nbsp;&nbsp;
                 </td>
                 <td>
-                    <textarea class="contactFormField" rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message"></textarea>
+                    <textarea class="contactFormField" rows="4" col="35" placeholder="Issue you would like to raise" ng-model="email.message" required></textarea>
 
                 </td>
             </tr>
             <tr>
                 <td align="right"></td>
                 <td>
-                    <input class="input" type="submit" value="Submit" ng-click="ctrl.sendEmail(email); ctrl.validateBox()"/>
+                    <input class="input" type="submit" value="Submit" ng-click="ctrl.sendEmail(email)" />
                 </td>
             </tr>
         </table>
@@ -89,3 +89,10 @@
 </div>
 <br>
 <br>
+<script>
+    document.getElementById("myform").addEventListener("submit", myFunction);
+
+    function myFunction() {
+        window.location.href = 'index.html';
+    }
+</script>
