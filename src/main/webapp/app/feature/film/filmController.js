@@ -2,8 +2,8 @@
     var filmController = function(filmsService) {
 
         var vm = this;
-        
-        
+
+
         vm.showModal = function () {
             console.log("clicked on modal");
         }

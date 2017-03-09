@@ -17,6 +17,14 @@
         this.getFilmsByVenueAndDate = function (chosenVenueID, chosenDate) {
             return filmsDal.getFilmsByVenueAndDate(chosenVenueID, chosenDate);
         }
+
+        this.getFilmsImage = function (paramObj) {
+            return filmsDal.getFilmsImage(paramObj);
+        }
+        
+        this.getFilmByTitle = function (filmTitle) {
+            return filmsDal.getFilmByTitle(filmTitle);
+        }
     };
 
     angular.module('qaCinemas2').service('filmsService', ['filmsDal', FilmsService]);

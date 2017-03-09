@@ -12,4 +12,6 @@ public interface MovieService {
 	String deleteMovie(Long movie_ID);
 
 	String getMovieById(Long movie_ID);
+	
+	String getMovieByTitle(String title);
 }

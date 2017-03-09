@@ -157,16 +157,12 @@ public class ShowingServiceDBImpl implements ShowingService {
 	private Set<Screen> getScreensForVenue(Long venue_ID) {
 		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);
 		List<Venue> venue = query.getResultList();
-		
-		/*	Query query = em.createQuery("SELECT screen_ID from Screen s WHERE venue_ID = " + venue_ID);
-		List<Screen> listOfScreens = query.getResultList();*/
 		return venue.get(0).getScreen();
 		
 	}
 	
 	private Date convertStringToDate(String date){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		// If no date selected return todays date
 		Date returnDate = new Date();
 		try {
 			returnDate = format.parse(date);
@@ -190,7 +186,6 @@ public class ShowingServiceDBImpl implements ShowingService {
 
 	@Override
 	public String getShowingByBookingID(Long bookingID) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

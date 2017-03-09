@@ -1,68 +1,95 @@
 (function() {
-    var filmsController = function(filmsService, venueService) {
+
+    var filmsController = function($state, filmsService, venueService) {
 
         var vm = this;
         vm.filmsByVenueAndDate = [];
 
-       function init() {
+        function init() {
 
-           var chosenVenueID = sessionStorage.getItem("chosenVenue");
-           var chosenDate = sessionStorage.getItem("chosenDate");
-           var venuePlace = document.getElementById("venuePlace");
+            var chosenVenueID = sessionStorage.getItem("chosenVenue");
+            var chosenDate = sessionStorage.getItem("chosenDate");
+            var venuePlace = document.getElementById("venuePlace");
 
-           /*$("#seatChooser").dialog({
-               autoOpen: false,
-               buttons: [
+            venueService.getVenueByID(chosenVenueID).then(function (results) {
+                venuePlace.innerHTML = "Films on at QA Cinemas: " + results.name;
+            }, function (error) {
+                venuePlace.innerHTML = "Oops something went wrong!";
+            });
 
-               ]
-           });*/
+            filmsService.getFilmsByVenueAndDate(chosenVenueID, chosenDate).then(function (results) {
+                vm.filmsByVenueAndDate = results;
+            }, function (error) {
+                vm.error = true;
+                vm.errorMessage = error;
+            });
 
+            $("#seatChooser").dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: [
+                    {
+                        text: "Cancel",
+                        icons: {
+                            primary: ""
+                        },
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    },
+                    {
+                        text: "Save",
+                        icons: {
+                            primary: ""
+                        },
+                        click: function() {
+                            $(this).dialog("close");
+                            submitSeatChooser();
+                        }
+                    }
+                ]
+            });
 
+        }
 
-           venueService.getVenueByID(chosenVenueID).then(function (results) {
-               venuePlace.innerHTML = "Films on at QA Cinemas: " + results.name;
-           }, function (error) {
-               venuePlace.innerHTML = "Oops something went wrong!";
-           });
+        function submitSeatChooser() {
 
-           filmsService.getFilmsByVenueAndDate(chosenVenueID, chosenDate).then(function (results) {
-               console.log("The films displayed" + results);
-              vm.filmsByVenueAndDate = results;
-              console.log("This is the value of the venue and date ");
-              console.log(vm.filmsByVenueAndDate);
+            sessionStorage.setItem("chosenNumberOfSeats", vm.numberOfSeats);
+            $state.go("booking");
 
-           }, function (error) {
-               console.log("error occured" + error);
-               vm.error = true;
-               vm.errorMessage = error;
-           });
-       }
+        }
 
-       function submitSeatChooser() {
+        vm.showSeatChooser = function (showing) {
 
-       }
+            var chosenShowingID = sessionStorage.setItem('chosenShowingID', showing.showing_ID);
+            var venuePlace = document.getElementById("seatsRemaining");
+            venuePlace.innerHTML = "Seats Remaining: " + showing.seatsRemaining;
 
-       vm.showSeatChooser = function (showing) {
+            $("#seatChooser").dialog("open");
 
-           console.log("Open seat chooser");
+        }
 
-           console.log(showing.showing_ID);
+        vm.convertKeyToJSON = function (objectToConvert) {
 
-           //$("#seatChooser").dialog("open");
+            console.log(JSON.parse(objectToConvert));
+            vm.currentMovie = JSON.parse(objectToConvert);
+            console.log(vm.currentMovie.filmImg);
+            return vm.currentMovie;
 
-       }
+        };
 
-       vm.convertKeyToJSON = function (objectToConvert) {
-           return JSON.parse(objectToConvert);
-       };
+        vm.trimTime = function (timeToTrim) {
 
-       vm.trimTime = function (timeToTrim) {
-           var firstPart = timeToTrim.toString().substr(0, 5);
-           var secondPart = timeToTrim.toString().substr(9, 10);
-           return firstPart + " " + secondPart;
-       }
+            var firstPart = timeToTrim.toString().substr(0, 5);
+            var secondPart = timeToTrim.toString().substr(9, 10);
+            return firstPart + " " + secondPart;
+
+        }
 
         init();
+
     }
-    angular.module("qaCinemas2").controller('filmsController', ['filmsService', 'venueService', filmsController]);
+
+    angular.module("qaCinemas2").controller('filmsController', ['$state', 'filmsService', 'venueService', filmsController]);
+
 }());
