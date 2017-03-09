@@ -6,18 +6,19 @@
         vm.filmsByVenueAndDate = [];
 
         function init() {
-            vm.numberOfSeats = 3;
-            vm.newNumberOfSeats = 3;
+            vm.requestedNumberOfSeats = 0;
+            vm.numberOfSeats = 0;
 
             var chosenVenueID = sessionStorage.getItem("chosenVenue");
             var chosenDate = sessionStorage.getItem("chosenDate");
             var venuePlace = document.getElementById("venuePlace");
 
-
             venueService.getVenueByID(chosenVenueID).then(function (results) {
                 venuePlace.innerHTML = "Films on at QA Cinemas: " + results.name;
             }, function (error) {
                 venuePlace.innerHTML = "Oops something went wrong!";
+                vm.error = true;
+                vm.errorMessage = error;
             });
 
             filmsService.getFilmsByVenueAndDate(chosenVenueID, chosenDate).then(function (results) {
@@ -57,7 +58,9 @@
         }
 
         function submitSeatChooser() {
-            vm.numberOfSeats = vm.newNumberOfSeats;
+            vm.numberOfSeats = vm.requestedNumberOfSeats;
+            console.log(vm.numberOfSeats + "number of seats in the thingssss");
+            console.log(vm.newNumberOfSeats + "hopefully what is in the input");
             $scope.$apply();
             console.log(vm.numberOfSeats + "number of seats in the thingssss");
             console.log(vm.newNumberOfSeats + "hopefully what is in the input");
@@ -71,8 +74,10 @@
         }
 
         vm.showSeatChooser = function (showing) {
-
-            var chosenShowingID = sessionStorage.setItem('chosenShowingID', showing.showing_ID);
+            console.log(showing);
+            sessionStorage.setItem('chosenShowingID', showing.showing_ID);
+            var chosenShowingID = sessionStorage.getItem('chosenShowingID');
+            console.log(chosenShowingID);
             var venuePlace = document.getElementById("seatsRemaining");
             venuePlace.innerHTML = "Seats Remaining: " + showing.seatsRemaining;
 
@@ -82,9 +87,7 @@
 
         vm.convertKeyToJSON = function (objectToConvert) {
 
-            console.log(JSON.parse(objectToConvert));
             vm.currentMovie = JSON.parse(objectToConvert);
-            console.log(vm.currentMovie.filmImg);
             return vm.currentMovie;
 
         };

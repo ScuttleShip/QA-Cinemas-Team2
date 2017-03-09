@@ -17,6 +17,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.jboss.logging.Logger;
+
 import com.qa.cinema.persistence.Booking;
 import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.persistence.Screen;
@@ -33,6 +35,9 @@ public class ShowingServiceDBImpl implements ShowingService {
 
 	@Inject
 	private JSONUtil util;
+	
+	 private static final Logger LOGGER = Logger.getLogger(ShowingServiceDBImpl.class);
+
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -92,7 +97,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 
 		Set<Screen> screensAtVenue = getScreensForVenue(venue_ID);
 
-		List<Showing> showingsAtVenue = new ArrayList();
+		List<Showing> showingsAtVenue = new ArrayList<Showing>();
 
 		for (Screen currentScreen : screensAtVenue) {
 
@@ -158,9 +163,8 @@ public class ShowingServiceDBImpl implements ShowingService {
 
 	private Set<Screen> getScreensForVenue(Long venue_ID) {
 		Query query = em.createQuery("SELECT v FROM Venue v WHERE v.venue_ID = " + venue_ID);
-		List<Venue> venue = query.getResultList();
-
-		return venue.get(0).getScreen();
+		Venue venue = (Venue) query.getSingleResult();
+		return venue.getScreen();
 
 	}
 
@@ -195,19 +199,41 @@ public class ShowingServiceDBImpl implements ShowingService {
 
 	@Override
 	public String getShowingByBookingID(Long booking_ID) {
-		Query query = em.createQuery("SELECT s FROM Showing s");
-		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
-		Showing specific = new Showing();
-		for (Showing s : showing) {
-			Collection<Booking> bookingsForCurrentShowing = s.getBookings();
-			for (Booking b : bookingsForCurrentShowing) {
-				if (b.getBooking_ID().longValue() == booking_ID.longValue()) {
-					specific = s;
-				}
-			}
-		}
 
-		return util.getJSONForObject(specific);
+		LOGGER.info(booking_ID);
+		Query query = em.createQuery("SELECT b FROM Booking b");
+		List<Booking> allBookings = (List<Booking>) query.getResultList();
+		Booking newBooking = new Booking();
+		
+		for (Booking current : allBookings) {
+			
+			if (current.getBooking_ID().equals(booking_ID)) {
+				
+				newBooking = current;
+				
+			}
+			
+		}
+		
+		Long showingID = newBooking.getShowing_ID();
+		
+		Query showingQuery = em.createQuery("SELECT s FROM Showing s where s.showing_ID = " + showingID);
+		Showing newShowing = (Showing) showingQuery.getSingleResult();
+		
+		LOGGER.info("This is the value of JSON string " +  util.getJSONForObject(newShowing));
+		
+		return util.getJSONForObject(newShowing);
+//		Showing specific = new Showing();
+//		for (Showing s : showing) {
+//			Collection<Booking> bookingsForCurrentShowing = s.getBookings();
+//			for (Booking b : bookingsForCurrentShowing) {
+//				if (b.getBooking_ID().longValue() == booking_ID.longValue()) {
+//					specific = s;
+//				}
+//			}
+//		}
+//		LOGGER.info("This is the value of JSON string " +  util.getJSONForObject(single));
+//		return util.getJSONForObject(single);
 
 	}
 }

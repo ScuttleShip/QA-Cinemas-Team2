@@ -19,23 +19,21 @@
             confirmationService.getBooking(bookingID).then(function (results) {
                 console.log("In confirmation controller about to return data to the client with results " + results);
                 vm.booking = results;
-                console.log(vm.booking);
-                var showingID = vm.booking.showing_ID;
-                console.log(vm.booking.showing_ID);
-                confirmationService.getShowing(showingID).then(function (results) {
-                    console.log("In confirmation controller about to return data to the client with results " + results);
-                    vm.showing = results;
-                }, function (error) {
-                    vm.error = true;
-                    vm.errorMessage = error;
-                });
+
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
                 console.log(error);
             });
 
-
+            confirmationService.getShowing(bookingID).then(function (results) {
+                console.log("In confirmation controller about to return data to the client with results " + results);
+                console.log(results);
+                vm.showing = results;
+            }, function (error) {
+                vm.error = true;
+                vm.errorMessage = error;
+            });
 
             // console.log(showingID);
         }
