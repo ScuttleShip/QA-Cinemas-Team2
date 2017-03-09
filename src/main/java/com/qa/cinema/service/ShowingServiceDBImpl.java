@@ -192,6 +192,11 @@ public class ShowingServiceDBImpl implements ShowingService {
 	public Showing findShowingByID(Long id) {
 		return em.find(Showing.class, id);
 	}
+	
+	public String findShowingByIDREST(Long id) {
+		Showing s = em.find(Showing.class, id);
+		return util.getJSONForObject(s);
+	}
 
 	public static final String returnMessage(String message) {
 		return "{\"message\": \"" + message + "\"}";
