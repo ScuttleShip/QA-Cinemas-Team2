@@ -137,13 +137,15 @@
 
                 bookingService.saveBooking(booking).then(function (results) {
 
-                    vm.bookingMessage = results;
+                    vm.booking = results;
+                    sessionStorage.setItem("bookingID", vm.booking.booking_ID);
                     $state.go('confirmation');
 
                 }, function (error) {
 
                     vm.error = true;
                     vm.errorMessage = error;
+                    console.log(error);
                     $("#bookingErrorDialog").dialog("open");
 
                 });

@@ -5,13 +5,13 @@
 
     var confirmationService =  function(confirmationDal) {
 
-        this.getBooking = function() {
-            return confirmationDal.getBooking(1);
+        this.getBooking = function(bookingID) {
+            return confirmationDal.getBooking(bookingID);
 
         };
 
-        this.getShowing = function() {
-            return confirmationDal.getShowing(1);
+        this.getShowing = function(showingID) {
+            return confirmationDal.getShowing(showingID);
 
         };
     };

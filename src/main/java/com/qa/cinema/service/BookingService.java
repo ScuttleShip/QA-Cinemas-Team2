@@ -4,6 +4,8 @@ public interface BookingService {
 
 
 		String getAllBookings();
+		
+		String getBookingById(Long booking_ID);
 
 		String addNewBooking(String bookingJson);
 

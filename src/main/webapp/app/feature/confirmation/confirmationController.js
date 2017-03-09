@@ -7,24 +7,35 @@
     {
         var vm = this;
 
+
+
         // vm.booking = {booking_ID: "8", numberOfSeats: "3", customerEmail: "hello@gmail.com"};
         // vm.showing = {movie: "Mark's mum the Global Terror", screen: "3", date: "10-03-2017", startTime: "14:00", };
 
         function init() {
-            confirmationService.getBooking().then(function (results) {
+
+            var bookingID = parseInt(sessionStorage.getItem("bookingID"));
+
+            confirmationService.getBooking(bookingID).then(function (results) {
                 console.log("In confirmation controller about to return data to the client with results " + results);
                 vm.booking = results;
+                console.log(vm.booking);
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
+                console.log(error);
             });
-            confirmationService.getShowing().then(function (results) {
+
+            var showingID = vm.booking.showing_ID;
+            console.log(showingID);
+/*
+            confirmationService.getShowing(showingID).then(function (results) {
                 console.log("In confirmation controller about to return data to the client with results " + results);
                 vm.showing = results;
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
-            });
+            });*/
         }
 
         init();

@@ -1,6 +1,7 @@
 package com.qa.cinema.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
@@ -31,6 +32,12 @@ public class BookingServiceDBImpl {
 		Collection<Booking> bookings = (Collection<Booking>) query.getResultList();
 		return util.getJSONForObject(bookings);
 	}
+	
+	public String getBookingById(Long booking_ID) {
+		Booking foundBooking = findBooking(booking_ID);
+		
+		return util.getJSONForObject(foundBooking);
+	}
 
 	public String addNewBooking(String bookingJson) {
 		Booking newBooking = util.getObjectForJSON(bookingJson, Booking.class);
@@ -41,7 +48,11 @@ public class BookingServiceDBImpl {
 		
 		if(bookingConfirmed){
 			em.merge(newBooking);
-			return bookingJson;	
+			
+			Query query = em.createQuery("SELECT b FROM Booking b");
+			List<Booking> allBookings = query.getResultList();
+			Booking lastBooking = allBookings.get(allBookings.size()-1);
+			return util.getJSONForObject(lastBooking);	
 		}else{
 			return "{\"message\": \"booking could not be completed, there are only" + showing.findShowingByID(showing_ID).getSeatsRemaining() + "seats remaining \"}";
 		}
