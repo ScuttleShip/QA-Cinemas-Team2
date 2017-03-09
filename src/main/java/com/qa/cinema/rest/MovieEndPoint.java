@@ -30,7 +30,7 @@ public class MovieEndPoint {
 	public String getMovieById(@PathParam("id") Long movieId){
 		return service.getMovieById(movieId);
 	}
-	
+		
 	@Path("/json")
 	@POST
 	@Produces({"application/json"})

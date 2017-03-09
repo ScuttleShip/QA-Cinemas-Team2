@@ -13,12 +13,12 @@
 
     <!-- ALL THE STYLESHEETS (Stuff we actually wrote (or copied and pasted) ourselves) -->
     <link rel="stylesheet" href="indexStyle.css">
-    <link rel="stylesheet" href="app/feature/home/style.css">
-    <link rel="stylesheet" href="app/feature/offers/style.css">
+    <link rel = "stylesheet" href="app/feature/home/style.css">
+    <link rel = "stylesheet" href="app/feature/offers/style.css">
     <link rel="stylesheet" href="app/feature/films/style.css">
-    <link rel="stylesheet" href="app/feature/booking/style.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
-    <link rel="stylesheet" href="scripts/bootstrap-dialog.min.css">
+    <link rel="stylesheet" href="app/feature/film/style.css">
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel = "stylesheet">
 
 
 </head>
@@ -38,7 +38,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a ui-sref="home">Home</a></li>
-                <li><a ui-sref="films">Films</a></li>
+                <li><a ui-sref="allFilms">Films</a></li>
                 <li><a ui-sref="venues">Venues</a></li>
                 <li><a ui-sref="offers">Offers</a></li>
                 <li><a ui-sref="faqs">FAQs</a></li>
@@ -95,44 +95,48 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="app/feature/contact/scriptValidation.js"></script>
 
     <!-- Angular modules-->
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/ui-router.min.js"></script>
 
-    <script src="scripts/bootstrap-dialog.min.js"></script>
-
     <!-- App and state manager-->
     <script src="app/app.js"></script>
     <script src="app/app-state-manager.js"></script>
 
-    <!-- Services-->
+    <!-- DALs-->
     <script src="app/service/dal/dal.js"></script>
-    <script src="app/service/dal/venue.js"></script>
-    <script src="app/service/venueservice.js"></script>
-    <script src="app/service/dal/confirmation.js"></script>
-    <script src="app/service/confirmationService.js"></script>
-    <script src="app/service/dal/contactUsDal.js"></script>
-    <script src="app/service/contactUsService.js"></script>
-    <script src="app/service/dal/home.js"></script>
-    <script src="app/service/homeService.js"></script>
     <script src="app/service/dal/booking.js"></script>
-    <script src="app/service/bookingService.js"></script>
+    <script src="app/service/dal/confirmation.js"></script>
+    <script src="app/service/dal/contactUsDal.js"></script>
+    <script src="app/service/dal/films.js"></script>
+    <script src="app/service/dal/home.js"></script>
     <script src="app/service/dal/showing.js"></script>
+    <script src="app/service/dal/venue.js"></script>
+
+    <!-- Services-->
+    <script src="app/service/bookingService.js"></script>
+    <script src="app/service/confirmationService.js"></script>
+    <script src="app/service/contactUsService.js"></script>
+    <script src="app/service/filmsService.js"></script>
+    <script src="app/service/homeService.js"></script>
     <script src="app/service/showingService.js"></script>
+    <script src="app/service/venueservice.js"></script>
 
     <!-- Features-->
     <script src="app/feature/booking/bookingController.js"></script>
     <script src="app/feature/confirmation/confirmationController.js"></script>
     <script src="app/feature/contact/contactController.js"></script>
     <script src="app/feature/faqs/faqsController.js"></script>
+    <script src="app/feature/film/filmController.js"></script>
     <script src="app/feature/films/filmsController.js"></script>
     <script src="app/feature/home/homeController.js"></script>
     <script src="app/feature/offers/offersController.js"></script>
     <script src="app/feature/payments/paymentsController.js"></script>
     <script src="app/feature/paymentSuccess/paymentSuccessController.js"></script>
+    <script src="app/feature/singleFilm/singleFilmController.js"></script>
     <script src="app/feature/venues/venuesController.js"></script>
+
 
     <script src="app/feature/home/Carousel.js"></script>
 

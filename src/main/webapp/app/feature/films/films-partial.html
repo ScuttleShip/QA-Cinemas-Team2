@@ -8,71 +8,47 @@
         <div class="row">
             <div class="col-md-12">
 
-<!--                <form class="navbar-form">
-                    <div class="form-group" style="display:inline;">
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                        </div>
-                    </div>
-                </form>-->
-
+            </div>
         </div>
     </div>
-</div>
-<hr>
+
+    <hr>
 
     <div class="container">
-
-            <div ng-repeat="(key, value) in ctrl.filmsByVenueAndDate">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="col-md-5">
-                            <img src="http://placehold.it/210x210" width="250" height="250">
-                            <!--<img src="{{ctrl.convertKeyToJSON(key).filmUrl}}">-->
-                        </div>
-                        <div class="col-md-5 col-md-offset-1">
-                            <h3 style="color: white"><b>{{ctrl.convertKeyToJSON(key).title}}</b></h3>
-                            <h4 style="color: white">Running Time : {{ctrl.convertKeyToJSON(key).duration}}</h4>
-                            <br>
-                            <h5 style="color: white">{{ctrl.convertKeyToJSON(key).description}}</h5>
-                        </div>
+        <div ng-repeat="(key, value) in ctrl.filmsByVenueAndDate">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-5">
+                        <img ui-sref="singleFilm({film_ID: {{ctrl.convertKeyToJSON(key).movie_ID}}})" ng-src="{{ctrl.currentMovie.filmImg}}" width="250" height="250">
                     </div>
+                    <div class="col-md-5 col-md-offset-1">
+                        <h3 ui-sref="singleFilm({film_ID: {{ctrl.currentMovie.movie_ID}}})" style="color: white; cursor: pointer;"><b><a>{{ctrl.currentMovie.title}}</a></b></h3>
+                        <h4 style="color: white">Running Time : {{ctrl.currentMovie.duration}}</h4>
+                        <br>
+                        <h5 style="color: white">{{ctrl.currentMovie.description}}</h5>
+                    </div>
+                </div>
 
                 <div class="col-md-6">
                     <div class="btn-group" style="display: inline-flex;">
                         <div ng-repeat="v in value">
-                            <button ng-click="ctrl.showSeatChooser(v)" type="button"  class="btn btn-warning btn-xs">{{ctrl.trimTime(v.startTime)}}</button>
+                            <button ng-click="ctrl.showSeatChooser(v)" type="button" class="btn btn-warning btn-xs">
+                                {{ctrl.trimTime(v.startTime)}}
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div><hr><br>
+            </div>
+            <hr>
+            <br>
         </div>
     </div>
-</div>
-<!--
-<div id="seatChooser">
-    <input type="number">
-</div>-->
 
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Set number of seats</h4>
-            </div>
-            <div class="modal-body">
-                <p>Showing ID : {{ctrl.getShowingID}}</p>
-                <div class="form-group">
-                    <label for="setSeats">Seats Required:</label>
-                    <input type="number" class="form-control" id="setSeats">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+    <div id="seatChooser">
+        <p style="color: black; float: right;" id="seatsRemaining"></p>
+        <label>Number Of Seats:
+            <input type="number" ng-model="ctrl.numberOfSeats" min="0">
+        </label>
     </div>
+
 </div>

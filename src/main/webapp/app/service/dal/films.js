@@ -11,7 +11,7 @@
         };
 
         this.getFilmById = function (filmId) {
-            return dal.http.GET("rest/movie/json" + filmId);
+            return dal.http.GET("rest/movie/json/" + filmId)
         }
 
         this.getFilmsByVenue = function(venueId){
@@ -20,6 +20,11 @@
         
        this.getFilmsByVenueAndDate = function (chosenVenueId, dateSelected) {
             return dal.http.GET("rest/showing/json/venue/" + chosenVenueId + "/" + dateSelected);
-        }
+        };
+
+        this.getFilmsImage = function (paramObj) {
+            return dal.http.GET("http://www.omdbapi.com/?t=" + paramObj);
+        };
+
     }
 }());
