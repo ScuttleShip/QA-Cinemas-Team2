@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.qa.cinema.persistence.Booking;
-import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
 @Stateless

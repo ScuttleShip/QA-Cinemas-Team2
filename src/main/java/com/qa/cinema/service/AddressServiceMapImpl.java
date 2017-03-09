@@ -1,13 +1,16 @@
 package com.qa.cinema.service;
 
+import static  com.qa.cinema.util.Print.header;
+import static  com.qa.cinema.util.Print.print;
+import static  com.qa.cinema.util.Print.printBlock;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
-import static  com.qa.cinema.util.Print.header;
-import static  com.qa.cinema.util.Print.printBlock;
-import static  com.qa.cinema.util.Print.print;
+
 import com.qa.cinema.persistence.Address;
 import com.qa.cinema.util.JSONUtil;
 

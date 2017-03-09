@@ -11,7 +11,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.qa.cinema.service.VenueService;
-import com.qa.cinema.service.VenueServiceDBImpl;
 
 @Path("/venue")
 @Default

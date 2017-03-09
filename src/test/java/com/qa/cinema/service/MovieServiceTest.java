@@ -1,11 +1,8 @@
 package com.qa.cinema.service;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -17,8 +14,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.qa.cinema.util.JSONUtil;
 import com.qa.cinema.persistence.Movie;
+import com.qa.cinema.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MovieServiceTest {

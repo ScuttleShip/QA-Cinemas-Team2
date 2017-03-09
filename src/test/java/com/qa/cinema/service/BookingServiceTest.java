@@ -4,7 +4,6 @@ package com.qa.cinema.service;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -16,8 +15,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.qa.cinema.util.JSONUtil;
 import com.qa.cinema.persistence.Booking;
+import com.qa.cinema.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
 
