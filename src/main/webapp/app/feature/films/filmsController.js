@@ -28,33 +28,35 @@
                 vm.errorMessage = error;
             });
 
-            $("#seatChooser").dialog({
-                autoOpen: false,
-                modal: true,
-                buttons: [
-                    {
-                        text: "Cancel",
-                        icons: {
-                            primary: ""
+            $(function() {
+                $("#seatChooser").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    buttons: [
+                        {
+                            text: "Cancel",
+                            icons: {
+                                primary: ""
+                            },
+                            click: function() {
+                                $(this).dialog("close");
+                            }
                         },
-                        click: function() {
-                            $(this).dialog("close");
+                        {
+                            text: "Save",
+                            icons: {
+                                primary: ""
+                            },
+                            click: function() {
+                                $(this).dialog("close");
+                                submitSeatChooser();
+                                saveSeatNumberAndGo();
+                            }
                         }
-                    },
-                    {
-                        text: "Save",
-                        icons: {
-                            primary: ""
-                        },
-                        click: function() {
-                            $(this).dialog("close");
-                            submitSeatChooser();
-                            saveSeatNumberAndGo();
-                        }
-                    }
-                ]
-            });
+                    ]
+                });
 
+            });
         }
 
         function submitSeatChooser() {
