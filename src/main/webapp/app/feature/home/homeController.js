@@ -19,11 +19,6 @@
             sessionStorage.setItem("chosenVenue", venueChooser.value);
             sessionStorage.setItem("chosenDate", dateChooser.value);
 
-            console.log(sessionStorage.getItem("chosenVenue"));
-            console.log(sessionStorage.getItem("chosenDate"));
-
-
-
         }
 
         function init() {
@@ -40,16 +35,13 @@
 
 
             homeService.getAllMovies().then(function (results) {
-                console.log(results);
                 vm.movies = results;
             });
 
 
             venueService.getAllVenues().then(function (results) {
-                console.log(results);
                 vm.venues = results;
             }, function (error) {
-                console.log("This is not working" + error);
                 vm.error=true;
                 vm.errorMessage = error;
 

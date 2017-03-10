@@ -5,7 +5,6 @@
         vm.singleFilm = "";
         vm.certImage = "";
 
-        console.log($stateParams.film_ID);
         var singleFilmName = document.getElementById("singleFilmName");
 
         function init() {
