@@ -88,7 +88,7 @@ public class Venue {
 	}
 
 	public void setScreen(Set<Screen> screen) {
-		screen = screen;
+		this.screen = screen;
 	}
 
 	public Address getAddress() {

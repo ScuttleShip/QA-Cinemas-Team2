@@ -71,7 +71,6 @@
 
         vm.showSeatChooser = function (showing) {
             sessionStorage.setItem('chosenShowingID', showing.showing_ID);
-            var chosenShowingID = sessionStorage.getItem('chosenShowingID');
             var venuePlace = document.getElementById("seatsRemaining");
             venuePlace.innerHTML = "Seats Remaining: " + showing.seatsRemaining;
 

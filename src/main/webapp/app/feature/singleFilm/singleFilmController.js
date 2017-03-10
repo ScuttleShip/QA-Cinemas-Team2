@@ -38,7 +38,7 @@
             }, function (error) {
                 singleFilmName.innerHTML = "No film was found!";
             });
-        };
+        }
 
         init();
 

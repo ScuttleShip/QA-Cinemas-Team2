@@ -125,4 +125,17 @@ public class Showing implements Comparable<Showing>{
 	public int compareTo(Showing o) {
 		return getStartTime().compareTo(o.getStartTime());
 	}
+	
+	@Override 
+	public boolean equals(Object o) {
+		Showing hello = (Showing) o;
+		if (this.getShowing_ID().equals(hello.getShowing_ID())) {
+			
+			return true;
+			
+		}
+		else {
+			return false;
+		}
+	}
 }

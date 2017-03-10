@@ -72,7 +72,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 		Showing showing = findShowing(showingId);
 		boolean isShowingUpdated = false;
 		int count = showing.getSeatsRemaining();
-		if (showing != null && count >= numberOfSeatsBooked) {
+		if (count >= numberOfSeatsBooked) {
 			showing.setSeatsRemaining(count - numberOfSeatsBooked);
 			em.merge(showing);
 			isShowingUpdated = true;
