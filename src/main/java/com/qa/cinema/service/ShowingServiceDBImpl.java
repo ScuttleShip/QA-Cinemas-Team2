@@ -175,7 +175,6 @@ public class ShowingServiceDBImpl implements ShowingService {
 		try {
 			returnDate = format.parse(date);
 		} catch (ParseException e) {
-			e.printStackTrace();
 			LOGGER.info(e);
 		}
 		return returnDate;
