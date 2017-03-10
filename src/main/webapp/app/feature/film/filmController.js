@@ -5,12 +5,10 @@
 
 
         vm.showModal = function () {
-            console.log("clicked on modal");
         }
 
         function init() {
             filmsService.getFilms().then(function (results) {
-                console.log("The result of films is " + results);
                 vm.films  = results;
             }, function (error) {
 

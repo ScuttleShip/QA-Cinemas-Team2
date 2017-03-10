@@ -12,7 +12,6 @@
             filmsService.getFilmById($stateParams.film_ID).then(function (results) {
 
                 if(results != null){
-                    console.log("The result of film search is " + results.title);
                     singleFilmName.innerHTML = "Movie: " + results.title;
                     vm.singleFilm = results;
 

@@ -35,7 +35,6 @@
 
             showingService.getShowingByShowingID(vm.currentBooking.chosenShowingID).then(function (results) {
                 vm.showingForShowingID = results;
-                console.log(vm.showingForShowingID);
             }, function (error) {
                 vm.error = true;
                 vm.showingErrorMessage = error;
@@ -127,7 +126,6 @@
         vm.saveBooking = function(bookingDetails) {
 
             if (bookingDetails.bookingEmail === bookingDetails.confirmBookingEmail) {
-                console.log("They're the same!");
 
                 var booking = {};
                 booking.numberOfSeats = vm.currentBooking.chosenNumberOfSeats;
@@ -145,7 +143,6 @@
 
                     vm.error = true;
                     vm.errorMessage = error;
-                    console.log(error);
                     $("#bookingErrorDialog").dialog("open");
 
                 });

@@ -176,6 +176,7 @@ public class ShowingServiceDBImpl implements ShowingService {
 			returnDate = format.parse(date);
 		} catch (ParseException e) {
 			e.printStackTrace();
+			LOGGER.info(e);
 		}
 		return returnDate;
 	}
@@ -219,8 +220,6 @@ public class ShowingServiceDBImpl implements ShowingService {
 		
 		Query showingQuery = em.createQuery("SELECT s FROM Showing s where s.showing_ID = " + showingID);
 		Showing newShowing = (Showing) showingQuery.getSingleResult();
-		
-		LOGGER.info("This is the value of JSON string " +  util.getJSONForObject(newShowing));
 		
 		return util.getJSONForObject(newShowing);
 //		Showing specific = new Showing();

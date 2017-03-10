@@ -61,25 +61,17 @@
 
         function submitSeatChooser() {
             vm.numberOfSeats = vm.requestedNumberOfSeats;
-            console.log(vm.numberOfSeats + "number of seats in the thingssss");
-            console.log(vm.newNumberOfSeats + "hopefully what is in the input");
             $scope.$apply();
-            console.log(vm.numberOfSeats + "number of seats in the thingssss");
-            console.log(vm.newNumberOfSeats + "hopefully what is in the input");
         }
 
         function saveSeatNumberAndGo() {
             sessionStorage.setItem("chosenNumberOfSeats", vm.numberOfSeats);
-            console.log(vm.numberOfSeats + "Farhaads Page");
-            console.log(sessionStorage.getItem("chosenNumberOfSeats") + "Farhaads Page");
             $state.go("booking");
         }
 
         vm.showSeatChooser = function (showing) {
-            console.log(showing);
             sessionStorage.setItem('chosenShowingID', showing.showing_ID);
             var chosenShowingID = sessionStorage.getItem('chosenShowingID');
-            console.log(chosenShowingID);
             var venuePlace = document.getElementById("seatsRemaining");
             venuePlace.innerHTML = "Seats Remaining: " + showing.seatsRemaining;
 
